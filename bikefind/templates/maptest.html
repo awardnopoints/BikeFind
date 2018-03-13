@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>dublinbikes</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+       #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <body>
+    <h3>Dublinbikes</h3>
+    <div id="map"></div>
+    <button class="btn btn-primary btn-xs">Button</button>
+    
+
+
+
+
+    <script>
+      function initMap() {
+        var charlemontPlace = {lat: 53.330662, lng: -6.260177};
+
+        var mapOptions = {
+            zoom:15,
+            center:charlemontPlace
+        }
+
+        var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+        /*
+        // click listener - will use little man icon and auto-display best station calculation ( will be one of the ways users can select location)
+
+        google.maps.event.addListener(map, 'click', function(event){
+            addMarker({coordinates:event.latLng});
+
+        });
+
+        */
+
+      
+        // dummy array of station markers (js objects). replace with vals from bikes api
+        var stationMarkers = [
+            {
+          name: "Dame Street",
+          coordinates:{lat: 53.344007, lng: -6.266802},
+          infoContent:"<div>Dame Street Station.</div>"+"<div>Occupancy: 19</div>"
+        },
+        {
+          name: "Charlemont Place",
+          coordinates:{lat: 53.330662, lng: -6.260177},
+          infoContent:"<div>Charlemont Station.</div>"+"<div>Occupancy: 12</div>"
+        }
+
+        ];
+
+        // create station markers from array
+        for(var i = 0; i < stationMarkers.length; i++){
+          addStationMarker(stationMarkers[i]);
+        }
+        
+
+        // function for adding a station marker
+
+        function addStationMarker(properties){
+            
+          var marker = new google.maps.Marker({
+            title:properties.name,
+            position:properties.coordinates,
+            map:map    
+          });
+
+          var infowindow = new google.maps.InfoWindow({
+            content:properties.infoContent
+          });
+
+          marker.addListener('click', function(){
+            infowindow.open(map, marker)
+          });
+        }
+
+
+
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVpdcU4-foTsYN-UHU9Vu34dpykEIF388&callback=initMap">
+    </script>
+  </body>
+</html>
