@@ -1,5 +1,6 @@
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
 from sqlalchemy.orm.session import sessionmaker
+# import model from db test class
 from bikefind.test_dbclass import staticData, dynamicData
 import requests
 import time
@@ -21,22 +22,36 @@ weather_connection_string = 'http://api.openweathermap.org/data/2.5/weather?q=Du
 r2 = requests.get(weather_connection_string).json()
 print(r2["weather"][0]["main"])
 
-
 def main():
+    # add static data (once-off)
+    r = requests.get(bikes_connection_string)
+    station_info_list = r.json()
+    for station in station_info_list:
+            
+        address = station['address']
+        latitude = station['position']['lat']
+        longitude = station['position']['lng']
+        banking = station['banking']
+        #add to db
+        add_static(address, latitude, longitude, banking)
+      
+    # add dynamic data to db every 10 mins        
     while(True):
-        # code here to make a new api call, parse the data and add to db
         
         r = requests.get(bikes_connection_string)
         station_info_list = r.json()
         for station in station_info_list:
-            # first check i'm getting the correct data
-            #static
-            print('static:')
-            print(station['name'])
-            print(station['position']['lat'])
-            print(station['position']['lng'])
-            print(station['banking'])
-            print('dynamic:')
+            curr_time = station['last_update']
+            # var called curr_time to avoid clash with time function used below
+            address = station['address']
+            totalBikeStands = station['bike_stands']
+            availableBikeStands = station['available_bike_stands']
+            availableBikes = station['available_bikes']
+            status = station['status']
+            
+            add_dynamic(curr_time, address, totalBikeStands, availableBikeStands, availableBikes, status)
+            address = station['name']
+    
             #dynamic
             print(station['last_update'])
             print(station['address'])
@@ -49,9 +64,16 @@ def main():
 #600 seconds/ten minute approx (wait between end of code executing and starting again)
         
 
-def add_row():
+def add_static(address, latitude, longitude, banking):
     # add the code to add each row
-    pass
+    static_row = staticData(address = address, latitude = latitude, longitude = longitude, banking = banking )  
+    session.add(static_row)
+    session.commit()
+    
+def add_dynamic(curr_time, address, totalBikeStands, availableBikeStands, availableBikes, status ):
+    dynamic_row = dynamicData(time = curr_time, address = address, totalBikeStands = totalBikeStands, availableBikeStands = availableBikeStands, availableBikes = availableBikes, status = status )
+    session.add(dynamic_row)
+    session.commit()
 
 ##############
 # example - adding a row

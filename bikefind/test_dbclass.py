@@ -1,5 +1,5 @@
-''' from conor's classes'''
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, Boolean, Float
+
+from sqlalchemy import create_engine, Column, Integer, BigInteger, String, ForeignKey, Boolean, Float
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm.session import sessionmaker
 
@@ -12,13 +12,13 @@ Base = declarative_base()
 class staticData(Base):
     __tablename__ = 'staticData'
     address = Column(String(70),  unique=True, nullable=False, primary_key=True)
-    latitude = Column(Float)
-    longitude = Column(Float)
+    latitude = Column(Float())
+    longitude = Column(Float())
     banking = Column(Boolean, unique=False, nullable=True)
    
 class dynamicData(Base):
     __tablename__ ='dynamicData'
-    time = Column(Integer, unique=False, nullable=False, primary_key=True)
+    time = Column(BigInteger(), unique=False, nullable=False, primary_key=True)
     address = Column(String(70), unique=True, nullable=False, primary_key=True)
     totalBikeStands = Column(Integer)
     availableBikeStands = Column(Integer)
