@@ -5,8 +5,21 @@ from sqlalchemy import create_engine
 db_connection_string ='mysql+cymysql://root:password@localhost:3306/test_db'
 engine = create_engine(db_connection_string)
 connection = engine.connect()
+test_query = connection.execute("SELECT * FROM test_db.stations;")
 
-print('Table names for test_db: ', engine.table_names(), '\n')
+# retrieving data from db
+for row in test_query:
+    print(row['name'], '\n')
+    print(row['position'], '\n')
+    print(row['available_bikes'], '\n')
+
+print(engine.table_names())
+
+test_query2 = connection.execute("INSERT INTO test_db.stations (name, position, available_bikes) VALUES ('leeson street', '52.145/-5.445', '2');")
+
+print(test_query)
+
+connection.close()
 
 bikes_connection_string ='https://api.jcdecaux.com/vls/v1/stations?contract=Dublin&apiKey=6e19678db44aa0bfdb4632faba1f58723758a2c4'
 r = requests.get(bikes_connection_string)
