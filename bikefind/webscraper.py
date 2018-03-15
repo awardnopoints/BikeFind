@@ -6,7 +6,7 @@ import time
 
 # connect to local db 'test_db'
 #This line is just a dummy and needs to be changed after pulling from remote
-db_connection_string ='mysql+cymysql://root:goop9oxt@localhost:3306/test'
+db_connection_string ='mysql+cymysql://root:password@localhost:3306/test'
 engine = create_engine(db_connection_string)
 
 Session = sessionmaker(bind=engine)
