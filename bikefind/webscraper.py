@@ -6,7 +6,8 @@ import requests
 import time
 
 # connect to local db 'test_db'
-db_connection_string ='mysql+cymysql://root:goop9oxt@localhost:3306/test'
+#This line needs to be changed after pulling
+db_connection_string ='mysql+cymysql://root:password@localhost:3306/test'
 engine = create_engine(db_connection_string)
 
 Session = sessionmaker(bind=engine)
@@ -33,7 +34,7 @@ def main():
         longitude = station['position']['lng']
         banking = station['banking']
         #add to db
-        add_static(address, latitude, longitude, banking)
+#        add_static(address, latitude, longitude, banking)
 
     # add dynamic data to db every 10 mins
     while(True):
@@ -49,7 +50,7 @@ def main():
             availableBikes = station['available_bikes']
             status = station['status']
 
-            add_dynamic(curr_time, address, totalBikeStands, availableBikeStands, availableBikes, status)
+#            add_dynamic(curr_time, address, totalBikeStands, availableBikeStands, availableBikes, status)
             address = station['name']
 
             #dynamic
@@ -60,7 +61,7 @@ def main():
             print(station['available_bikes'])
             print(station['status'])
 
-        r2 = requests.get(weather_connection_string).json()
+        r2 = requests.get(weather_connection_string)
         w_list = r2.json()
 
         w_time = w_list['dt']
@@ -99,7 +100,7 @@ def add_dynamic(curr_time, address, totalBikeStands, availableBikeStands, availa
     session.commit()
 
 def add_weather(w_time, w_mainDescription, w_detailedDescription, w_icon, w_temp, w_maxTemp, w_minTemp, w_pressure, w_humidity, w_windSpeed, w_windAngle, w_cloudDensity, w_visibility):
-    weather_row = weatherData(time = w_time, mainDescription = w_mainDescription, detailedDescription = w_detailedDescription, icon = w_icon, temp = w_temp, maxTemp = w_maxTemp, minTemp = w_minTemp, pressure = w_pressure, humidity = w_humidity, windSpeed = w_windSpeed, windAngle = w_windAngle, cloudDensity = w_cloudDensity, visibility = w_visibility)
+    weather_row = weatherData(time = w_time, mainDescription = w_mainDescription, detailedDescription = w_detailedDescription, icon = w_icon, currentTemp = w_temp, maxTemp = w_maxTemp, minTemp = w_minTemp, pressure = w_pressure, humidity = w_humidity, windSpeed = w_windSpeed, windAngle = w_windAngle, cloudDensity = w_cloudDensity, visibility = w_visibility)
     session.add(weather_row)
     session.commit()
 
@@ -116,5 +117,3 @@ def add_weather(w_time, w_mainDescription, w_detailedDescription, w_icon, w_temp
 
 if __name__ == '__main__':
     main()
-
-

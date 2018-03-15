@@ -2,7 +2,8 @@ from sqlalchemy import create_engine, Column, Integer, BigInteger, String, Forei
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm.session import sessionmaker
 
-db_connection_string ='mysql+cymysql://root:goop9oxt@localhost:3306/test'
+#Change to local database after pull
+db_connection_string ='mysql+cymysql://root:password@localhost:3306/test'
 engine = create_engine(db_connection_string)
 
 # way to define user models
@@ -40,6 +41,6 @@ class weatherData(Base):
     windSpeed = Column(Float, unique=False, nullable=True)
     windAngle = Column(Integer, unique=False, nullable=True)
     cloudDensity = Column(Integer, unique=False, nullable=True)
-    visibiity = Column(Integer, unique=False, nullable=True)
+    visibility = Column(Integer, unique=False, nullable=True)
 
 Base.metadata.create_all(bind=engine)
