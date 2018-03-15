@@ -2,8 +2,8 @@ from sqlalchemy import create_engine, Column, Integer, BigInteger, String, Forei
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm.session import sessionmaker
 
-#db_connection_string ='mysql+cymysql://root:password@localhost:3306/test_db'
-#engine = create_engine(db_connection_string)
+db_connection_string ='mysql+cymysql://root:password@localhost:3306/test_db'
+engine = create_engine(db_connection_string)
 
 # way to define user models
 Base = declarative_base()
@@ -41,4 +41,4 @@ class weatherData(Base):
     cloudDensity = Column(Integer, unique=False, nullable=True)
     visibiity = Column(Integer, unique=False, nullable=True)
 
-#Base.metadata.create_all(bind=engine)
+Base.metadata.create_all(bind=engine)
