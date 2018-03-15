@@ -15,16 +15,28 @@ session = Session()
 
 # get from jcdecaux api and store data in list of json objects (station_info_list)
 bikes_connection_string ='https://api.jcdecaux.com/vls/v1/stations?contract=Dublin&apiKey=6e19678db44aa0bfdb4632faba1f58723758a2c4'
-r = requests.get(bikes_connection_string)
-station_info_list = r.json()
+#r = requests.get(bikes_connection_string)
+#station_info_list = r.json()
 
 # get from openweathermap api and store data in dictionary
 weather_connection_string = 'http://api.openweathermap.org/data/2.5/weather?q=Dublin&appid=416123cec041d7c358e497cd73c9657e'
-r2 = requests.get(weather_connection_string).json()
-print(r2["weather"][0]["main"])
+#r2 = requests.get(weather_connection_string).json()
+#print(r2["weather"][0]["main"])
 
 def main():
     # add static data (once-off)
+    getStaticData()
+    # add dynamic data to db every 10 mins
+    while(True):
+
+        getDynamicData()
+        getWeatherData()
+        session.commit()
+
+        #600 seconds/ten minute approx (wait between end of code executing and starting again)
+        time.sleep(600)
+
+def getStaticData():
     r = requests.get(bikes_connection_string)
     station_info_list = r.json()
     for station in station_info_list:
@@ -34,11 +46,9 @@ def main():
         longitude = station['position']['lng']
         banking = station['banking']
         #add to db
-#        add_static(address, latitude, longitude, banking)
+        add_static(address, latitude, longitude, banking)
 
-    # add dynamic data to db every 10 mins
-    while(True):
-
+def getDynamicData():
         r = requests.get(bikes_connection_string)
         station_info_list = r.json()
         for station in station_info_list:
@@ -50,17 +60,17 @@ def main():
             availableBikes = station['available_bikes']
             status = station['status']
 
-#            add_dynamic(curr_time, address, totalBikeStands, availableBikeStands, availableBikes, status)
-            address = station['name']
+#            dynamic
+#            print(station['last_update'])
+#            print(station['address'])
+#            print(station['bike_stands'])
+#            print(station['available_bike_stands'])
+#            print(station['available_bikes'])
+#            print(station['status'])
 
-            #dynamic
-            print(station['last_update'])
-            print(station['address'])
-            print(station['bike_stands'])
-            print(station['available_bike_stands'])
-            print(station['available_bikes'])
-            print(station['status'])
+            add_dynamic(curr_time, address, totalBikeStands, availableBikeStands, availableBikes, status)
 
+def getWeatherData():
         r2 = requests.get(weather_connection_string)
         w_list = r2.json()
 
@@ -82,27 +92,18 @@ def main():
 
         add_weather(w_time, w_mainDescription, w_detailedDescription, w_icon, w_temp, w_maxTemp, w_minTemp, w_pressure, w_humidity, w_windSpeed, w_windAngle, w_cloudDensity, w_visibility)
 
-
-
-        time.sleep(600)
-#600 seconds/ten minute approx (wait between end of code executing and starting again)
-
-
 def add_static(address, latitude, longitude, banking):
     # add the code to add each row
     static_row = staticData(address = address, latitude = latitude, longitude = longitude, banking = banking )
     session.add(static_row)
-    session.commit()
 
 def add_dynamic(curr_time, address, totalBikeStands, availableBikeStands, availableBikes, status ):
     dynamic_row = dynamicData(time = curr_time, address = address, totalBikeStands = totalBikeStands, availableBikeStands = availableBikeStands, availableBikes = availableBikes, status = status )
     session.add(dynamic_row)
-    session.commit()
 
 def add_weather(w_time, w_mainDescription, w_detailedDescription, w_icon, w_temp, w_maxTemp, w_minTemp, w_pressure, w_humidity, w_windSpeed, w_windAngle, w_cloudDensity, w_visibility):
     weather_row = weatherData(time = w_time, mainDescription = w_mainDescription, detailedDescription = w_detailedDescription, icon = w_icon, currentTemp = w_temp, maxTemp = w_maxTemp, minTemp = w_minTemp, pressure = w_pressure, humidity = w_humidity, windSpeed = w_windSpeed, windAngle = w_windAngle, cloudDensity = w_cloudDensity, visibility = w_visibility)
     session.add(weather_row)
-    session.commit()
 
 ##############
 # example - adding a row
