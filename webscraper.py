@@ -1,5 +1,5 @@
 from app import db
-from app.models.py import staticData, dynamicData, weatherData
+from app.models import StaticData, DynamicData, WeatherData
 import requests
 import time
 
@@ -11,14 +11,20 @@ weather_connection_string = 'http://api.openweathermap.org/data/2.5/weather?q=Du
 
 def main():
     # add static data (once-off)
+    print("started static")
     getStaticData()
+    print("finished static")
     # add dynamic data to db every 10 mins
     while(True):
         dynamic_index = 0
+        print("started dynamic")
         getDynamicData()
+        print("finished dynamic")
         #Weather data needs to put on a seperate timer somehow, currently duplicate rows are being appended (w/ unique index)
         #if dynamic_index % 2 == 0:
+        print("started weather")
         getWeatherData()
+        print("finished weather")
         #600 seconds/ten minute approx (wait between end of code executing and starting again)
         print(dynamic_index)
         dynamic_index += 100
@@ -28,6 +34,8 @@ def main():
 def getStaticData():
     r = requests.get(bikes_connection_string)
     station_info_list = r.json()
+    count = 0
+    total = len(station_info_list)
     for station in station_info_list:
 
         address = station['address']
@@ -35,9 +43,13 @@ def getStaticData():
         longitude = station['position']['lng']
         banking = station['banking']
         #add to db
-        static_row = staticData(address = address, latitude = latitude, longitude = longitude, banking = banking )
-        session.add(static_row)
-        session.commit()
+        static_row = StaticData(address = address, latitude = latitude, longitude = longitude, banking = banking )
+        db.session.add(static_row)
+        db.session.commit()
+        count += 1
+        if (count / total) % 10 == 0:
+            print(count, "/", total, "remaining")
+
 
 def getDynamicData():
         r = requests.get(bikes_connection_string)
@@ -53,12 +65,12 @@ def getDynamicData():
             status = station['status']
 
             #Create DB object with dynamicData class, then try to add it to the DB
-            dynamic_row = dynamicData(time = curr_time, address = address, totalBikeStands = totalBikeStands, availableBikeStands = availableBikeStands, availableBikes = availableBikes, status = status )
-            session.add(dynamic_row)
+            dynamic_row = DynamicData(time = curr_time, address = address, totalBikeStands = totalBikeStands, availableBikeStands = availableBikeStands, availableBikes = availableBikes, status = status )
+            db.session.add(dynamic_row)
             try:
-                session.commit()
+                db.session.commit()
             except:
-                session.rollback()
+                db.session.rollback()
                 return
 
 def getWeatherData():
@@ -81,19 +93,13 @@ def getWeatherData():
         w_cloudDensity = w_list['clouds']['all']
         w_visibility = w_list['visibility']
 
-        #query DB to see row returned from API call is a duplicate
-        alldata = weatherData.query.all()
-        for data in alldata:
-            if data.time == w_time:
-                return
-        #Create DB object with weatherData class, then try to add it to the DB
-        weather_row = weatherData(time = w_time, mainDescription = w_mainDescription, detailedDescription = w_detailedDescription, icon = w_icon, currentTemp = w_temp, maxTemp = w_maxTemp, minTemp = w_minTemp, pressure = w_pressure, humidity = w_humidity, windSpeed = w_windSpeed, windAngle = w_windAngle, cloudDensity = w_cloudDensity, visibility = w_visibility)
+        weather_row = WeatherData(time = w_time, mainDescription = w_mainDescription, detailedDescription = w_detailedDescription, icon = w_icon, currentTemp = w_temp, maxTemp = w_maxTemp, minTemp = w_minTemp, pressure = w_pressure, humidity = w_humidity, windSpeed = w_windSpeed, windAngle = w_windAngle, cloudDensity = w_cloudDensity, visibility = w_visibility)
 
-        session.add(weather_row)
+        db.session.add(weather_row)
         try:
-            session.commit()
+            db.session.commit()
         except:
-            session.rollback()
+            db.session.rollback()
             return
 
 if __name__ == '__main__':
