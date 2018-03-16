@@ -60,9 +60,9 @@ def getStaticData():
             session.commit()
         except exc.IntegrityError:
             session.rollback()
-        except Exception:
+        except Exception as e:
             session.rollback()
-            logging.exception()
+            logging.error(e)
     session.close()
 
 def getDynamicData():
@@ -85,9 +85,9 @@ def getDynamicData():
                 session.commit()
             except exc.IntegrityError:
                 session.rollback()
-            except Exception:
+            except Exception as e:
                 session.rollback()
-                logging.exception()
+                logging.error(e)
 
 def getWeatherData():
         r2 = requests.get(weather_connection_string)
@@ -123,9 +123,9 @@ def getWeatherData():
             session.commit()
         except exc.IntegrityError:
             session.rollback()
-        except Exception:
+        except Exception as e:
             session.rollback()
-            logging.exception()
+            logging.error(e)
 
 if __name__ == '__main__':
     main()
