@@ -50,7 +50,9 @@ def getStaticData():
         longitude = station['position']['lng']
         banking = station['banking']
         #add to db
-        add_static(address, latitude, longitude, banking)
+        static_row = staticData(address = address, latitude = latitude, longitude = longitude, banking = banking )
+        session.add(static_row)
+        session.commit()
 
 def getDynamicData():
         r = requests.get(bikes_connection_string)
@@ -65,8 +67,7 @@ def getDynamicData():
             availableBikes = station['available_bikes']
             status = station['status']
 
-            #id is an sql keyword and is the only arg that hasn't been defined, it generates an index
-#            add_dynamic(curr_time, address, totalBikeStands, availableBikeStands, availableBikes, status)
+            #Create DB object with dynamicData class, then try to add it to the DB
             dynamic_row = dynamicData(time = curr_time, address = address, totalBikeStands = totalBikeStands, availableBikeStands = availableBikeStands, availableBikes = availableBikes, status = status )
             session.add(dynamic_row)
             try:
@@ -95,38 +96,14 @@ def getWeatherData():
         w_cloudDensity = w_list['clouds']['all']
         w_visibility = w_list['visibility']
 
-        #id is an sql keyword and is the only arg that hasn't been defined, it generates an index
-#        add_weather(w_time, w_mainDescription, w_detailedDescription, w_icon, w_temp, w_maxTemp, w_minTemp, w_pressure, w_humidity, w_windSpeed, w_windAngle, w_cloudDensity, w_visibility)
+        #query DB to see row returned from API call is a duplicate
+        alldata = weatherData.query.all()
+            for data in alldata:
+                if data.time == w_time:
+                    return
+        #Create DB object with weatherData class, then try to add it to the DB
         weather_row = weatherData(time = w_time, mainDescription = w_mainDescription, detailedDescription = w_detailedDescription, icon = w_icon, currentTemp = w_temp, maxTemp = w_maxTemp, minTemp = w_minTemp, pressure = w_pressure, humidity = w_humidity, windSpeed = w_windSpeed, windAngle = w_windAngle, cloudDensity = w_cloudDensity, visibility = w_visibility)
-        session.add(weather_row)
-        try:
-            session.commit()
-        except:
-            session.rollback()
-            return
 
-def add_static(address, latitude, longitude, banking):
-    # add the code to add each row
-    static_row = staticData(address = address, latitude = latitude, longitude = longitude, banking = banking )
-    session.add(static_row)
-    session.commit()
-
-def add_dynamic(curr_time, address, totalBikeStands, availableBikeStands, availableBikes, status ):
-    dynamic_row = dynamicData(time = curr_time, address = address, totalBikeStands = totalBikeStands, availableBikeStands = availableBikeStands, availableBikes = availableBikes, status = status )
-    session.add(dynamic_row)
-    try:
-        session.commit()
-    except:
-        session.rollback()
-        return
-
-def add_weather(w_time, w_mainDescription, w_detailedDescription, w_icon, w_temp, w_maxTemp, w_minTemp, w_pressure, w_humidity, w_windSpeed, w_windAngle, w_cloudDensity, w_visibility):
-    alldata = weatherData.query.all()
-    for data in alldata:
-        if data.time == w_time:
-            break
-    else:
-        weather_row = weatherData(time = w_time, mainDescription = w_mainDescription, detailedDescription = w_detailedDescription, icon = w_icon, currentTemp = w_temp, maxTemp = w_maxTemp, minTemp = w_minTemp, pressure = w_pressure, humidity = w_humidity, windSpeed = w_windSpeed, windAngle = w_windAngle, cloudDensity = w_cloudDensity, visibility = w_visibility)
         session.add(weather_row)
         try:
             session.commit()
