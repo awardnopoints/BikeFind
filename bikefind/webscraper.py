@@ -39,6 +39,7 @@ def main():
 
         session.close()
         #300 seconds/5 minute approx (wait between end of code executing and starting again)
+        counter += 1
         print("sleeping now", counter)
         time.sleep(300)
 
@@ -59,9 +60,9 @@ def getStaticData():
             session.commit()
         except exc.IntegrityError:
             session.rollback()
-        except Exception as err:
+        except Exception:
             session.rollback()
-            logging.exception(err)
+            logging.exception()
     session.close()
 
 def getDynamicData():
@@ -84,9 +85,9 @@ def getDynamicData():
                 session.commit()
             except exc.IntegrityError:
                 session.rollback()
-            except Exception as err:
+            except Exception:
                 session.rollback()
-                logging.exception(err)
+                logging.exception()
 
 def getWeatherData():
         r2 = requests.get(weather_connection_string)
@@ -122,9 +123,9 @@ def getWeatherData():
             session.commit()
         except exc.IntegrityError:
             session.rollback()
-        except Exception as err:
+        except Exception:
             session.rollback()
-            logging.exception(err)
+            logging.exception()
 
 if __name__ == '__main__':
     main()
