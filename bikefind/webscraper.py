@@ -1,12 +1,13 @@
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
+from sqlalchemy import create_engine, exc
 from sqlalchemy.orm.session import sessionmaker
-from bikefind.test_dbclass import staticData, dynamicData, weatherData
-import requests
-import time
+from bikefind.dbClasses import staticData, dynamicData, weatherData
+import requests, time, logging
 
-# connect to local db 'test_db'
-#This line is just a dummy and needs to be changed after pulling from remote
+logging.basicConfig(filename='webscraper.log', level=logging.ERROR, format='%(asctime)s:%(levelname)s:%(message)s')
+
+#connect to remote DBS
 db_connection_string = "mysql+cymysql://conor:team0db1@team0db.cojxdhcdsq2b.us-west-2.rds.amazonaws.com/team0"
+#db_connection_string = "mysql+cymysql://root:password@localhost/test"
 engine = create_engine(db_connection_string)
 
 Session = sessionmaker(bind=engine)
@@ -19,40 +20,49 @@ bikes_connection_string ='https://api.jcdecaux.com/vls/v1/stations?contract=Dubl
 weather_connection_string = 'http://api.openweathermap.org/data/2.5/weather?q=Dublin&appid=416123cec041d7c358e497cd73c9657e'
 
 def main():
-    dynamic_index = 0
+
     # add static data (once-off)
     getStaticData()
-    # add dynamic data to db every 10 mins
+    counter = 0
+
     while(True):
 
+        #New DB session for each iteration
         Session = sessionmaker(bind=engine)
         session = Session()
 
         getDynamicData()
-        #Weather data needs to put on a seperate timer somehow, currently duplicate rows are being appended (w/ unique index)
-        #if dynamic_index % 2 == 0:
-        getWeatherData()
+
+        #update weather every 30 minutes
+        if counter % 6 == 0:
+            getWeatherData()
 
         session.close()
-        #600 seconds/ten minute approx (wait between end of code executing and starting again)
-        print(dynamic_index)
-        dynamic_index += 100
-        print("sleeping now")
-        time.sleep(50)
+        #300 seconds/5 minute approx (wait between end of code executing and starting again)
+        print("sleeping now", counter)
+        time.sleep(300)
 
 def getStaticData():
     r = requests.get(bikes_connection_string)
     station_info_list = r.json()
-    for station in station_info_list:
 
+    for station in station_info_list:
         address = station['address']
         latitude = station['position']['lat']
         longitude = station['position']['lng']
         banking = station['banking']
+
         #add to db
         static_row = staticData(address = address, latitude = latitude, longitude = longitude, banking = banking )
         session.add(static_row)
-        session.commit()
+        try:
+            session.commit()
+        except exc.IntegrityError:
+            session.rollback()
+        except Exception as err:
+            session.rollback()
+            logging.exception(err)
+    session.close()
 
 def getDynamicData():
         r = requests.get(bikes_connection_string)
@@ -72,8 +82,11 @@ def getDynamicData():
             session.add(dynamic_row)
             try:
                 session.commit()
-            except:
+            except exc.IntegrityError:
                 session.rollback()
+            except Exception as err:
+                session.rollback()
+                logging.exception(err)
 
 def getWeatherData():
         r2 = requests.get(weather_connection_string)
@@ -100,14 +113,18 @@ def getWeatherData():
 #        for data in alldata:
 #            if data.time == w_time:
 #                return
+
         #Create DB object with weatherData class, then try to add it to the DB
         weather_row = weatherData(time = w_time, mainDescription = w_mainDescription, detailedDescription = w_detailedDescription, icon = w_icon, currentTemp = w_temp, maxTemp = w_maxTemp, minTemp = w_minTemp, pressure = w_pressure, humidity = w_humidity, windSpeed = w_windSpeed, windAngle = w_windAngle, cloudDensity = w_cloudDensity, visibility = w_visibility)
 
         session.add(weather_row)
         try:
             session.commit()
-        except:
+        except exc.IntegrityError:
             session.rollback()
+        except Exception as err:
+            session.rollback()
+            logging.exception(err)
 
 if __name__ == '__main__':
     main()

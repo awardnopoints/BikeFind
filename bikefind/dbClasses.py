@@ -4,6 +4,7 @@ from sqlalchemy.orm.session import sessionmaker
 
 #Change to local database after pull
 db_connection_string = "mysql+cymysql://conor:team0db1@team0db.cojxdhcdsq2b.us-west-2.rds.amazonaws.com/team0"
+#db_connection_string = "mysql+cymysql://root:password@localhost/test"
 engine = create_engine(db_connection_string)
 
 # way to define user models
@@ -18,7 +19,6 @@ class staticData(Base):
 
 class dynamicData(Base):
     __tablename__ ='dynamicData'
-#    index = Column(BigInteger, unique=True, primary_key=True)
     time = Column(BigInteger(), unique=False, nullable=False, primary_key=True)
     address = Column(String(70), unique=False, nullable=False, primary_key=True)
     totalBikeStands = Column(Integer, unique=False, nullable=True)
