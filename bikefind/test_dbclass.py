@@ -3,7 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm.session import sessionmaker
 
 #Change to local database after pull
-db_connection_string ='mysql+cymysql://root:password@localhost:3306/test'
+db_connection_string ="dummystring"
 engine = create_engine(db_connection_string)
 
 # way to define user models

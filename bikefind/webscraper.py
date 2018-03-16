@@ -6,7 +6,8 @@ import time
 
 # connect to local db 'test_db'
 #This line is just a dummy and needs to be changed after pulling from remote
-db_connection_string ='mysql+cymysql://root:password@localhost:3306/test'
+db_connection_string ="dummystring"
+
 engine = create_engine(db_connection_string)
 
 Session = sessionmaker(bind=engine)
@@ -99,9 +100,14 @@ def add_dynamic(current_id, curr_time, address, totalBikeStands, availableBikeSt
     session.commit()
 
 def add_weather(w_id, w_time, w_mainDescription, w_detailedDescription, w_icon, w_temp, w_maxTemp, w_minTemp, w_pressure, w_humidity, w_windSpeed, w_windAngle, w_cloudDensity, w_visibility):
-    weather_row = weatherData(index = w_id, time = w_time, mainDescription = w_mainDescription, detailedDescription = w_detailedDescription, icon = w_icon, currentTemp = w_temp, maxTemp = w_maxTemp, minTemp = w_minTemp, pressure = w_pressure, humidity = w_humidity, windSpeed = w_windSpeed, windAngle = w_windAngle, cloudDensity = w_cloudDensity, visibility = w_visibility)
-    session.add(weather_row)
-    session.commit()
+    alldata = weatherData.query.all()
+    for data in alldata:
+        if data.time == w_time:
+            break
+    else:
+        weather_row = weatherData(index = w_id, time = w_time, mainDescription = w_mainDescription, detailedDescription = w_detailedDescription, icon = w_icon, currentTemp = w_temp, maxTemp = w_maxTemp, minTemp = w_minTemp, pressure = w_pressure, humidity = w_humidity, windSpeed = w_windSpeed, windAngle = w_windAngle, cloudDensity = w_cloudDensity, visibility = w_visibility)
+        session.add(weather_row)
+        session.commit()
 
 if __name__ == '__main__':
     main()
