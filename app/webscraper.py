@@ -1,16 +1,7 @@
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
-from sqlalchemy.orm.session import sessionmaker
-from bikefind.test_dbclass import staticData, dynamicData, weatherData
+from app import db
+from app.models.py import staticData, dynamicData, weatherData
 import requests
 import time
-
-# connect to local db 'test_db'
-#This line is just a dummy and needs to be changed after pulling from remote
-db_connection_string ='mysql+cymysql://root:pass@localhost:3306/test'
-engine = create_engine(db_connection_string)
-
-Session = sessionmaker(bind=engine)
-session = Session()
 
 # get from jcdecaux api and store data in list of json objects (station_info_list)
 bikes_connection_string ='https://api.jcdecaux.com/vls/v1/stations?contract=Dublin&apiKey=6e19678db44aa0bfdb4632faba1f58723758a2c4'
@@ -19,21 +10,15 @@ bikes_connection_string ='https://api.jcdecaux.com/vls/v1/stations?contract=Dubl
 weather_connection_string = 'http://api.openweathermap.org/data/2.5/weather?q=Dublin&appid=416123cec041d7c358e497cd73c9657e'
 
 def main():
-    dynamic_index = 0
     # add static data (once-off)
     getStaticData()
     # add dynamic data to db every 10 mins
     while(True):
-
-        Session = sessionmaker(bind=engine)
-        session = Session()
-
+        dynamic_index = 0
         getDynamicData()
         #Weather data needs to put on a seperate timer somehow, currently duplicate rows are being appended (w/ unique index)
         #if dynamic_index % 2 == 0:
         getWeatherData()
-
-        session.close()
         #600 seconds/ten minute approx (wait between end of code executing and starting again)
         print(dynamic_index)
         dynamic_index += 100
@@ -97,10 +82,10 @@ def getWeatherData():
         w_visibility = w_list['visibility']
 
         #query DB to see row returned from API call is a duplicate
-#        alldata = weatherData.query.all()
-#        for data in alldata:
-#            if data.time == w_time:
-#                return
+        alldata = weatherData.query.all()
+        for data in alldata:
+            if data.time == w_time:
+                return
         #Create DB object with weatherData class, then try to add it to the DB
         weather_row = weatherData(time = w_time, mainDescription = w_mainDescription, detailedDescription = w_detailedDescription, icon = w_icon, currentTemp = w_temp, maxTemp = w_maxTemp, minTemp = w_minTemp, pressure = w_pressure, humidity = w_humidity, windSpeed = w_windSpeed, windAngle = w_windAngle, cloudDensity = w_cloudDensity, visibility = w_visibility)
 
