@@ -12,7 +12,7 @@ bikes_connection_string ='https://api.jcdecaux.com/vls/v1/stations?contract=Dubl
 
 r = requests.get(weather_connection_string)
 station_info_list = r.json()
-print(station_info_list['dt'])
+print(station_info_list)
 
 time.sleep(50)
 

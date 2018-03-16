@@ -66,7 +66,14 @@ def getDynamicData():
             status = station['status']
 
             #id is an sql keyword and is the only arg that hasn't been defined, it generates an index
-            add_dynamic(curr_time, address, totalBikeStands, availableBikeStands, availableBikes, status)
+#            add_dynamic(curr_time, address, totalBikeStands, availableBikeStands, availableBikes, status)
+            dynamic_row = dynamicData(time = curr_time, address = address, totalBikeStands = totalBikeStands, availableBikeStands = availableBikeStands, availableBikes = availableBikes, status = status )
+            session.add(dynamic_row)
+            try:
+                session.commit()
+            except:
+                session.rollback()
+                return
 
 def getWeatherData():
         r2 = requests.get(weather_connection_string)
@@ -89,7 +96,14 @@ def getWeatherData():
         w_visibility = w_list['visibility']
 
         #id is an sql keyword and is the only arg that hasn't been defined, it generates an index
-        add_weather(w_time, w_mainDescription, w_detailedDescription, w_icon, w_temp, w_maxTemp, w_minTemp, w_pressure, w_humidity, w_windSpeed, w_windAngle, w_cloudDensity, w_visibility)
+#        add_weather(w_time, w_mainDescription, w_detailedDescription, w_icon, w_temp, w_maxTemp, w_minTemp, w_pressure, w_humidity, w_windSpeed, w_windAngle, w_cloudDensity, w_visibility)
+        weather_row = weatherData(time = w_time, mainDescription = w_mainDescription, detailedDescription = w_detailedDescription, icon = w_icon, currentTemp = w_temp, maxTemp = w_maxTemp, minTemp = w_minTemp, pressure = w_pressure, humidity = w_humidity, windSpeed = w_windSpeed, windAngle = w_windAngle, cloudDensity = w_cloudDensity, visibility = w_visibility)
+        session.add(weather_row)
+        try:
+            session.commit()
+        except:
+            session.rollback()
+            return
 
 def add_static(address, latitude, longitude, banking):
     # add the code to add each row
