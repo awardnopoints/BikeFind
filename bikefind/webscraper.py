@@ -6,7 +6,7 @@ import time
 
 # connect to local db 'test_db'
 #This line is just a dummy and needs to be changed after pulling from remote
-db_connection_string ='mysql+cymysql://root:pass@localhost:3306/test'
+db_connection_string = "mysql+cymysql://conor:team0db1@team0db.cojxdhcdsq2b.us-west-2.rds.amazonaws.com/team0"
 engine = create_engine(db_connection_string)
 
 Session = sessionmaker(bind=engine)
@@ -74,7 +74,6 @@ def getDynamicData():
                 session.commit()
             except:
                 session.rollback()
-                return
 
 def getWeatherData():
         r2 = requests.get(weather_connection_string)
@@ -109,7 +108,6 @@ def getWeatherData():
             session.commit()
         except:
             session.rollback()
-            return
 
 if __name__ == '__main__':
     main()
