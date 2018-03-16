@@ -3,7 +3,11 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm.session import sessionmaker
 
 #Change to local database after pull
+<<<<<<< HEAD
 db_connection_string ="dummystring"
+=======
+db_connection_string ='mysql+cymysql://root:pass@localhost:3306/test'
+>>>>>>> 770fc132bb3d4295ff54bb1d224c22325a62fa81
 engine = create_engine(db_connection_string)
 
 # way to define user models
@@ -18,9 +22,9 @@ class staticData(Base):
 
 class dynamicData(Base):
     __tablename__ ='dynamicData'
-    index = Column(BigInteger, unique=True, primary_key=True)
-    time = Column(BigInteger(), unique=False, nullable=False)
-    address = Column(String(70), unique=False, nullable=False)
+#    index = Column(BigInteger, unique=True, primary_key=True)
+    time = Column(BigInteger(), unique=False, nullable=False, primary_key=True)
+    address = Column(String(70), unique=False, nullable=False, primary_key=True)
     totalBikeStands = Column(Integer, unique=False, nullable=True)
     availableBikeStands = Column(Integer, unique=False, nullable=True)
     availableBikes = Column(Integer, unique=False, nullable=True)
@@ -28,8 +32,7 @@ class dynamicData(Base):
 
 class weatherData(Base):
     __tablename__='weatherData'
-    index = Column(BigInteger, unique=True, primary_key=True)
-    time = Column(BigInteger(), unique=False, nullable=False)
+    time = Column(BigInteger(), unique=False, nullable=False, primary_key=True)
     mainDescription = Column(String(70), unique=False, nullable=True)
     detailedDescription = Column(String(70), unique=False, nullable=True)
     icon = Column(String(20), unique=False, nullable=True)
