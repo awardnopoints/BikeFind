@@ -6,7 +6,7 @@ import time
 
 # connect to local db 'test_db'
 #This line is just a dummy and needs to be changed after pulling from remote
-db_connection_string ='mysql+cymysql://root:pass@localhost:3306/test'
+db_connection_string ='mysql+cymysql://root:goop9oxt@localhost:3306/test'
 engine = create_engine(db_connection_string)
 
 Session = sessionmaker(bind=engine)
@@ -97,10 +97,10 @@ def getWeatherData():
         w_visibility = w_list['visibility']
 
         #query DB to see row returned from API call is a duplicate
-        alldata = weatherData.query.all()
-            for data in alldata:
-                if data.time == w_time:
-                    return
+#        alldata = weatherData.query.all()
+#        for data in alldata:
+#            if data.time == w_time:
+#                return
         #Create DB object with weatherData class, then try to add it to the DB
         weather_row = weatherData(time = w_time, mainDescription = w_mainDescription, detailedDescription = w_detailedDescription, icon = w_icon, currentTemp = w_temp, maxTemp = w_maxTemp, minTemp = w_minTemp, pressure = w_pressure, humidity = w_humidity, windSpeed = w_windSpeed, windAngle = w_windAngle, cloudDensity = w_cloudDensity, visibility = w_visibility)
 
