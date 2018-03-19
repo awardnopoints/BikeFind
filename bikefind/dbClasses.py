@@ -13,8 +13,8 @@ Base = declarative_base()
 class staticData(Base):
     __tablename__ = 'staticData'
     address = Column(String(70),  unique=True, nullable=False, primary_key=True)
-    latitude = Column(Float, unique=False, nullable=True)
-    longitude = Column(Float, unique=False, nullable=True)
+    latitude = Column(String(70), unique=False, nullable=True)
+    longitude = Column(String(70), unique=False, nullable=True)
     banking = Column(Boolean, unique=False, nullable=True)
 
 class dynamicData(Base):
