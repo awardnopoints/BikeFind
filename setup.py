@@ -8,7 +8,7 @@ setup(name='bikefind',
       include_package_data=True,
       install_requires=[
           'flask',
-          'request',
+          'requests',
           'sqlalchemy',
           'cymysql',
         ],

@@ -1,3 +1,4 @@
 [console_scripts]
-bikefind = bikefind.app:app.run
+bf_display = bikefind.app:app.run
+bf_scrape = bikefind.webscraper:main
 
