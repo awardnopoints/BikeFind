@@ -1,1 +1,2 @@
-graft flaskr/templates
+graft bikefind/templates
+graft bikefind/static
