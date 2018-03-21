@@ -9,3 +9,4 @@ setup(name='bikefind',
               'console_scripts':['bikefind=bikefind.app:app.run']
               }
       )
+
