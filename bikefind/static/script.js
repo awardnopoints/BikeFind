@@ -11,58 +11,59 @@ function initMap() {
 
   var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
+  //////////
+  // adding a current position marker on user click
   
-  // click listener - will use little man icon and auto-display best station calculation ( will be one of the ways users can select location)
-
   google.maps.event.addListener(map, 'click', function(event){
      
      addCurrentPositionMarker(event.latLng)
 
-     // could add a findClosest function to this listener if more convenient way of getting the closest distance value
-
   });
 
+  var currentPositionMarker;
+  function addCurrentPositionMarker(current_position){
+    
+    
+    if(currentPositionMarker != null){
+      currentPositionMarker.setMap(null);
+    }
+    currentPositionMarker = new google.maps.Marker({
+      title:"Selected Position",
+      position:current_position,
+      map:map,
+      Draggable:true,
+
+    });
+
+    var infowindow = new google.maps.InfoWindow({
+      content:"<div>Current position</div>"
+    });
+    
+    currentPositionMarker.addListener('click', function(){
+      infowindow.open(map, currentPositionMarker)
+    });
+  }
+
+  ///////////////
   
 
-  // function for adding a station marker
-  function getStaticData(){
+  ///////////////
+  // add station markers from staticData
+
+  function addStationMarkersFromDB(){
     var staticData;
-    var testing = 4321;
     var xhr = new XMLHttpRequest();
     xhr.open('GET', './staticTest');
     xhr.send();
     xhr.onload = function() {
       staticData = JSON.parse(xhr.responseText);
-      testing = 1234;
       for(var key in staticData) {
         if(staticData.hasOwnProperty(key)) {
           addStationMarker(staticData[key]);
         }
-
+      }   
     }
-      
-    }
-    console.log(staticData);
-    console.log(testing);
-    // need to work out how to get teh staticData out of the onload async function
-    
-
-  }
-
-  // need to refactor this marker setup process
-  function createStationMarkers(data){
-
-   for(var key in data) {
-        if(data.hasOwnProperty(key)) {
-          addStationMarker(data[key]);
-        }
-
-    }
-  }
-
-  staticData = getStaticData();
-  console.log(staticData);
-  createStationMarkers(staticData);
+   }
 
   function addStationMarker(properties){
       
@@ -81,26 +82,9 @@ function initMap() {
     });
   }
 
-  var currentPositionMarker;
-  function addCurrentPositionMarker(current_position){
-    
-    
-    if(currentPositionMarker != null){
-      currentPositionMarker.setMap(null);
-    }
-    currentPositionMarker = new google.maps.Marker({
-      title:"Selected Position",
-      position:current_position,
-      map:map,
-      Draggable:true,
-
-    });
-
-    
-    currentPositionMarker.addListener('click', function(){
-      infowindow.open(map, currentPositionMarker)
-    });
-  }
+  addStationMarkersFromDB();
+//////////////
+  
 
 
 }
