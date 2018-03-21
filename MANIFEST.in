@@ -1,2 +1,2 @@
-graft bikefind/templates
-graft bikefind/static
+recursive-include bikefind/templates *
+recursive-include bikefind/static *
