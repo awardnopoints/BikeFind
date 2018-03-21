@@ -1,0 +1,2 @@
+graft bikefind/templates
+graft bikefind/static
