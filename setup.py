@@ -5,8 +5,18 @@ setup(name='bikefind',
       description='finds bikes in the city centre',
       author='Eoin Moore, Martin Casey, Conor Hopkins',
       packages=['bikefind'],
+      include_package_data=True,
+      install_requires=[
+          'flask',
+          'request',
+          'sqlalchemy',
+          'cymysql',
+        ],
       entry_points={
-              'console_scripts':['bikefind=bikefind.app:app.run']
+              'console_scripts':[
+                  'bk_display=bikefind.app:app.run',
+                  'bk_scrape=bikefind.webscraper:main'
+                  ]
               }
       )
 
