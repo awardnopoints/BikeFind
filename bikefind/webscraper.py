@@ -6,7 +6,7 @@ import requests, time, logging
 logging.basicConfig(filename='webscraper.log', level=logging.ERROR, format='%(asctime)s:%(levelname)s:%(message)s')
 
 #connect to remote DBS
-db_connection_string = "mysql+cymysql://conor:team0db1@team0db.cojxdhcdsq2b.us-west-2.rds.amazonaws.com/team0"
+db_connection_string = "mysql+cymysql://conor:team0db1@team0db.cojxdhcdsq2b.us-west-2.rds.amazonaws.com/testdb"
 #db_connection_string = "mysql+cymysql://root:password@localhost/test"
 engine = create_engine(db_connection_string)
 
@@ -26,7 +26,6 @@ def main():
     counter = 0
 
     while(True):
-
         #New DB session for each iteration
         Session = sessionmaker(bind=engine)
         session = Session()
@@ -38,10 +37,10 @@ def main():
             getWeatherData()
 
         session.close()
-        #300 seconds/5 minute approx (wait between end of code executing and starting again)
         counter += 1
         print("sleeping now", counter)
-        time.sleep(300)
+        #300 seconds - execution time for one iteration (~55s)
+        time.sleep(245)
 
 def getStaticData():
     r = requests.get(bikes_connection_string)
@@ -70,13 +69,31 @@ def getDynamicData():
         station_info_list = r.json()
         for station in station_info_list:
 
-            curr_time = station['last_update']
+            try:
+                curr_time = station['last_update']
+            except KeyError:
+                return
             # var called curr_time to avoid clash with time function used below
-            address = station['address']
-            totalBikeStands = station['bike_stands']
-            availableBikeStands = station['available_bike_stands']
-            availableBikes = station['available_bikes']
-            status = station['status']
+            try:
+                address = station['address']
+            except KeyError:
+                return
+            try:
+                totalBikeStands = station['bike_stands']
+            except KeyError:
+                totalBikeStands = 0
+            try:
+                availableBikeStands = station['available_bike_stands']= 0
+            except KeyError:
+                availableBikeStands = 0
+            try:
+                availableBikes = station['available_bikes']
+            except KeyError:
+                availableBikes = 0
+            try:
+                status = station['status']
+            except KeyError:
+                status = 'default'
 
             #Create DB object with dynamicData class, then try to add it to the DB
             dynamic_row = dynamicData(time = curr_time, address = address, totalBikeStands = totalBikeStands, availableBikeStands = availableBikeStands, availableBikes = availableBikes, status = status )
@@ -92,28 +109,61 @@ def getDynamicData():
 def getWeatherData():
         r2 = requests.get(weather_connection_string)
         w_list = r2.json()
+        try:
+            w_time = w_list['dt']
+        except KeyError:
+            return
+        try:
+            w_mainDescription = w_list['weather'][0]['main']
+        except KeyError:
+            w_mainDescription = 'default'
+        try:
+            w_detailedDescription = w_list['weather'][0]['description']
+        except KeyError:
+            w_detailedDescription = 'default'
+        try:
+            w_icon = w_list['weather'][0]['icon']
+        except KeyError:
+            w_icon = 'default'
 
-        w_time = w_list['dt']
-        w_mainDescription = w_list['weather'][0]['main']
-        w_detailedDescription = w_list['weather'][0]['description']
-        w_icon = w_list['weather'][0]['icon']
+        try:
+            w_temp = w_list['main']['temp']
+        except KeyError:
+            w_temp = 0
+        try:
+            w_maxTemp = w_list['main']['temp_max']
+        except KeyError:
+            w_maxTemp = 0
+        try:
+            w_minTemp = w_list['main']['temp_min']
+        except KeyError:
+            w_minTemp = 0
+        try:
+            w_pressure = w_list['main']['pressure']
+        except KeyError:
+            w_pressure = 0
+        try:
+            w_humidity = w_list['main']['humidity']
+        except KeyError:
+            w_humidity = 0
 
-        w_temp = w_list['main']['temp']
-        w_maxTemp = w_list['main']['temp_max']
-        w_minTemp = w_list['main']['temp_min']
-        w_pressure = w_list['main']['pressure']
-        w_humidity = w_list['main']['humidity']
+        try:
+            w_windSpeed = w_list['wind']['speed']
+        except KeyError:
+            w_windSpeed = 0
+        try:
+            w_windAngle = w_list['wind']['deg']
+        except KeyError:
+            w_windAngle = 0
+        try:
+            w_cloudDensity = w_list['clouds']['all']
+        except KeyError:
+            w_cloudDensity = 0
+        try:
+            w_visibility = w_list['visibility']
+        except KeyError:
+            w_visibility = 0
 
-        w_windSpeed = w_list['wind']['speed']
-        w_windAngle = w_list['wind']['deg']
-        w_cloudDensity = w_list['clouds']['all']
-        w_visibility = w_list['visibility']
-
-        #query DB to see row returned from API call is a duplicate
-#        alldata = weatherData.query.all()
-#        for data in alldata:
-#            if data.time == w_time:
-#                return
 
         #Create DB object with weatherData class, then try to add it to the DB
         weather_row = weatherData(time = w_time, mainDescription = w_mainDescription, detailedDescription = w_detailedDescription, icon = w_icon, currentTemp = w_temp, maxTemp = w_maxTemp, minTemp = w_minTemp, pressure = w_pressure, humidity = w_humidity, windSpeed = w_windSpeed, windAngle = w_windAngle, cloudDensity = w_cloudDensity, visibility = w_visibility)
