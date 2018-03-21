@@ -14,8 +14,8 @@ setup(name='bikefind',
         ],
       entry_points={
               'console_scripts':[
-                  'bk_display=bikefind.app:app.run',
-                  'bk_scrape=bikefind.webscraper:main'
+                  'bf_display=bikefind.app:app.run',
+                  'bf_scrape=bikefind.webscraper:main'
                   ]
               }
       )
