@@ -83,7 +83,7 @@ def getDynamicData():
             except KeyError:
                 totalBikeStands = 0
             try:
-                availableBikeStands = station['available_bike_stands']= 0
+                availableBikeStands = station['available_bike_stands']
             except KeyError:
                 availableBikeStands = 0
             try:
