@@ -73,7 +73,6 @@ def getDynamicData():
                 curr_time = station['last_update']
             except KeyError:
                 return
-            # var called curr_time to avoid clash with time function used below
             try:
                 address = station['address']
             except KeyError:
