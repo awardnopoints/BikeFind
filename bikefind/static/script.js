@@ -1,4 +1,3 @@
-
 function initMap() {
 
   
@@ -50,20 +49,6 @@ function initMap() {
   ///////////////
   // add station markers from staticData
 
-  function addStationMarkersFromDB(){
-    var staticData;
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', './staticTest');
-    xhr.send();
-    xhr.onload = function() {
-      staticData = JSON.parse(xhr.responseText);
-      for(var key in staticData) {
-        if(staticData.hasOwnProperty(key)) {
-          addStationMarker(staticData[key]);
-        }
-      }   
-    }
-   }
 
   function addStationMarker(properties){
       
@@ -82,7 +67,7 @@ function initMap() {
     });
   }
 
-  addStationMarkersFromDB();
+//  addStationMarkersFromDB();
 //////////////
   
 
