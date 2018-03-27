@@ -13,7 +13,6 @@ setup(name='bikefind',
           'cymysql',
           'pandas'
         ],
-#	scripts=['bin/bf_display', 'bin/bf_scrape']
       entry_points={
               'console_scripts':[
                   'bf_display=bikefind.app:appWrapper',

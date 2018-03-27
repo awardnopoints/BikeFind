@@ -1,2 +1,0 @@
-from bikefind import webscraper
-webscraper.main()
