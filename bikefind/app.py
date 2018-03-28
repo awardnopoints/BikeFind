@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 import requests
 import pandas as pd
 from sqlalchemy import create_engine
@@ -22,11 +22,15 @@ def getStaticTest():
     staticData = jsonify(staticDataDict)
     return staticData
 
-@app.route('/rtpi')
-def getRtpi(request):
+@app.route('/rtpi', methods=['POST'])
+def getRtpi():
+    print('test')
     r = requests.get(bikes_connection_string)
     station_info_list = r.json()
-    return station_info_list[request]
+    station = request.form['reqAddress']
+    print(station)
+    return jsonify({"reqAddress" : "test"})
+#station_info_list[station]
 
 
 
