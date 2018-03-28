@@ -55,17 +55,17 @@ function initMap() {
 
 function addStationMarkersFromDB(){
      var staticData;
-     var xhr = new XMLHttpRequest();
-     xhr.open('GET', './staticTest');
-     xhr.send();
-     xhr.onload = function() {
-          staticData = JSON.parse(xhr.responseText);
-          for(var key in staticData) {
-          if(staticData.hasOwnProperty(key)) {
-               addStationMarker(staticData[key]);
+//     var xhr = new XMLHttpRequest();
+//     xhr.open('GET', './staticTest');
+//     xhr.send();
+     $.getJSON( "./staticTest", function( data ) {
+     $.each( data, function(key, value) {
+          if(data.hasOwnProperty(key)) {
+               addStationMarker(data[key]);
           }
-          }   
-     }
+             
+     });
+   });  
 }
 
      function addStationMarker(properties){
