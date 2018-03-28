@@ -90,20 +90,22 @@ function addStationMarkersFromDB(){
           $.ajax({
           url: '/rtpi',
           
-          data : {reqAddress : address},
+          data : {
+          reqAddress : address,
+          reqJson : null
+          },
           type: 'POST',
-          dataType: 'text',
+          dataType: 'json',
           })
           .done(function(data){
-//               timeCell = response.dt;
-//               addressCell = response.address;
-//               availableBikes = response.availableBikes;
-//               totalBikeStands = response.totalBikeStands;
-//               availableBikeStands = response.availableBikeStands;
-//               status = response.status;
-               console.log(data);
-//               var retString = '<p>Time: ' + timeCell + 'Address: ' + address + 'availableBikes: ' + availableBikes + 'totalBikeStands: ' + totalBikeStands + 'availableBikeStands' + availableBikeStands + '<\p>'
-//               $('#rtpi').text(response[0])
+               timeCell = data.reqJson.last_update;
+               addressCell = data.reqJson.address;
+               availableBikes = data.reqJson.available_bikes;
+               availableBikeStands = data.reqJson.available_bike_stands;
+               status = data.reqJson.status;
+               console.log(data.reqJson);
+               var retString = 'Time: ' + timeCell + ' Address: ' + address + ' availableBikes: ' + availableBikes + ' availableBikeStands' + availableBikeStands;
+               $('#rtpi').text(retString)
           });
           }
 addStationMarkersFromDB();

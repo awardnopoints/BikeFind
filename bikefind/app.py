@@ -24,13 +24,16 @@ def getStaticTest():
 
 @app.route('/rtpi', methods=['POST'])
 def getRtpi():
-    print('test')
     r = requests.get(bikes_connection_string)
     station_info_list = r.json()
     station = request.form['reqAddress']
     print(station)
-    return jsonify({"reqAddress" : "test"})
-#station_info_list[station]
+    for i in station_info_list:
+        if i['address'] == station:
+            reqStationList = i
+            break
+    print(reqStationList)
+    return jsonify({"reqJson" : reqStationList})
 
 
 
