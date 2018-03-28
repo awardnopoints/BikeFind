@@ -1,4 +1,5 @@
 function initMap() {
+google.load("maps", "3", {callback: init, other_params:"key=AIzaSyDVpdcU4-foTsYN-UHU9Vu34dpykEIF388"});
 
 
 var charlemontPlace = {lat: 53.330662, lng: -6.260177};

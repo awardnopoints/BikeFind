@@ -50,24 +50,7 @@ function initMap() {
   // add station markers from staticData
 
 
-  function addStationMarker(properties){
-      
-    var marker = new google.maps.Marker({
-      title:properties.address,
-      position:new google.maps.LatLng(properties.latitude, properties.longitude),
-      map:map    
-    });
 
-    var infowindow = new google.maps.InfoWindow({
-      content:properties.address
-    });
-
-    marker.addListener('click', function(){
-      infowindow.open(map, marker)
-    });
-  }
-
-//  addStationMarkersFromDB();
 //////////////
   
 
