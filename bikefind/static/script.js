@@ -88,11 +88,12 @@ function addStationMarkersFromDB(){
 
      function getLatestData(address){
           $.ajax({
+
           url: '/rtpi',
-          
           data : {
           reqAddress : address,
           reqJson : null
+
           },
           type: 'POST',
           dataType: 'json',
