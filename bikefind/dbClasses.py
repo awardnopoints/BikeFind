@@ -3,7 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm.session import sessionmaker
 
 #Change to local database after pull
-db_connection_string = "mysql+cymysql://conor:team0db1@team0db.cojxdhcdsq2b.us-west-2.rds.amazonaws.com/test2"
+db_connection_string = "mysql+cymysql://conor:team0db1@team0db.cojxdhcdsq2b.us-west-2.rds.amazonaws.com/test3"
 #db_connection_string = "mysql+cymysql://root:password@localhost/test"
 engine = create_engine(db_connection_string)
 
@@ -21,6 +21,15 @@ class dynamicData(Base):
     __tablename__ ='dynamicData'
     time = Column(BigInteger(), unique=False, nullable=False, primary_key=True)
     address = Column(String(70), unique=False, nullable=False, primary_key=True)
+    totalBikeStands = Column(Integer, unique=False, nullable=True)
+    availableBikeStands = Column(Integer, unique=False, nullable=True)
+    availableBikes = Column(Integer, unique=False, nullable=True)
+    status = Column(String(70), unique=False, nullable=True)
+    
+class currentData(Base):
+    __tablename__ = 'currentData'
+    address = Column(String(70), unique=True, nullable=False, primary_key=True)
+    last_update = Column(BigInteger(), unique=False, nullable=True)
     totalBikeStands = Column(Integer, unique=False, nullable=True)
     availableBikeStands = Column(Integer, unique=False, nullable=True)
     availableBikes = Column(Integer, unique=False, nullable=True)

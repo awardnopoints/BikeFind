@@ -1,12 +1,12 @@
 from sqlalchemy import create_engine, exc
 from sqlalchemy.orm.session import sessionmaker
-from bikefind.dbClasses import staticData, dynamicData, weatherData
+from bikefind.dbClasses import staticData, dynamicData, currentData, weatherData
 import requests, time, logging
 
 logging.basicConfig(filename='webscraper.log', level=logging.ERROR, format='%(asctime)s:%(levelname)s:%(message)s')
 
 #connect to remote DBS
-db_connection_string = "mysql+cymysql://conor:team0db1@team0db.cojxdhcdsq2b.us-west-2.rds.amazonaws.com/test2"
+db_connection_string = "mysql+cymysql://conor:team0db1@team0db.cojxdhcdsq2b.us-west-2.rds.amazonaws.com/test3"
 #db_connection_string = "mysql+cymysql://root:password@localhost/test"
 engine = create_engine(db_connection_string)
 
@@ -23,8 +23,12 @@ def main():
 
     # add static data (once-off)
     getStaticData()
+    
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    getCurrentData()
+    
     counter = 0
-
     while(True):
         #New DB session for each iteration
         Session = sessionmaker(bind=engine)
@@ -53,8 +57,36 @@ def getStaticData():
         banking = station['banking']
 
         #add to db
-        static_row = staticData(address = address, latitude = latitude, longitude = longitude, banking = banking )
+        static_row = staticData(address = address, latitude = latitude, longitude = longitude, banking = banking)
         session.add(static_row)
+        try:
+            session.commit()
+        except exc.IntegrityError:
+            session.rollback()
+        except Exception as e:
+            session.rollback()
+            logging.error(e)
+    session.close()
+    
+def getCurrentData():
+    r = requests.get(bikes_connection_string)
+    station_info_list = r.json()
+
+    for station in station_info_list:
+        address = station['address']
+        last_update = station['last_update']
+        totalBikeStands = station['bike_stands']
+        availableBikeStands = station['available_bike_stands']
+        availableBikes = station['available_bikes']
+        status = station['status']
+
+        #add to db
+        current_row = currentData(address = address, last_update = last_update,
+                                totalBikeStands = totalBikeStands,
+                                availableBikeStands = availableBikeStands,
+                                availableBikes = availableBikes,
+                                status = status)
+        session.add(current_row)
         try:
             session.commit()
         except exc.IntegrityError:
