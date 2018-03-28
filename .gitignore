@@ -1,3 +1,4 @@
 bikefind.egg-info/*
 .project
 .pydevproject
+scriptTests/*
