@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, exc
+from sqlalchemy import create_engine, exc, update
 from sqlalchemy.orm.session import sessionmaker
 from bikefind.dbClasses import staticData, dynamicData, currentData, weatherData
 import requests, time, logging
@@ -49,7 +49,8 @@ def main():
 def getStaticData():
     r = requests.get(bikes_connection_string)
     station_info_list = r.json()
-
+    
+    x = 0
     for station in station_info_list:
         address = station['address']
         latitude = station['position']['lat']
@@ -66,12 +67,18 @@ def getStaticData():
         except Exception as e:
             session.rollback()
             logging.error(e)
+        
+        #little ticker counting down the stations, because waiting sucks
+        x += 1
+        if x % 5 == 0:
+            print("Static Bikes Counted:", x, '/', len(station_info_list))
     session.close()
     
 def getCurrentData():
     r = requests.get(bikes_connection_string)
     station_info_list = r.json()
-
+    
+    x = 0
     for station in station_info_list:
         address = station['address']
         last_update = station['last_update']
@@ -94,6 +101,10 @@ def getCurrentData():
         except Exception as e:
             session.rollback()
             logging.error(e)
+        
+        x += 1
+        if x % 5 == 0:
+            print("Current Bikes Counted:", x, '/', len(station_info_list))
     session.close()
 
 def getDynamicData():
@@ -127,16 +138,57 @@ def getDynamicData():
                 status = 'default'
 
             #Create DB object with dynamicData class, then try to add it to the DB
-            dynamic_row = dynamicData(time = curr_time, address = address, totalBikeStands = totalBikeStands, availableBikeStands = availableBikeStands, availableBikes = availableBikes, status = status )
+            dynamic_row = dynamicData(time = curr_time, address = address, 
+                                      totalBikeStands = totalBikeStands, 
+                                      availableBikeStands = availableBikeStands, 
+                                      availableBikes = availableBikes, status = status )
             session.add(dynamic_row)
             try:
                 session.commit()
+                
+                # if the previous commit goes through, then this block checks the
+                # new data against the current values in the currentData table,
+                # and updates appropriately (should probably be a separate function)
+                
+                # find currentData row with matching address value
+                match = session.query(currentData).filter(currentData.address == address).one()
+                print("For", match.address, "station:")
+                if curr_time > match.last_update: # check if the timestamp is different, if not, ignore
+                    print("Before:", match.last_update, match.totalBikeStands, 
+                          match.availableBikeStands, match.status)
+                    # update values in row
+                    match.last_update = curr_time
+                    match.totalBikeStands = totalBikeStands
+                    match.availableBikeStands = availableBikeStands
+                    match.availableBikes = availableBikes
+                    match.status = status
+                    print("After:", match.last_update, match.totalBikeStands,
+                          match.availableBikeStands, match.status)
+                    try:
+                        session.commit()
+                    except exc.IntegrityError:
+                        session.rollback()
+                    except Exception as e:
+                        session.rollback()
+                        logging.error(e)
+
+
+                
             except exc.IntegrityError:
                 session.rollback()
             except Exception as e:
                 session.rollback()
                 logging.error(e)
-
+                
+#            try:
+#                session.commit()
+#                print("update successful")
+#            except exc.IntegrityError:
+#                session.rollback()
+#            except Exception as e:
+#                session.rollback()
+#                logging.error(e)
+            
 def getWeatherData():
         r2 = requests.get(weather_connection_string)
         w_list = r2.json()
