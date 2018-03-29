@@ -1,0 +1,5 @@
+select address, from_unixtime(floor(time/1000), '%a') as day, 
+from_unixtime(floor(time/1000), '%H') as hour, 
+avg(availableBikes) as bikes, avg(availableBikeStands) as stands 
+from dynamicData where address = "York Street West" 
+group by address, day, hour;
