@@ -11,6 +11,7 @@ engine = create_engine(db_connection_string)
 Base = declarative_base()
 
 class staticData(Base):
+    """DB class for staticData table"""
     __tablename__ = 'staticData'
     address = Column(String(70),  unique=True, nullable=False, primary_key=True)
     latitude = Column(String(70), unique=False, nullable=True)
@@ -18,6 +19,7 @@ class staticData(Base):
     banking = Column(Boolean, unique=False, nullable=True)
 
 class dynamicData(Base):
+    """DB class for dynamicData table"""
     __tablename__ ='dynamicData'
     time = Column(BigInteger(), unique=False, nullable=False, primary_key=True)
     address = Column(String(70), unique=False, nullable=False, primary_key=True)
@@ -27,6 +29,7 @@ class dynamicData(Base):
     status = Column(String(70), unique=False, nullable=True)
 
 class weatherData(Base):
+    """DB class for weatherData table"""
     __tablename__='weatherData'
     time = Column(BigInteger(), unique=False, nullable=False, primary_key=True)
     mainDescription = Column(String(70), unique=False, nullable=True)
