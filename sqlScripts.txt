@@ -1,3 +1,9 @@
+# Returns query that includes all average available bikes 
+# and stands for York Street West, for each day of the week
+# and time. All it would take is a simple extra condition to
+# check for a specific day and time, or all times over a
+# given day, to produce a chart. 
+
 select address, from_unixtime(floor(time/1000), '%a') as day, 
 from_unixtime(floor(time/1000), '%H') as hour, 
 avg(availableBikes) as bikes, avg(availableBikeStands) as stands 
