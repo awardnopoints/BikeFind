@@ -55,9 +55,6 @@ function initMap() {
 
 function addStationMarkersFromDB(){
      var staticData;
-//     var xhr = new XMLHttpRequest();
-//     xhr.open('GET', './staticTest');
-//     xhr.send();
      $.getJSON( "./staticTest", function( data ) {
      $.each( data, function(key, value) {
           if(data.hasOwnProperty(key)) {
