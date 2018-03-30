@@ -16,6 +16,7 @@ def index():
 
 @app.route('/staticTest')
 def getStaticTest():
+    """Returns data from staticDataTable as JSON"""
     staticDataTable = pd.read_sql_table('staticData', engine)
     #staticDataDictArray = staticDataTable.T.to_dict().values()
     staticDataDict = staticDataTable.to_dict(orient='index')
@@ -24,6 +25,8 @@ def getStaticTest():
 
 @app.route('/rtpi', methods=['POST'])
 def getRtpi():
+    """Receives a requested address, then retrieves the latest data via API
+    call and sends back a JSON object with the data for the requested station"""
     r = requests.get(bikes_connection_string)
     station_info_list = r.json()
     station = request.form['reqAddress']
@@ -38,6 +41,7 @@ def getRtpi():
 
 
 def appWrapper():
+    """Wrapper to allow entry point to app.run with the correct arguments"""
     app.run(host='0.0.0.0', port=5001)
 
 if __name__ == '__main__':
