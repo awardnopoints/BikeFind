@@ -6,7 +6,7 @@ import requests, time, logging
 logging.basicConfig(filename='webscraper.log', level=logging.ERROR, format='%(asctime)s:%(levelname)s:%(message)s')
 
 #connect to remote DBS
-db_connection_string = "mysql+cymysql://conor:team0db1@team0db.cojxdhcdsq2b.us-west-2.rds.amazonaws.com/test3"
+db_connection_string = "mysql+cymysql://conor:team0db1@team0db.cojxdhcdsq2b.us-west-2.rds.amazonaws.com/team0"
 #db_connection_string = "mysql+cymysql://root:password@localhost/test"
 engine = create_engine(db_connection_string)
 
