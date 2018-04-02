@@ -50,14 +50,13 @@ def findstation(coords):
     
     df = pd.read_sql_query(query, engine)
     
-    testCoords = (53.330662, -6.260177) # charlemontPlace
     #add a new column for distance to current location
-    df['distanceToCurrent'] = df.LatLng.apply(lambda station: great_circle(station, testCoords).meters)
-    nearestStations = df.sort_values('distanceToCurrent').head(3)
+    df['proximity'] = df.LatLng.apply(lambda station: great_circle(station, coords).meters)
+    nearestStations = df.sort_values('proximity').head(3)
     
     #convert nearestStations df to json
     #ideally find a way to get rid of the index key value pair
-    nearestJson = nearestStations[['address', 'distanceToCurrent']].reset_index().to_json()
+    nearestJson = nearestStations[['address', 'proximity']].reset_index().to_json()
     
     #may change format of return
     closestStations = {"0":{"closest":"14"}, "1":{"second": "2"}, "2":{"third":"21"}}
