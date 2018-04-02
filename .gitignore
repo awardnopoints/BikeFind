@@ -1,3 +1,5 @@
 bikefind.egg-info/*
 .project
 .pydevproject
+bikefind/test2Dynamic.csv
+bikefind/dynamicData02042018_000648.csv
