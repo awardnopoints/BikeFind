@@ -20,7 +20,9 @@ bikes_connection_string ='https://api.jcdecaux.com/vls/v1/stations?contract=Dubl
 weather_connection_string = 'http://api.openweathermap.org/data/2.5/weather?q=Dublin&appid=416123cec041d7c358e497cd73c9657e'
 
 def main():
-
+    """Runs an infinite loop, calling DB update functions on each iteration.
+    getStaticData is called once, getDynamicData every 5 mins, and getWeatherData
+    every 30 mins"""
     # add static data (once-off)
     getStaticData()
     
@@ -47,6 +49,8 @@ def main():
         time.sleep(245)
 
 def getStaticData():
+    """Creates a table in DB for bike station static data. Populates the table
+    with data from an API request, one row for each station"""
     r = requests.get(bikes_connection_string)
     station_info_list = r.json()
     
@@ -58,7 +62,8 @@ def getStaticData():
         banking = station['banking']
 
         #add to db
-        static_row = staticData(address = address, latitude = latitude, longitude = longitude, banking = banking)
+        static_row = staticData(address = address, latitude = latitude, 
+                                longitude = longitude, banking = banking)
         session.add(static_row)
         try:
             session.commit()
@@ -108,6 +113,7 @@ def getCurrentData():
     session.close()
 
 def getDynamicData():
+
         r = requests.get(bikes_connection_string)
         station_info_list = r.json()
         for station in station_info_list:
@@ -180,93 +186,86 @@ def getDynamicData():
             except Exception as e:
                 session.rollback()
                 logging.error(e)
-                
-#            try:
-#                session.commit()
-#                print("update successful")
-#            except exc.IntegrityError:
-#                session.rollback()
-#            except Exception as e:
-#                session.rollback()
-#                logging.error(e)
-            
+
+
 def getWeatherData():
-        r2 = requests.get(weather_connection_string)
-        w_list = r2.json()
-        try:
-            w_time = w_list['dt']
-        except KeyError:
-            return
-        try:
-            w_mainDescription = w_list['weather'][0]['main']
-        except KeyError:
-            w_mainDescription = 'default'
-        try:
-            w_detailedDescription = w_list['weather'][0]['description']
-        except KeyError:
-            w_detailedDescription = 'default'
+    """Creates table for weather data from class in dbClasses file. Makes an API
+    call and appends populates the table. Appends to table if it already exists """
+    r2 = requests.get(weather_connection_string)
+    w_list = r2.json()
+    try:
+        w_time = w_list['dt']
+    except KeyError:
+        return
+    try:
+        w_mainDescription = w_list['weather'][0]['main']
+    except KeyError:
+        w_mainDescription = 'default'
+    try:
+        w_detailedDescription = w_list['weather'][0]['description']
+    except KeyError:
+        w_detailedDescription = 'default'
+    try:
+        w_icon = w_list['weather'][0]['icon']
+    except KeyError:
+        w_icon = 'default'
 
-        try:
-            w_icon = w_list['weather'][0]['icon']
-        except KeyError:
-            w_icon = 'default'
+    try:
+        w_temp = w_list['main']['temp']
+    except KeyError:
+        w_temp = 0
+    try:
+        w_maxTemp = w_list['main']['temp_max']
+    except KeyError:
+        w_maxTemp = 0
+    try:
+        w_minTemp = w_list['main']['temp_min']
+    except KeyError:
+        w_minTemp = 0
+    try:
+        w_pressure = w_list['main']['pressure']
+    except KeyError:
+        w_pressure = 0
+    try:
+        w_humidity = w_list['main']['humidity']
+    except KeyError:
+        w_humidity = 0
 
-        try:
-            w_temp = w_list['main']['temp']
-        except KeyError:
-            w_temp = 0
-        try:
-            w_maxTemp = w_list['main']['temp_max']
-        except KeyError:
-            w_maxTemp = 0
-        try:
-            w_minTemp = w_list['main']['temp_min']
-        except KeyError:
-            w_minTemp = 0
-        try:
-            w_pressure = w_list['main']['pressure']
-        except KeyError:
-            w_pressure = 0
-        try:
-            w_humidity = w_list['main']['humidity']
-        except KeyError:
-            w_humidity = 0
-
-        try:
-            w_windSpeed = w_list['wind']['speed']
-        except KeyError:
-            w_windSpeed = 0
-        try:
-            w_windAngle = w_list['wind']['deg']
-        except KeyError:
-            w_windAngle = 0
-        try:
-            w_cloudDensity = w_list['clouds']['all']
-        except KeyError:
-            w_cloudDensity = 0
-        try:
-            w_visibility = w_list['visibility']
-        except KeyError:
-            w_visibility = 0
+    try:
+        w_windSpeed = w_list['wind']['speed']
+    except KeyError:
+        w_windSpeed = 0
+    try:
+        w_windAngle = w_list['wind']['deg']
+    except KeyError:
+        w_windAngle = 0
+    try:
+        w_cloudDensity = w_list['clouds']['all']
+    except KeyError:
+        w_cloudDensity = 0
+    try:
+        w_visibility = w_list['visibility']
+    except KeyError:
+        w_visibility = 0
 
 
-        #Create DB object with weatherData class, then try to add it to the DB
-        weather_row = weatherData(time = w_time, mainDescription = w_mainDescription, 
-                                  detailedDescription = w_detailedDescription, icon = w_icon, 
-                                  currentTemp = w_temp, maxTemp = w_maxTemp, 
-                                  minTemp = w_minTemp, pressure = w_pressure, 
-                                  humidity = w_humidity, windSpeed = w_windSpeed, 
-                                  windAngle = w_windAngle, cloudDensity = w_cloudDensity, 
-                                  visibility = w_visibility)
+    #Create DB object with weatherData class, then try to add it to the DB
+    weather_row = weatherData(time = w_time, mainDescription = w_mainDescription, 
+                                detailedDescription = w_detailedDescription, 
+                                icon = w_icon, currentTemp = w_temp, maxTemp = w_maxTemp, 
+                                minTemp = w_minTemp, pressure = w_pressure, 
+                                humidity = w_humidity, windSpeed = w_windSpeed, 
+                                windAngle = w_windAngle, cloudDensity = w_cloudDensity, 
+                                visibility = w_visibility)
 
-        session.add(weather_row)
-        try:
-            session.commit()
-        except exc.IntegrityError:
-            session.rollback()
-        except Exception as e:
-            session.rollback()
-            logging.error(e)
+    session.add(weather_row)
+    try:
+        session.commit()
+    except exc.IntegrityError:
+        session.rollback()
+    except Exception as e:
+        session.rollback()
+        logging.error(e)
 
 if __name__ == '__main__':
     main()
