@@ -46,5 +46,5 @@ def test_findstation2():
     test_client = app.test_client()
     response = test_client.get('/findstation/' + testCoords, content_type = 'html/text')
     
-    assert response.data == b'{"index":{"0":7,"1":43,"2":80},"address":{"0":"Charlemont Street","1":"Harcourt Terrace","2":"Portobello Harbour"},"distanceToCurrent":{"0":0.0,"1":276.7758330769,"2":332.7739945069}}'
+    assert b'address":{"0":"Charlemont Street","1":"Harcourt Terrace","2":"Portobello Harbour"}' in response.data
 # etc.
