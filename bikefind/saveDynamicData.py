@@ -10,9 +10,13 @@ import pandas as pd
 import time
 import datetime
 
-db_connection_string = "mysql+cymysql://conor:team0db1@team0db.cojxdhcdsq2b.us-west-2.rds.amazonaws.com/team0"
+def main():
+    db_connection_string = "mysql+cymysql://conor:team0db1@team0db.cojxdhcdsq2b.us-west-2.rds.amazonaws.com/team0"
+    
+    df = pd.read_sql_table(table_name="dynamicData", con=db_connection_string)
+    ts = time.time()
+    st = datetime.datetime.fromtimestamp(ts).strftime('%d%m%Y_%H%M%S')
+    df.to_csv('dynamicData_' + st + '.csv', index=False)
 
-df = pd.read_sql_table(table_name="dynamicData", con=db_connection_string)
-ts = time.time()
-st = datetime.datetime.fromtimestamp(ts).strftime('%d%m%Y_%H%M%S')
-df.to_csv('dynamicData_' + st + '.csv', index=False)
+if __name__ == '__main__':
+    main()

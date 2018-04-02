@@ -176,6 +176,7 @@ def getDynamicData():
                 
             except exc.IntegrityError:
                 session.rollback()
+                
             except Exception as e:
                 session.rollback()
                 logging.error(e)
@@ -204,6 +205,7 @@ def getWeatherData():
             w_detailedDescription = w_list['weather'][0]['description']
         except KeyError:
             w_detailedDescription = 'default'
+
         try:
             w_icon = w_list['weather'][0]['icon']
         except KeyError:
@@ -249,7 +251,13 @@ def getWeatherData():
 
 
         #Create DB object with weatherData class, then try to add it to the DB
-        weather_row = weatherData(time = w_time, mainDescription = w_mainDescription, detailedDescription = w_detailedDescription, icon = w_icon, currentTemp = w_temp, maxTemp = w_maxTemp, minTemp = w_minTemp, pressure = w_pressure, humidity = w_humidity, windSpeed = w_windSpeed, windAngle = w_windAngle, cloudDensity = w_cloudDensity, visibility = w_visibility)
+        weather_row = weatherData(time = w_time, mainDescription = w_mainDescription, 
+                                  detailedDescription = w_detailedDescription, icon = w_icon, 
+                                  currentTemp = w_temp, maxTemp = w_maxTemp, 
+                                  minTemp = w_minTemp, pressure = w_pressure, 
+                                  humidity = w_humidity, windSpeed = w_windSpeed, 
+                                  windAngle = w_windAngle, cloudDensity = w_cloudDensity, 
+                                  visibility = w_visibility)
 
         session.add(weather_row)
         try:
