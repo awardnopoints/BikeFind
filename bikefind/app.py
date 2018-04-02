@@ -41,12 +41,13 @@ def getRtpi():
 
 @app.route('/findstation/<coords>')
 def findstation(coords):
-    """Function to find the nearest station(s) to the given coordinates"""
+    """Function to find the three nearest stations to the given coordinates. 
+        The address, proximity, bike availability and open/closed status of these stations is returned."""
     
     
     # query to provide a temp df with latlng for each station and the current availability.
     # needs tweaking - i'm not selecting the most recent update for each station correctly yet. 
-    query = 'select staticData.address, CONCAT("(", staticData.latitude, ", ", staticData.longitude, ")") AS LatLng, MAX(dynamicData.time) from dynamicData inner join staticData where dynamicData.address=staticData.address group by staticData.address'
+    query = 'select staticData.address, dynamicData.availableBikes, dynamicData.status, CONCAT("(", staticData.latitude, ", ", staticData.longitude, ")") AS LatLng, MAX(dynamicData.time) from dynamicData inner join staticData where dynamicData.address=staticData.address group by staticData.address'
     
     df = pd.read_sql_query(query, engine)
     
@@ -56,11 +57,9 @@ def findstation(coords):
     
     #convert nearestStations df to json
     #ideally find a way to get rid of the index key value pair
-    nearestJson = nearestStations[['address', 'proximity']].reset_index().to_json()
+    nearestJson = nearestStations[['address', 'proximity', 'availableBikes', 'status']].reset_index().to_json()
     
-    #may change format of return
-    closestStations = {"0":{"closest":"14"}, "1":{"second": "2"}, "2":{"third":"21"}}
-   
+    
     #return "Second nearest station is: " + nearestStations['address'].tolist()[1]
     return nearestJson
 
