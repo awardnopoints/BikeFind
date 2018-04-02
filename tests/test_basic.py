@@ -33,4 +33,18 @@ def test_page_data():
 # Test that current position marker is added on user click.
 # Test that clicking on a station marker retrieves the correct info.
 # Test that clicking on the current position marker calculates and displays the nearest stations, ranked by occupancy.
+
+def test_findstation1():
+    testCoords = '(53.330662, -6.260177)'
+    test_client = app.test_client()
+    response = test_client.get('/findstation/' + testCoords, content_type = 'html/text')
+    
+    assert response.status_code == 200
+    
+def test_findstation2():
+    testCoords = '(53.330662, -6.260177)'
+    test_client = app.test_client()
+    response = test_client.get('/findstation/' + testCoords, content_type = 'html/text')
+    
+    assert response.data == b'{"index":{"0":7,"1":43,"2":80},"address":{"0":"Charlemont Street","1":"Harcourt Terrace","2":"Portobello Harbour"},"distanceToCurrent":{"0":0.0,"1":276.7758330769,"2":332.7739945069}}'
 # etc.

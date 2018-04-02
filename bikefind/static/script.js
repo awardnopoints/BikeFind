@@ -1,7 +1,5 @@
-/**
- * Initialises map, adds onclick event to create a user marker
-**/
 function initMap() {
+
 
   var charlemontPlace = {lat: 53.330662, lng: -6.260177};
 
@@ -12,6 +10,7 @@ function initMap() {
 
   var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
+  //////////
   // adding a current position marker on user click
 
   google.maps.event.addListener(map, 'click', function(event){
@@ -20,12 +19,9 @@ function initMap() {
   return map;
   });
 
-//  var currentPositionMarker;
-  /**
-   * Creates a marker at the location clicked by the user
-   * Adds an event, creates a pop-up window when the user's marker is clicked
-  **/
+  var currentPositionMarker;
   function addCurrentPositionMarker(current_position){
+
 
     if(currentPositionMarker != null){
       currentPositionMarker.setMap(null);
@@ -38,35 +34,54 @@ function initMap() {
 
     });
 
+   // $(this).on("click", function() {
+     // var url = 'nearestStation/' + current_position;
+     // $.get(url).done(function(data) {
+          //alert(data);
+       //   $('#nearestStation').text("Nearest station to current location: " + data);
+     // });
+
+   // });
+
     var infowindow = new google.maps.InfoWindow({
       content:"<div>Current position</div>"
     });
 
     currentPositionMarker.addListener('click', function(){
       infowindow.open(map, currentPositionMarker)
+      var url = 'findstation/' + current_position;
+      $.get(url).done(function(data) {
+          //alert(data);
+          $('#findstation').text(data);
+      });
     });
   }
 
+  ///////////////
 
-     /**
-      * Makes an AJAX call to flask to retrieve static data for all stations
-      * from the db. Call function addStationMarker on each station
-     **/ 
-     function addStationMarkersFromDB(){
-          var staticData;
-          $.getJSON( "./staticTest", function( data ) {
-          $.each( data, function(key, value) {
-               if(data.hasOwnProperty(key)) {
-                    addStationMarker(data[key]);
-                    }
-               });
-          });  
-     }
 
-     /**
-      * Adds a new marker to the map, called for each station in staticData db table
-      * Adds two onlick events, display an info window onclick and call getLatestData
-     **/ 
+  ///////////////
+  // add station markers from staticData
+
+
+
+//////////////
+
+function addStationMarkersFromDB(){
+     var staticData;
+//     var xhr = new XMLHttpRequest();
+//     xhr.open('GET', './staticTest');
+//     xhr.send();
+     $.getJSON( "./staticTest", function( data ) {
+     $.each( data, function(key, value) {
+          if(data.hasOwnProperty(key)) {
+               addStationMarker(data[key]);
+          }
+             
+     });
+   });  
+}
+
      function addStationMarker(properties){
 
           var marker = new google.maps.Marker({
@@ -85,24 +100,18 @@ function initMap() {
           });
      }
 
-     /**
-      * Makes an AJAX request to flask, using root /rtpi. Passes the address
-      * of the requested station. Flask makes a new API call and passes the result
-      * for the requested station back as JSON. That data is then formatted and
-      * displayed in div rtpi
-     **/ 
      function getLatestData(address){
-          $.ajax(
-          {
+          $.ajax({
+
           url: '/rtpi',
           data : {
           reqAddress : address,
           reqJson : null
+
           },
           type: 'POST',
           dataType: 'json',
           })
-
           .done(function(data){
                timeCell = data.reqJson.last_update;
                addressCell = data.reqJson.address;
@@ -114,8 +123,5 @@ function initMap() {
                $('#rtpi').text(retString)
           });
           }
-
 addStationMarkersFromDB();
-}
-
-
+     }
