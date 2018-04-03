@@ -12,20 +12,78 @@ function initMap() {
 
   var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
+var data = $.getJSON("http://ip-api.com/json", function (data, status) {
+          if(status === "success") {
+              if(data) {
+//                  $.getJSON("http://maps.googleapis.com/maps/api/geocode/json?address=" + res.zip, function (data, status) {
+//                      if (status === "success") {
+//                          console.log(data)
+//                          position.coords.latitude = data.results[0].geometry.location.lat;
+//                          position.coords.longitude = data.results[0].geometry.location.lng;
+//                          locationOnSuccess(position);
+//                      } else {
+//                          locationOnError();
+//                      }
+                        var current_position = new google.maps.LatLng(data.lat, data.lon);
+                        map.setCenter(current_position)
+                        currentPositionMarker = new google.maps.Marker({
+                          title:"Selected Position",
+                          position:current_position,
+                          map:map,
+                          Draggable:true,
+                          icon: {
+                            path: google.maps.SymbolPath.CIRCLE,
+                            scale: 10
+                             }
+                          });
+                         var infowindow = new google.maps.InfoWindow({
+                              content:"<div>Current position</div>"
+                         });
+                         infowindow.open(map, currentPositionMarker)
+//                         currentPositionMarker.addListener('click', function(){
+//                              infowindow.open(map, currentPositionMarker)
+//                         });
+                       }
+                     }
+                     });
+     console.log(data);
+//     var mapOptions = {
+//          zoom:15,
+//          center:{lat: data.responseJSON.lat, lng: data.responseJSON.lon}
+//     }
   // adding a current position marker on user click
-
+//  if (navigator.geolocation) {
+//     navigator.geolocation.getCurrentPosition(function(position) {
+//     var mapOptions = {
+//          zoom:15,
+//          center:{lat: position.coords.latitude, lng: position.coords.longitude}
+//     };
+//     var current_position = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+//     currentPositionMarker = new google.maps.Marker({
+//       title:"Selected Position",
+//       position:current_position,
+//       map:map,
+//       Draggable:true,
+//       icon: {
+//         path: google.maps.SymbolPath.CIRCLE,
+//         scale: 10
+//          }
+//       });
+//    });
+//  }
   google.maps.event.addListener(map, 'click', function(event){
 
      addCurrentPositionMarker(event.latLng)
   return map;
   });
 
-//  var currentPositionMarker;
+  var currentPositionMarker;
   /**
    * Creates a marker at the location clicked by the user
    * Adds an event, creates a pop-up window when the user's marker is clicked
   **/
   function addCurrentPositionMarker(current_position){
+    console.log(current_position)
 
     if(currentPositionMarker != null){
       currentPositionMarker.setMap(null);
@@ -35,7 +93,10 @@ function initMap() {
       position:current_position,
       map:map,
       Draggable:true,
-
+      icon: {
+        path: google.maps.SymbolPath.CIRCLE,
+        scale: 10
+    }
     });
 
     var infowindow = new google.maps.InfoWindow({
