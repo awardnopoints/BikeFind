@@ -16,24 +16,9 @@ function initMap() {
   directionsDisplay.setMap(map);
   directionsDisplay.setPanel(document.getElementById('directions-test'));
 
-  function calcRoute() {
-  	test_starting_point = new google.maps.LatLng(53.341655, -6.236198);
-  	test_destination = new google.maps.LatLng(53.330662, -6.260177);
+  
 
-  	var request = {
-  		origin: test_starting_point,
-  		destination: test_destination,
-  		travelMode: 'WALKING'
-  	};
-
-  	directionsService.route(request, function(response, status) {
-  		if (status == 'OK') {
-  			directionsDisplay.setDirections(response);
-  		}
-  	});
-  }
-
-  calcRoute();
+  
 
   //////////
   // adding a current position marker on user click
@@ -75,13 +60,34 @@ function initMap() {
     currentPositionMarker.addListener('click', function(){
       infowindow.open(map, currentPositionMarker)
       var url = 'findstation/' + current_position;
-      $.get(url).done(function(data) {
-          //alert(data);
-          $('#findstation').text(data);
-      });
+      $.getJSON(url).done(function(data) {
+          $('#findstation').text(JSON.stringify(data));
 
+          origin = current_position;
+          destination = new google.maps.LatLng(parseFloat(data["latitude"]["1"]), parseFloat(data["longitude"]["1"]));
+
+          var request = {
+          	origin: origin,
+          	destination: destination,
+          	travelMode: 'WALKING'
+          };
+
+
+          // want to merge the directions markers and station markers, if poss
+          // also need to sort the zoom level
+
+          directionsService.route(request, function(response, status) {
+  		if (status == 'OK') {
+  			directionsDisplay.setDirections(response);
+  		}
+  		});
+
+
+         
+      });
+      
     });
-  }
+  }  
 
   ///////////////
 
