@@ -149,9 +149,17 @@ def getDynamicData():
                                       availableBikeStands = availableBikeStands, 
                                       availableBikes = availableBikes, status = status )
             session.add(dynamic_row)
+            success = False
             try:
                 session.commit()
+                success = True
+            except exc.IntegrityError:
+                session.rollback()
+            except Exception as e:
+                session.rollback()
+                logging.error(e)
                 
+            if success:
                 # if the previous commit goes through, then this block checks the
                 # new data against the current values in the currentData table,
                 # and updates appropriately (should probably be a separate function)
@@ -177,15 +185,6 @@ def getDynamicData():
                     except Exception as e:
                         session.rollback()
                         logging.error(e)
-
-
-                
-            except exc.IntegrityError:
-                session.rollback()
-                
-            except Exception as e:
-                session.rollback()
-                logging.error(e)
 
 
 def getWeatherData():
