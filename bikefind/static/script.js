@@ -10,6 +10,31 @@ function initMap() {
 
   var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
+  // directions service test (from documentation example)
+  var directionsService = new google.maps.DirectionsService();
+  var directionsDisplay = new google.maps.DirectionsRenderer();
+  directionsDisplay.setMap(map);
+  directionsDisplay.setPanel(document.getElementById('directions-test'));
+
+  function calcRoute() {
+  	test_starting_point = new google.maps.LatLng(53.341655, -6.236198);
+  	test_destination = new google.maps.LatLng(53.330662, -6.260177);
+
+  	var request = {
+  		origin: test_starting_point,
+  		destination: test_destination,
+  		travelMode: 'WALKING'
+  	};
+
+  	directionsService.route(request, function(response, status) {
+  		if (status == 'OK') {
+  			directionsDisplay.setDirections(response);
+  		}
+  	});
+  }
+
+  calcRoute();
+
   //////////
   // adding a current position marker on user click
 
@@ -54,6 +79,7 @@ function initMap() {
           //alert(data);
           $('#findstation').text(data);
       });
+
     });
   }
 

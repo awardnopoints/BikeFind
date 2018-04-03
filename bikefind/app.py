@@ -44,9 +44,7 @@ def findstation(coords):
     """Function to find the three nearest stations to the given coordinates. 
         The address, proximity, bike availability and open/closed status of these stations is returned."""
     
-    
-    # query to provide a temp df with latlng for each station and the current availability.
-    # needs tweaking - i'm not selecting the most recent update for each station correctly yet. 
+     
     query = 'select staticData.address, currentData.availableBikes, currentData.status, CONCAT("(", staticData.latitude, ", ", staticData.longitude, ")") AS LatLng from currentData inner join staticData where currentData.address=staticData.address group by staticData.address'
     
     df = pd.read_sql_query(query, engine)
