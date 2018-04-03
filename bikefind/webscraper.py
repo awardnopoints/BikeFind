@@ -74,9 +74,9 @@ def getStaticData():
             logging.error(e)
         
         #little ticker counting down the stations, because waiting sucks
-        x += 1
-        if x % 5 == 0:
-            print("Static Bikes Counted:", x, '/', len(station_info_list))
+        #x += 1
+        #if x % 5 == 0:
+        #    print("Static Bikes Counted:", x, '/', len(station_info_list))
     session.close()
     
 def getCurrentData():
@@ -107,9 +107,9 @@ def getCurrentData():
             session.rollback()
             logging.error(e)
         
-        x += 1
-        if x % 5 == 0:
-            print("Current Bikes Counted:", x, '/', len(station_info_list))
+        #x += 1
+        #if x % 5 == 0:
+            #print("Current Bikes Counted:", x, '/', len(station_info_list))
     session.close()
 
 def getDynamicData():
@@ -149,27 +149,37 @@ def getDynamicData():
                                       availableBikeStands = availableBikeStands, 
                                       availableBikes = availableBikes, status = status )
             session.add(dynamic_row)
+            success = False
             try:
                 session.commit()
+                success = True
+            except exc.IntegrityError:
+                session.rollback()
+                success = False
+            except Exception as e:
+                session.rollback()
+                logging.error(e)
+                success = False
                 
+            if success:
                 # if the previous commit goes through, then this block checks the
                 # new data against the current values in the currentData table,
                 # and updates appropriately (should probably be a separate function)
                 
                 # find currentData row with matching address value
                 match = session.query(currentData).filter(currentData.address == address).one()
-                print("For", match.address, "station:")
+                #print("For", match.address, "station:")
                 if curr_time > match.last_update: # check if the timestamp is different, if not, ignore
-                    print("Before:", match.last_update, match.totalBikeStands, 
-                          match.availableBikeStands, match.status)
+                    #print("Before:", match.last_update, match.totalBikeStands, 
+#                          match.availableBikeStands, match.status)
                     # update values in row
                     match.last_update = curr_time
                     match.totalBikeStands = totalBikeStands
                     match.availableBikeStands = availableBikeStands
                     match.availableBikes = availableBikes
                     match.status = status
-                    print("After:", match.last_update, match.totalBikeStands,
-                          match.availableBikeStands, match.status)
+                    #print("After:", match.last_update, match.totalBikeStands,
+#                          match.availableBikeStands, match.status)
                     try:
                         session.commit()
                     except exc.IntegrityError:
@@ -177,15 +187,6 @@ def getDynamicData():
                     except Exception as e:
                         session.rollback()
                         logging.error(e)
-
-
-                
-            except exc.IntegrityError:
-                session.rollback()
-                
-            except Exception as e:
-                session.rollback()
-                logging.error(e)
 
 
 def getWeatherData():
