@@ -1,11 +1,9 @@
 from flask import Flask, render_template, jsonify, request
-import requests
 import pandas as pd
 from sqlalchemy import create_engine
 
 app = Flask(__name__)
 
-bikes_connection_string = 'https://api.jcdecaux.com/vls/v1/stations?contract=Dublin&apiKey=6e19678db44aa0bfdb4632faba1f58723758a2c4'
 db_connection_string = "mysql+cymysql://conor:team0db1@team0db.cojxdhcdsq2b.us-west-2.rds.amazonaws.com/test2"
 #db_connection_string ='mysql+cymysql://root:password@localhost:3306/test_db'
 engine = create_engine(db_connection_string)
@@ -27,15 +25,13 @@ def getStaticTest():
 def getRtpi():
     """Receives a requested address, then retrieves the latest data via API
     call and sends back a JSON object with the data for the requested station"""
-    r = requests.get(bikes_connection_string)
-    station_info_list = r.json()
+    currentDataTable = pd.read_sql_table('currentData', engine)
+    currentDataDict = currentDataTable.to_dict(orient='index')
     station = request.form['reqAddress']
-    print(station)
-    for i in station_info_list:
-        if i['address'] == station:
-            reqStationList = i
+    for i in range(len(currentDataDict)):
+        if currentDataDict[i]['address'] == station:
+            reqStationList = currentDataDict[i]
             break
-    print(reqStationList)
     return jsonify({"reqJson" : reqStationList})
 
 

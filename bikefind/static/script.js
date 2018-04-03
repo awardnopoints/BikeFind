@@ -106,10 +106,9 @@ function initMap() {
           .done(function(data){
                timeCell = data.reqJson.last_update;
                addressCell = data.reqJson.address;
-               availableBikes = data.reqJson.available_bikes;
-               availableBikeStands = data.reqJson.available_bike_stands;
+               availableBikes = data.reqJson.availableBikes;
+               availableBikeStands = data.reqJson.availableBikeStands;
                status = data.reqJson.status;
-               console.log(data.reqJson);
                var retString = 'Time: ' + timeCell + ' Address: ' + address + ' availableBikes: ' + availableBikes + ' availableBikeStands' + availableBikeStands;
                $('#rtpi').text(retString)
           });
