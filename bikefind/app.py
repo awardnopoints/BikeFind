@@ -23,8 +23,8 @@ def getStaticTest():
 
 @app.route('/rtpi', methods=['POST'])
 def getRtpi():
-    """Receives a requested address, then retrieves the latest data via API
-    call and sends back a JSON object with the data for the requested station"""
+    """Receives a requested address, then retrieves the latest data from currentDataTable
+    and sends back a JSON object with the data for the requested station"""
     currentDataTable = pd.read_sql_table('currentData', engine)
     currentDataDict = currentDataTable.to_dict(orient='index')
     station = request.form['reqAddress']
