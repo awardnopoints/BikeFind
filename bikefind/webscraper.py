@@ -171,7 +171,7 @@ def getDynamicData():
                 #print("For", match.address, "station:")
                 if curr_time > match.last_update: # check if the timestamp is different, if not, ignore
                     #print("Before:", match.last_update, match.totalBikeStands, 
-                          match.availableBikeStands, match.status)
+#                          match.availableBikeStands, match.status)
                     # update values in row
                     match.last_update = curr_time
                     match.totalBikeStands = totalBikeStands
@@ -179,7 +179,7 @@ def getDynamicData():
                     match.availableBikes = availableBikes
                     match.status = status
                     #print("After:", match.last_update, match.totalBikeStands,
-                          match.availableBikeStands, match.status)
+#                          match.availableBikeStands, match.status)
                     try:
                         session.commit()
                     except exc.IntegrityError:
