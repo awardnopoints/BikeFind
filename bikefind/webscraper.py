@@ -155,9 +155,11 @@ def getDynamicData():
                 success = True
             except exc.IntegrityError:
                 session.rollback()
+                success = False
             except Exception as e:
                 session.rollback()
                 logging.error(e)
+                success = False
                 
             if success:
                 # if the previous commit goes through, then this block checks the
