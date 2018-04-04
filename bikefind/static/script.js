@@ -82,7 +82,56 @@ function initMap() {
   		}
   		});
 
+      // obviously need to refactor this. just trying to get things working first
+      //btn for closest
+      // add a highlight to this one by default, change highlight to the one that's displaying if the user clicks
+      $( "#btn-0" ).click(function() {
+          destination = new google.maps.LatLng(parseFloat(data["latitude"]["0"]), parseFloat(data["longitude"]["0"]));
+          var request = {
+            origin: origin,
+            destination: destination,
+            travelMode: 'WALKING'
+          };
 
+          directionsService.route(request, function(response, status) {
+              if (status == 'OK') {
+                directionsDisplay.setDirections(response);
+              }
+          });
+
+      });
+      // btn for second closest
+      $( "#btn-1" ).click(function() {
+          destination = new google.maps.LatLng(parseFloat(data["latitude"]["1"]), parseFloat(data["longitude"]["1"]));
+          var request = {
+            origin: origin,
+            destination: destination,
+            travelMode: 'WALKING'
+          };
+
+          directionsService.route(request, function(response, status) {
+              if (status == 'OK') {
+                directionsDisplay.setDirections(response);
+              }
+          });
+
+      });
+      // btn for second closest
+      $( "#btn-2" ).click(function() {
+          destination = new google.maps.LatLng(parseFloat(data["latitude"]["2"]), parseFloat(data["longitude"]["2"]));
+          var request = {
+            origin: origin,
+            destination: destination,
+            travelMode: 'WALKING'
+          };
+
+          directionsService.route(request, function(response, status) {
+              if (status == 'OK') {
+                directionsDisplay.setDirections(response);
+              }
+          });
+
+      });
          
       });
       
@@ -155,5 +204,7 @@ function addStationMarkersFromDB(){
                $('#rtpi').text(retString)
           });
           }
+
+
 addStationMarkersFromDB();
      }
