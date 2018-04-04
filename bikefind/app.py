@@ -4,7 +4,7 @@ from sqlalchemy import create_engine
 
 app = Flask(__name__)
 
-db_connection_string = "mysql+cymysql://conor:team0db1@team0db.cojxdhcdsq2b.us-west-2.rds.amazonaws.com/test2"
+db_connection_string = "mysql+cymysql://conor:team0db1@team0db.cojxdhcdsq2b.us-west-2.rds.amazonaws.com/team0"
 #db_connection_string ='mysql+cymysql://root:password@localhost:3306/test_db'
 engine = create_engine(db_connection_string)
 
@@ -34,7 +34,15 @@ def getRtpi():
             break
     return jsonify({"reqJson" : reqStationList})
 
-
+@app.route('/getWeather')
+def getWeatherData():
+    weatherDataTable = pd.read_sql_table('weatherData', engine)
+    #weatherDataDictArray = weatherDataTable.T.to_dict().values()
+#    weatherData = weatherDataTable.tail(0)
+    weatherDataDict = weatherDataTable.to_dict(orient='index')
+    weatherData = weatherDataDict[len(weatherDataDict)-1]
+    print(weatherData)
+    return jsonify(weatherData)
 
 def appWrapper():
     """Wrapper to allow entry point to app.run with the correct arguments"""

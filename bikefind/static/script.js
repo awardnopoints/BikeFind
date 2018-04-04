@@ -104,16 +104,27 @@ function initMap() {
           })
 
           .done(function(data){
-               timeCell = data.reqJson.last_update;
-               addressCell = data.reqJson.address;
-               availableBikes = data.reqJson.availableBikes;
-               availableBikeStands = data.reqJson.availableBikeStands;
-               status = data.reqJson.status;
+               var timeCell = data.reqJson.last_update;
+               var addressCell = data.reqJson.address;
+               var availableBikes = data.reqJson.availableBikes;
+               var availableBikeStands = data.reqJson.availableBikeStands;
+               var status = data.reqJson.status;
                var retString = 'Time: ' + timeCell + ' Address: ' + address + ' availableBikes: ' + availableBikes + ' availableBikeStands' + availableBikeStands;
                $('#rtpi').text(retString)
           });
           }
 
+     function getWeatherData(){
+          $('#weather').text("Success!")
+          $.getJSON( "./getWeather", function(data){
+          console.log(data)
+          var mainDes = data.mainDescription
+          var retString = "General: " + mainDes
+          $('#weather').text(retString)
+          });  
+     }
+
+getWeatherData();
 addStationMarkersFromDB();
 }
 
