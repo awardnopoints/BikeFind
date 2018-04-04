@@ -1,6 +1,8 @@
 import sys
 from bikefind.app import app
+from sqlalchemy import create_engine
 sys.path.append(".")
+
 
 # look into using library like flask-testing
 
@@ -12,14 +14,21 @@ def test_template_load():
     response = test_client.get('/', content_type = 'html/text')
     assert response.status_code == 200
  
-# Test that the response contains the correct data.   
+# Test that the response contains the correct data.
 def test_page_data():
     test_client = app.test_client()
     response = test_client.get('/', content_type = 'html/text')
     assert b'Dublinbikes' in response.data
  
 #### Database Tests
-
+def test_backend_connection():
+    db_connection_string = "mysql+cymysql://conor:team0db1@team0db.cojxdhcdsq2b.us-west-2.rds.amazonaws.com/team0"
+    try:
+        engine = create_engine(db_connection_string)
+        success = True
+    except Exception:
+        success = False
+    assert success
 
 # Check that the database is connected to successfuly.
 # Check that SQL queries from Flask are retrieving the correct information.
