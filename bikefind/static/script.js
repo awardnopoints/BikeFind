@@ -61,7 +61,11 @@ function initMap() {
       infowindow.open(map, currentPositionMarker)
       var url = 'findstation/' + current_position;
       $.getJSON(url).done(function(data) {
-          $('#findstation').text(JSON.stringify(data));
+          //$('#findstation').text(JSON.stringify(data));
+          $("#btn-0").html("<p>" + data["address"]["0"] + "<br/>Available bikes: " + data["availableBikes"]["0"] + "<br/>Proximity: " + Math.round(data["proximity"]["0"]) + " metres" + "</p>");
+          $("#btn-1").html("<p>" + data["address"]["1"] + "<br/>Available bikes: " + data["availableBikes"]["1"] + "<br/>Proximity: " + Math.round(data["proximity"]["1"]) + " metres" + "</p>");
+          $("#btn-2").html("<p>" + data["address"]["2"] + "<br/>Available bikes: " + data["availableBikes"]["2"] + "<br/>Proximity: " + Math.round(data["proximity"]["2"]) + " metres" + "</p>");
+
 
           origin = current_position;
           destination = new google.maps.LatLng(parseFloat(data["latitude"]["0"]), parseFloat(data["longitude"]["0"]));
@@ -73,7 +77,7 @@ function initMap() {
           };
 
 
-          // want to merge the directions markers and station markers, if poss
+          // want to merge the directions markers and station markers, if poss. this may not look bad with the final icon/representation of the stations
           // also need to sort the zoom level
 
           directionsService.route(request, function(response, status) {
@@ -86,6 +90,7 @@ function initMap() {
       //btn for closest
       // add a highlight to this one by default, change highlight to the one that's displaying if the user clicks
       $( "#btn-0" ).click(function() {
+
           destination = new google.maps.LatLng(parseFloat(data["latitude"]["0"]), parseFloat(data["longitude"]["0"]));
           var request = {
             origin: origin,
