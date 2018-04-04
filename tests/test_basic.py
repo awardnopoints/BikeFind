@@ -1,6 +1,8 @@
 import sys
 from bikefind.app import app
 from sqlalchemy import create_engine
+from bikefind import webscraper as ws
+import requests
 sys.path.append(".")
 
 
@@ -22,21 +24,39 @@ def test_page_data():
  
 #### Database Tests
 def test_backend_connection():
-    db_connection_string = "mysql+cymysql://conor:team0db1@team0db.cojxdhcdsq2b.us-west-2.rds.amazonaws.com/team0"
+    # Check that the database is connected to successfuly.
+    db_connection_string = ws.db_connection_string
     try:
         engine = create_engine(db_connection_string)
-        success = True
+        assert True
     except Exception:
-        success = False
-    assert success
+        assert False
 
-# Check that the database is connected to successfuly.
 # Check that SQL queries from Flask are retrieving the correct information.
 
 #### Google Map Tests    
 # Test that the map loads correctly.
 
 
+#### API Tests
+def test_bikes_api():
+    bikes_connection_string = ws.bikes_connection_string
+    try:
+        r = requests.get(bikes_connection_string)
+        station_info_list = r.json()
+        assert True
+    except Exception:
+        assert False
+        
+def test_weather_api():
+    weather_connection_string = ws.weather_connection_string
+    try:
+        r = requests.get(weather_connection_string)
+        weather_info_list = r.json()
+        assert True
+    except Exception:
+        assert False
+        
 #### Main Functionality Tests
 # Test that the markers are added on map init.
 # Test that current position marker is added on user click.
