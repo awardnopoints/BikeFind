@@ -64,7 +64,7 @@ function initMap() {
           $('#findstation').text(JSON.stringify(data));
 
           origin = current_position;
-          destination = new google.maps.LatLng(parseFloat(data["latitude"]["1"]), parseFloat(data["longitude"]["1"]));
+          destination = new google.maps.LatLng(parseFloat(data["latitude"]["0"]), parseFloat(data["longitude"]["0"]));
 
           var request = {
           	origin: origin,
