@@ -63,9 +63,9 @@ function initMap() {
       $.getJSON(url).done(function(data) {
           //$('#findstation').text(JSON.stringify(data));
           $("#instructions-btns").html("<p>Below are the three closest stations to your selected location. Click on one to see directions.</p>");
-          $("#btn-0").html('<button type="button" class="btn-info"><p>' + data["address"]["0"] + "<br/>Available bikes: " + data["availableBikes"]["0"] + "<br/>Proximity: " + Math.round(data["proximity"]["0"]) + " metres" + "</p></button>");
-          $("#btn-1").html('<button type="button" class="btn-info"><p>' + data["address"]["1"] + "<br/>Available bikes: " + data["availableBikes"]["1"] + "<br/>Proximity: " + Math.round(data["proximity"]["1"]) + " metres" + "</p></button>");
-          $("#btn-2").html('<button type="button" class="btn-info"><p>' + data["address"]["2"] + "<br/>Available bikes: " + data["availableBikes"]["2"] + "<br/>Proximity: " + Math.round(data["proximity"]["2"]) + " metres" + "</p></button>");
+          $("#btn-0").html('<button type="button" class="btn-info"><p>' + data["address"]["0"] + "<br/>Available bikes: " + data["availableBikes"]["0"] + "<br/>Available stands: " + data["availableBikeStands"]["0"] + "<br/>Proximity: " + Math.round(data["proximity"]["0"]) + " metres" + "</p></button>");
+          $("#btn-1").html('<button type="button" class="btn-info"><p>' + data["address"]["1"] + "<br/>Available bikes: " + data["availableBikes"]["1"] + "<br/>Available stands: " + data["availableBikeStands"]["1"] + "<br/>Proximity: " + Math.round(data["proximity"]["1"]) + " metres" + "</p></button>");
+          $("#btn-2").html('<button type="button" class="btn-info"><p>' + data["address"]["2"] + "<br/>Available bikes: " + data["availableBikes"]["2"] + "<br/>Available stands: " + data["availableBikeStands"]["2"] + "<br/>Proximity: " + Math.round(data["proximity"]["2"]) + " metres" + "</p></button>");
 
 
           origin = current_position;

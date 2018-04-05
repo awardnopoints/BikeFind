@@ -41,7 +41,7 @@ def findstation(coords):
         The address, proximity, bike availability and open/closed status of these stations is returned."""
     
     # for now including both concat latlng, as well as separate lat and lng. until we know which is handier for what.
-    query = 'select staticData.address, currentData.availableBikes, currentData.status, staticData.latitude, staticData.longitude, CONCAT("(", staticData.latitude, ", ", staticData.longitude, ")") AS LatLng from currentData inner join staticData where currentData.address=staticData.address group by staticData.address'
+    query = 'select staticData.address, currentData.availableBikes, currentData.availableBikeStands, currentData.status, staticData.latitude, staticData.longitude, CONCAT("(", staticData.latitude, ", ", staticData.longitude, ")") AS LatLng from currentData inner join staticData where currentData.address=staticData.address group by staticData.address'
     
     df = pd.read_sql_query(query, engine)
     
@@ -51,7 +51,7 @@ def findstation(coords):
     
     #convert nearestStations df to json
     #ideally find a way to get rid of the index key value pair
-    nearestJson = nearestStations[['address', 'proximity', 'availableBikes', 'status', 'LatLng', 'latitude', 'longitude']].reset_index().to_json()
+    nearestJson = nearestStations[['address', 'proximity', 'availableBikes', 'availableBikeStands', 'status', 'LatLng', 'latitude', 'longitude']].reset_index().to_json()
     
     
     #return "Second nearest station is: " + nearestStations['address'].tolist()[1]
@@ -64,4 +64,4 @@ def appWrapper():
     app.run(host='0.0.0.0', port=5001)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5001, debug=True)
+    app.run(host='0.0.0.0', port=5001)
