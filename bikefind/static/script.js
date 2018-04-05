@@ -69,23 +69,12 @@ function initMap() {
 
 
           origin = current_position;
-          destination = new google.maps.LatLng(parseFloat(data["latitude"]["0"]), parseFloat(data["longitude"]["0"]));
-
-          var request = {
-          	origin: origin,
-          	destination: destination,
-          	travelMode: 'WALKING'
-          };
+         
 
 
           // want to merge the directions markers and station markers, if poss. this may not look bad with the final icon/representation of the stations
           // also need to sort the zoom level
 
-          directionsService.route(request, function(response, status) {
-  		if (status == 'OK') {
-  			directionsDisplay.setDirections(response);
-  		}
-  		});
 
       // obviously need to refactor this. just trying to get things working first
       //btn for closest
