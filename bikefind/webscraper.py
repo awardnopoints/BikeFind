@@ -54,7 +54,6 @@ def getStaticData():
     r = requests.get(bikes_connection_string)
     station_info_list = r.json()
     
-    x = 0
     for station in station_info_list:
         address = station['address']
         latitude = station['position']['lat']
@@ -73,17 +72,12 @@ def getStaticData():
             session.rollback()
             logging.error(e)
         
-        #little ticker counting down the stations, because waiting sucks
-        #x += 1
-        #if x % 5 == 0:
-        #    print("Static Bikes Counted:", x, '/', len(station_info_list))
     session.close()
     
 def getCurrentData():
     r = requests.get(bikes_connection_string)
     station_info_list = r.json()
     
-    x = 0
     for station in station_info_list:
         address = station['address']
         last_update = station['last_update']
@@ -107,9 +101,6 @@ def getCurrentData():
             session.rollback()
             logging.error(e)
         
-        #x += 1
-        #if x % 5 == 0:
-            #print("Current Bikes Counted:", x, '/', len(station_info_list))
     session.close()
 
 def getDynamicData():
