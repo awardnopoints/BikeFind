@@ -200,6 +200,23 @@ function addStationMarkersFromDB(){
           });
           }
 
+                // sw and ne bounds for the map search. biases, but doesn't exclude outside bounds searches
+          var defaultBounds = new google.maps.LatLngBounds(
+            new google.maps.LatLng(53.317850, -6.352633),
+            new google.maps.LatLng(53.375709, -6.209894));
 
-addStationMarkersFromDB();
-     }
+          var options = {
+            bounds: defaultBounds
+          };
+
+          //var input = $('#address-input');
+          // jquery assignment not working for some reason
+          var input = document.getElementById('address-input');
+          map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+          var autocomplete = new google.maps.places.Autocomplete(input, options);
+
+          addStationMarkersFromDB();
+               }
+
+
