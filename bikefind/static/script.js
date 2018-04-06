@@ -20,12 +20,14 @@ function initMap() {
   return map;
   });
 
-//  var currentPositionMarker;
   /**
    * Creates a marker at the location clicked by the user
    * Adds an event, creates a pop-up window when the user's marker is clicked
   **/
+
+  var currentPositionMarker;
   function addCurrentPositionMarker(current_position){
+    console.log(current_position);
 
     if(currentPositionMarker != null){
       currentPositionMarker.setMap(null);
