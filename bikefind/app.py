@@ -1,6 +1,7 @@
 from flask import Flask, render_template, jsonify, request
 import pandas as pd
 from sqlalchemy import create_engine
+from linearRegression import getModel
 
 app = Flask(__name__)
 
@@ -8,6 +9,10 @@ db_connection_string = "mysql+cymysql://conor:team0db1@team0db.cojxdhcdsq2b.us-w
 #db_connection_string ='mysql+cymysql://root:password@localhost:3306/test_db'
 engine = create_engine(db_connection_string)
 
+    # Uncomment this line to get model on startup
+#lm = getModel()
+    # Will take a little while at startup, but afterwards should run smoothly
+    
 @app.route('/')
 def index():
     return render_template('index.html')
