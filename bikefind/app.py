@@ -62,6 +62,8 @@ def findstation(coords):
 def appWrapper():
     """Wrapper to allow entry point to app.run with the correct arguments"""
     app.run(host='0.0.0.0', port=5001)
+#    app.run(ssl_context='adhoc')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001)
+#    app.run(ssl_context='adhoc')

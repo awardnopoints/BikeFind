@@ -22,6 +22,24 @@ function initMap() {
 
   //////////
   // adding a current position marker on user click
+  if (location.protocol == "https:") {
+     navigator.geolocation.getCurrentPosition(function(position) {
+
+          var current_position = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+          //map.panTo(current_position);
+
+          currentPositionMarker = new google.maps.Marker({
+               title:"Selected Position",
+               position:current_position,
+               map:map,
+               Draggable:true,
+               icon: {
+               path: google.maps.SymbolPath.CIRCLE,
+               scale: 10
+                         }
+                    });
+          });
+     }
 
   google.maps.event.addListener(map, 'click', function(event){
 
@@ -36,8 +54,6 @@ function initMap() {
 
   var currentPositionMarker;
   function addCurrentPositionMarker(current_position){
-    console.log(current_position);
-
 
     if(currentPositionMarker != null){
       currentPositionMarker.setMap(null);
@@ -47,7 +63,10 @@ function initMap() {
       position:current_position,
       map:map,
       Draggable:true,
-
+      icon: {
+        path: google.maps.SymbolPath.CIRCLE,
+        scale: 10
+    }
     });
 
    // $(this).on("click", function() {
@@ -204,7 +223,6 @@ function addStationMarkersFromDB(){
                $('#rtpi').text(retString)
           });
           }
-
 
 addStationMarkersFromDB();
      }
