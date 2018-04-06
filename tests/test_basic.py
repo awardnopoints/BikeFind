@@ -1,4 +1,5 @@
 import sys
+from bikefind import *
 from bikefind.app import app
 sys.path.append(".")
 
