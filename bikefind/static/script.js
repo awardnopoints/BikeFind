@@ -12,23 +12,23 @@ function initMap() {
 
   var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-  var protocol = location.protocol;
-  if (protocol == "https:") {
-     console.log("https detected")
+  if (location.protocol == "https:") {
      navigator.geolocation.getCurrentPosition(function(position) {
 
-     var current_position = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-     currentPositionMarker = new google.maps.Marker({
-       title:"Selected Position",
-       position:current_position,
-       map:map,
-       Draggable:true,
-       icon: {
-         path: google.maps.SymbolPath.CIRCLE,
-         scale: 10
-               }
+          var current_position = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+          //map.panTo(current_position);
+
+          currentPositionMarker = new google.maps.Marker({
+               title:"Selected Position",
+               position:current_position,
+               map:map,
+               Draggable:true,
+               icon: {
+               path: google.maps.SymbolPath.CIRCLE,
+               scale: 10
+                         }
+                    });
           });
-       });
      }
 
   google.maps.event.addListener(map, 'click', function(event){
