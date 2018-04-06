@@ -1,6 +1,7 @@
 from flask import Flask, render_template, jsonify, request
 import pandas as pd
 from sqlalchemy import create_engine
+from geopy.distance import great_circle
 
 app = Flask(__name__)
 
@@ -33,6 +34,28 @@ def getRtpi():
             reqStationList = currentDataDict[i]
             break
     return jsonify({"reqJson" : reqStationList})
+
+@app.route('/findstation/<coords>')
+def findstation(coords):
+    """Function to find the three nearest stations to the given coordinates. 
+        The address, proximity, bike availability and open/closed status of these stations is returned."""
+    
+    # for now including both concat latlng, as well as separate lat and lng. until we know which is handier for what.
+    query = 'select staticData.address, currentData.availableBikes, currentData.availableBikeStands, currentData.status, staticData.latitude, staticData.longitude, CONCAT("(", staticData.latitude, ", ", staticData.longitude, ")") AS LatLng from currentData inner join staticData where currentData.address=staticData.address group by staticData.address'
+    
+    df = pd.read_sql_query(query, engine)
+    
+    #add a new column for distance to current location
+    df['proximity'] = df.LatLng.apply(lambda station: great_circle(station, coords).meters)
+    nearestStations = df.sort_values('proximity').head(3)
+    
+    #convert nearestStations df to json
+    #ideally find a way to get rid of the index key value pair
+    nearestJson = nearestStations[['address', 'proximity', 'availableBikes', 'availableBikeStands', 'status', 'LatLng', 'latitude', 'longitude']].reset_index().to_json()
+    
+    
+    #return "Second nearest station is: " + nearestStations['address'].tolist()[1]
+    return nearestJson
 
 
 
