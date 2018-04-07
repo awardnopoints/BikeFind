@@ -12,3 +12,4 @@ bikefind/dynamicData02042018_000648.csv
 **/bikefind.egg-info
 **/bikefind/__pycache__
 bikefind/.#webscraper.py
+*.egg-info
