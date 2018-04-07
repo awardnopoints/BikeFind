@@ -20,7 +20,7 @@ function initMap() {
   return map;
   });
 
-//  var currentPositionMarker;
+  var currentPositionMarker;
   /**
    * Creates a marker at the location clicked by the user
    * Adds an event, creates a pop-up window when the user's marker is clicked
@@ -81,7 +81,8 @@ function initMap() {
 
           marker.addListener('click', function(){
           infowindow.open(map, marker);
-          getLatestData(properties.address);
+          var availableBikes = getLatestData(properties.address);
+          console.log(availableBikes);
           });
      }
 
@@ -103,7 +104,8 @@ function initMap() {
           dataType: 'json',
           })
 
-          .done(function(data){
+          var availableBikes;
+          .done(availableBikes = function(data){
                var timeCell = data.reqJson.last_update;
                var addressCell = data.reqJson.address;
                var availableBikes = data.reqJson.availableBikes;
@@ -111,7 +113,10 @@ function initMap() {
                var status = data.reqJson.status;
                var retString = 'Time: ' + timeCell + ' Address: ' + address + ' availableBikes: ' + availableBikes + ' availableBikeStands' + availableBikeStands;
                $('#rtpi').text(retString)
+               //return data.reqJson.availableBikes;
           });
+          console.log(reqAddress);
+          //return availableBikes;
           }
 
      function getWeatherData(){
