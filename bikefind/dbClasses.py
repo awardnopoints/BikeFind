@@ -3,7 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm.session import sessionmaker
 
 #Change to local database after pull
-db_connection_string = "mysql+cymysql://conor:team0db1@team0db.cojxdhcdsq2b.us-west-2.rds.amazonaws.com/team0"
+db_connection_string = "mysql+cymysql://conor:team0db1@team0db.cojxdhcdsq2b.us-west-2.rds.amazonaws.com/test3"
 #db_connection_string = "mysql+cymysql://root:password@localhost/test"
 engine = create_engine(db_connection_string)
 
@@ -55,5 +55,26 @@ class weatherData(Base):
     windAngle = Column(Integer, unique=False, nullable=True)
     cloudDensity = Column(Integer, unique=False, nullable=True)
     visibility = Column(Integer, unique=False, nullable=True)
+    
+    
+    
+class forecastData(Base):
+    """DB class for forecastData table"""
+    __tablename__="forecastData"
+    time = Column(BigInteger(), unique=False, nullable=False, primary_key=True)
+    mainDescription = Column(String(70), unique=False, nullable=True)
+    detailedDescription = Column(String(70), unique=False, nullable=True)
+    icon = Column(String(20), unique=False, nullable=True)
+    
+    currentTemp = Column(Float, unique=False, nullable=True)
+    maxTemp = Column(Float, unique=False, nullable=True)
+    minTemp = Column(Float, unique=False, nullable=True)
+    pressure = Column(Integer, unique=False, nullable=True)
+    humidity = Column(Integer, unique=False, nullable=True)
 
+    windSpeed = Column(Float, unique=False, nullable=True)
+    windAngle = Column(Integer, unique=False, nullable=True)
+    cloudDensity = Column(Integer, unique=False, nullable=True)
+
+    
 Base.metadata.create_all(bind=engine)

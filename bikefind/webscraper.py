@@ -1,12 +1,13 @@
-from sqlalchemy import create_engine, exc, update
+from sqlalchemy import create_engine, exc
 from sqlalchemy.orm.session import sessionmaker
-from bikefind.dbClasses import staticData, dynamicData, currentData, weatherData
+from bikefind.dbClasses import staticData, dynamicData, currentData, weatherData, forecastData
 import requests, time, logging
+import pandas as pd
 
 logging.basicConfig(filename='webscraper.log', level=logging.ERROR, format='%(asctime)s:%(levelname)s:%(message)s')
 
 #connect to remote DBS
-db_connection_string = "mysql+cymysql://conor:team0db1@team0db.cojxdhcdsq2b.us-west-2.rds.amazonaws.com/team0"
+db_connection_string = "mysql+cymysql://conor:team0db1@team0db.cojxdhcdsq2b.us-west-2.rds.amazonaws.com/test3"
 #db_connection_string = "mysql+cymysql://root:password@localhost/test"
 engine = create_engine(db_connection_string)
 
@@ -19,16 +20,23 @@ bikes_connection_string ='https://api.jcdecaux.com/vls/v1/stations?contract=Dubl
 # get from openweathermap api and store data in dictionary
 weather_connection_string = 'http://api.openweathermap.org/data/2.5/weather?q=Dublin&appid=416123cec041d7c358e497cd73c9657e'
 
+forecast_connection_string = 'http://api.openweathermap.org/data/2.5/forecast?q=Dublin&appid=416123cec041d7c358e497cd73c9657e'
+
+
 def main():
     """Runs an infinite loop, calling DB update functions on each iteration.
     getStaticData is called once, getDynamicData every 5 mins, and getWeatherData
     every 30 mins"""
     # add static data (once-off)
-    getStaticData()
-    
     Session = sessionmaker(bind=engine)
     session = Session()
+    
+    getStaticData()
+    
     getCurrentData()
+    
+    getForecastData()
+    session.close()
     
     counter = 0
     while(True):
@@ -41,6 +49,8 @@ def main():
         #update weather every 30 minutes
         if counter % 6 == 0:
             getWeatherData()
+            if counter % 12 == 0:
+                getForecastData()
 
         session.close()
         counter += 1
@@ -71,9 +81,7 @@ def getStaticData():
         except Exception as e:
             session.rollback()
             logging.error(e)
-        
-    session.close()
-    
+            
 def getCurrentData():
     r = requests.get(bikes_connection_string)
     station_info_list = r.json()
@@ -100,8 +108,6 @@ def getCurrentData():
         except Exception as e:
             session.rollback()
             logging.error(e)
-        
-    session.close()
 
 def getDynamicData():
 
@@ -258,6 +264,124 @@ def getWeatherData():
     except Exception as e:
         session.rollback()
         logging.error(e)
+        
+def getForecastData():
+    r2 = requests.get(forecast_connection_string)
+    f_list = r2.json()
+    for f in f_list["list"]:
+        try:
+            f_time = f['dt']
+        except KeyError:
+            return
+        try:
+            f_mainDescription = f['weather'][0]['main']
+        except KeyError:
+            f_mainDescription = 'default'
+        try:
+            f_detailedDescription = f['weather'][0]['description']
+        except KeyError:
+            f_detailedDescription = 'default'
+        try:
+            f_icon = f['weather'][0]['icon']
+        except KeyError:
+            f_icon = 'default'
+    
+        try:
+            f_temp = f['main']['temp']
+        except KeyError:
+            f_temp = 0
+        try:
+            f_maxTemp = f['main']['temp_max']
+        except KeyError:
+            f_maxTemp = 0
+        try:
+            f_minTemp = f['main']['temp_min']
+        except KeyError:
+            f_minTemp = 0
+        try:
+            f_pressure = f['main']['pressure']
+        except KeyError:
+            f_pressure = 0
+        try:
+            f_humidity = f['main']['humidity']
+        except KeyError:
+            f_humidity = 0
+    
+        try:
+            f_windSpeed = f['wind']['speed']
+        except KeyError:
+            f_windSpeed = 0
+        try:
+            f_windAngle = f['wind']['deg']
+        except KeyError:
+            f_windAngle = 0
+        try:
+            f_cloudDensity = f['clouds']['all']
+        except KeyError:
+            f_cloudDensity = 0
+        
+        new_row = False
+        try:
+            match = session.query(forecastData).filter(forecastData.time == f_time).one()
+            new_row = False
+        except KeyError:
+            new_row = True
+        
+        if new_row:
+    
+            #Create DB object with weatherData class, then try to add it to the DB
+            forecast_row = forecastData(time = f_time, mainDescription = f_mainDescription, 
+                                        detailedDescription = f_detailedDescription, 
+                                        icon = f_icon, currentTemp = f_temp, maxTemp = f_maxTemp, 
+                                        minTemp = f_minTemp, pressure = f_pressure, 
+                                        humidity = f_humidity, windSpeed = f_windSpeed, 
+                                        windAngle = f_windAngle, cloudDensity = f_cloudDensity, 
+                                        )
+                        
+            session.add(forecast_row)
+            try:
+                session.commit()
+            except exc.IntegrityError:
+                session.rollback()
+            except Exception as e:
+                session.rollback()
+                logging.error(e)
+        else:
+            match.mainDescription = f_mainDescription
+            match.detailedDescription = f_detailedDescription
+            match.icon = f_icon
+            match.currentTemp = f_temp
+            match.maxTemp = f_maxTemp
+            match.minTemp = f_minTemp
+            match.pressure = f_pressure
+            match.humidity = f_humidity
+            match.windSpeed = f_windSpeed
+            match.windAngle = f_windAngle
+            match.cloudDensity = f_cloudDensity
+            
+            try:
+                session.commit()
+            except exc.IntegrityError:
+                session.rollback()
+            except Exception as e:
+                session.rollback()
+                logging.error(e)
+          
+    now = time.time()
+    for instance in session.query(forecastData).order_by(forecastData.time):
+        if instance.time < now:
+            session.delete(instance)
+            try:
+                session.commit()
+            except exc.IntegrityError:
+                session.rollback()
+            except Exception as e:
+                session.rollback()
+                logging.error(e)
+            
+def justForecast():
+    getForecastData()
+    print("Done!")
 
 if __name__ == '__main__':
     main()
