@@ -31,7 +31,7 @@ function initMap() {
 
   var currentPositionMarker;
   function addCurrentPositionMarker(current_position){
-
+  	map.setCenter(current_position);
 
     if(currentPositionMarker != null){
       currentPositionMarker.setMap(null);
@@ -41,8 +41,9 @@ function initMap() {
       position:current_position,
       map:map,
       Draggable:true,
-
+     
     });
+
 
    // $(this).on("click", function() {
      // var url = 'nearestStation/' + current_position;
@@ -200,7 +201,7 @@ function addStationMarkersFromDB(){
           });
           }
 
-                // sw and ne bounds for the map search. biases, but doesn't exclude outside bounds searches
+          // sw and ne bounds for the map search. biases, but doesn't exclude outside bounds searches
           var defaultBounds = new google.maps.LatLngBounds(
             new google.maps.LatLng(53.317850, -6.352633),
             new google.maps.LatLng(53.375709, -6.209894));
@@ -241,9 +242,7 @@ function addStationMarkersFromDB(){
           	});
 
           	};
-          	//autocomplete.addListener('place_changed', geoCode()); // same as below 
-     		//$('#input_btn.on('click', geoCode() ); //- weirdly this results in geoCode being called on init, but not on click
-     		//google.maps.event.addEventListener('place_changed', geoCode());
+       
      		document.getElementById('address-input-btn').addEventListener('click', geoCode);
           	addStationMarkersFromDB();
  			
