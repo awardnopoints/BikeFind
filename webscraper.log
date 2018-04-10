@@ -663,3 +663,620 @@ Traceback (most recent call last):
     raise Error(errorclass, errorvalue)
 cymysql.err.Error: (<class 'KeyboardInterrupt'>, KeyboardInterrupt())
 2018-04-10 00:47:03,422:ERROR:(cymysql.err.Error) (<class 'KeyboardInterrupt'>, KeyboardInterrupt()) [SQL: 'INSERT INTO `dynamicData` (time, address, `totalBikeStands`, `availableBikeStands`, `availableBikes`, status) VALUES (%s, %s, %s, %s, %s, %s)'] [parameters: (1523317388000, 'Heuston Station (Central)', 40, 2, 38, 'OPEN')] (Background on this error at: http://sqlalche.me/e/dbapi)
+2018-04-10 11:02:52,163:ERROR:Exception during reset or similar
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 302, in rollback
+    self.read_packet()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 420, in read_packet
+    return MysqlPacket(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 62, in __init__
+    self.__recv_packet()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 83, in __recv_packet
+    packet_header = self.__recv_from_socket(4)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 72, in __recv_from_socket
+    recv_data = self._socket.recv(size)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/pool.py", line 705, in _finalize_fairy
+    fairy._reset(pool)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/pool.py", line 876, in _reset
+    pool._dialect.do_rollback(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/dialects/mysql/base.py", line 1796, in do_rollback
+    dbapi_connection.rollback()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 305, in rollback
+    self.errorhandler(None, exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+cymysql.err.Error: (<class 'KeyboardInterrupt'>, KeyboardInterrupt())
+2018-04-10 12:33:31,545:ERROR:Exception during reset or similar
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 128, in execute
+    self._query(query)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 238, in _query
+    conn.query(q)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 345, in query
+    self._result = MySQLResult(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 260, in __init__
+    self.first_packet = MysqlPacket(self.connection)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 62, in __init__
+    self.__recv_packet()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 83, in __recv_packet
+    packet_header = self.__recv_from_socket(4)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 72, in __recv_from_socket
+    recv_data = self._socket.recv(size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 133, in execute
+    self.errorhandler(exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 35, in errorhandler
+    self.connection.errorhandler(self, errorclass, errorvalue)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+cymysql.err.Error: (<class 'ConnectionResetError'>, ConnectionResetError(104, 'Connection reset by peer'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2344, in _flush
+    flush_context.execute()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 391, in execute
+    rec.execute(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 556, in execute
+    uow
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 181, in save_obj
+    mapper, table, insert)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 830, in _emit_insert_statements
+    execute(statement, multiparams)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 203, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 186, in reraise
+    raise value.with_traceback(tb)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 133, in execute
+    self.errorhandler(exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 35, in errorhandler
+    self.connection.errorhandler(self, errorclass, errorvalue)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+sqlalchemy.exc.DBAPIError: (cymysql.err.Error) (<class 'ConnectionResetError'>, ConnectionResetError(104, 'Connection reset by peer')) [SQL: 'INSERT INTO `dynamicData` (time, address, `totalBikeStands`, `availableBikeStands`, `availableBikes`, status) VALUES (%s, %s, %s, %s, %s, %s)'] [parameters: (1523359833000, 'Smithfield North', 30, 29, 1, 'OPEN')] (Background on this error at: http://sqlalche.me/e/dbapi)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 301, in rollback
+    self._execute_command(COM_QUERY, "ROLLBACK")
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 443, in _execute_command
+    self._send_command(command, sql)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 439, in _send_command
+    self.socket.sendall(prelude + sql)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 704, in _rollback_impl
+    self.engine.dialect.do_rollback(self.connection)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/dialects/mysql/base.py", line 1796, in do_rollback
+    dbapi_connection.rollback()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 305, in rollback
+    self.errorhandler(None, exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+cymysql.err.Error: (<class 'BrokenPipeError'>, BrokenPipeError(32, 'Broken pipe'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "bikefind/webscraper.py", line 150, in getDynamicData
+    session.commit()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 943, in commit
+    self.transaction.commit()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 467, in commit
+    self._prepare_impl()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 447, in _prepare_impl
+    self.session.flush()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2254, in flush
+    self._flush(objects)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2380, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/langhelpers.py", line 76, in __exit__
+    compat.reraise(type_, value, traceback)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 187, in reraise
+    raise value
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2380, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 532, in rollback
+    util.reraise(*rollback_err)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 187, in reraise
+    raise value
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 497, in rollback
+    t[1].rollback()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1632, in rollback
+    self._do_rollback()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1670, in _do_rollback
+    self.connection._rollback_impl()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 706, in _rollback_impl
+    self._handle_dbapi_exception(e, None, None, None, None)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 203, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 186, in reraise
+    raise value.with_traceback(tb)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 704, in _rollback_impl
+    self.engine.dialect.do_rollback(self.connection)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/dialects/mysql/base.py", line 1796, in do_rollback
+    dbapi_connection.rollback()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 305, in rollback
+    self.errorhandler(None, exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+sqlalchemy.exc.DBAPIError: (cymysql.err.Error) (<class 'BrokenPipeError'>, BrokenPipeError(32, 'Broken pipe')) (Background on this error at: http://sqlalche.me/e/dbapi)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 301, in rollback
+    self._execute_command(COM_QUERY, "ROLLBACK")
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 443, in _execute_command
+    self._send_command(command, sql)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 439, in _send_command
+    self.socket.sendall(prelude + sql)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/pool.py", line 705, in _finalize_fairy
+    fairy._reset(pool)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/pool.py", line 876, in _reset
+    pool._dialect.do_rollback(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/dialects/mysql/base.py", line 1796, in do_rollback
+    dbapi_connection.rollback()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 305, in rollback
+    self.errorhandler(None, exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+cymysql.err.Error: (<class 'BrokenPipeError'>, BrokenPipeError(32, 'Broken pipe'))
+2018-04-10 12:33:31,568:ERROR:Exception closing connection <cymysql.connections.Connection object at 0x7f563eb3a4a8>
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 128, in execute
+    self._query(query)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 238, in _query
+    conn.query(q)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 345, in query
+    self._result = MySQLResult(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 260, in __init__
+    self.first_packet = MysqlPacket(self.connection)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 62, in __init__
+    self.__recv_packet()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 83, in __recv_packet
+    packet_header = self.__recv_from_socket(4)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 72, in __recv_from_socket
+    recv_data = self._socket.recv(size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 133, in execute
+    self.errorhandler(exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 35, in errorhandler
+    self.connection.errorhandler(self, errorclass, errorvalue)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+cymysql.err.Error: (<class 'ConnectionResetError'>, ConnectionResetError(104, 'Connection reset by peer'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2344, in _flush
+    flush_context.execute()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 391, in execute
+    rec.execute(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 556, in execute
+    uow
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 181, in save_obj
+    mapper, table, insert)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 830, in _emit_insert_statements
+    execute(statement, multiparams)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 203, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 186, in reraise
+    raise value.with_traceback(tb)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 133, in execute
+    self.errorhandler(exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 35, in errorhandler
+    self.connection.errorhandler(self, errorclass, errorvalue)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+sqlalchemy.exc.DBAPIError: (cymysql.err.Error) (<class 'ConnectionResetError'>, ConnectionResetError(104, 'Connection reset by peer')) [SQL: 'INSERT INTO `dynamicData` (time, address, `totalBikeStands`, `availableBikeStands`, `availableBikes`, status) VALUES (%s, %s, %s, %s, %s, %s)'] [parameters: (1523359833000, 'Smithfield North', 30, 29, 1, 'OPEN')] (Background on this error at: http://sqlalche.me/e/dbapi)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 301, in rollback
+    self._execute_command(COM_QUERY, "ROLLBACK")
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 443, in _execute_command
+    self._send_command(command, sql)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 439, in _send_command
+    self.socket.sendall(prelude + sql)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 704, in _rollback_impl
+    self.engine.dialect.do_rollback(self.connection)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/dialects/mysql/base.py", line 1796, in do_rollback
+    dbapi_connection.rollback()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 305, in rollback
+    self.errorhandler(None, exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+cymysql.err.Error: (<class 'BrokenPipeError'>, BrokenPipeError(32, 'Broken pipe'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "bikefind/webscraper.py", line 150, in getDynamicData
+    session.commit()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 943, in commit
+    self.transaction.commit()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 467, in commit
+    self._prepare_impl()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 447, in _prepare_impl
+    self.session.flush()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2254, in flush
+    self._flush(objects)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2380, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/langhelpers.py", line 76, in __exit__
+    compat.reraise(type_, value, traceback)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 187, in reraise
+    raise value
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2380, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 532, in rollback
+    util.reraise(*rollback_err)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 187, in reraise
+    raise value
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 497, in rollback
+    t[1].rollback()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1632, in rollback
+    self._do_rollback()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1670, in _do_rollback
+    self.connection._rollback_impl()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 706, in _rollback_impl
+    self._handle_dbapi_exception(e, None, None, None, None)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 203, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 186, in reraise
+    raise value.with_traceback(tb)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 704, in _rollback_impl
+    self.engine.dialect.do_rollback(self.connection)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/dialects/mysql/base.py", line 1796, in do_rollback
+    dbapi_connection.rollback()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 305, in rollback
+    self.errorhandler(None, exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+sqlalchemy.exc.DBAPIError: (cymysql.err.Error) (<class 'BrokenPipeError'>, BrokenPipeError(32, 'Broken pipe')) (Background on this error at: http://sqlalche.me/e/dbapi)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 301, in rollback
+    self._execute_command(COM_QUERY, "ROLLBACK")
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 443, in _execute_command
+    self._send_command(command, sql)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 439, in _send_command
+    self.socket.sendall(prelude + sql)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/pool.py", line 705, in _finalize_fairy
+    fairy._reset(pool)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/pool.py", line 876, in _reset
+    pool._dialect.do_rollback(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/dialects/mysql/base.py", line 1796, in do_rollback
+    dbapi_connection.rollback()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 305, in rollback
+    self.errorhandler(None, exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+cymysql.err.Error: (<class 'BrokenPipeError'>, BrokenPipeError(32, 'Broken pipe'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/pool.py", line 317, in _close_connection
+    self._dialect.do_close(connection)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 463, in do_close
+    dbapi_connection.close()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 272, in close
+    self.socket.sendall(send_data)
+BrokenPipeError: [Errno 32] Broken pipe
+2018-04-10 12:33:31,572:ERROR:(cymysql.err.Error) (<class 'BrokenPipeError'>, BrokenPipeError(32, 'Broken pipe')) (Background on this error at: http://sqlalche.me/e/dbapi)
+2018-04-10 12:34:40,270:ERROR:(cymysql.err.Error) (<class 'KeyboardInterrupt'>, KeyboardInterrupt()) (Background on this error at: http://sqlalche.me/e/dbapi)
+2018-04-10 12:34:40,585:ERROR:Exception during reset or similar
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 128, in execute
+    self._query(query)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 238, in _query
+    conn.query(q)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 345, in query
+    self._result = MySQLResult(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 260, in __init__
+    self.first_packet = MysqlPacket(self.connection)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 62, in __init__
+    self.__recv_packet()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 83, in __recv_packet
+    packet_header = self.__recv_from_socket(4)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 72, in __recv_from_socket
+    recv_data = self._socket.recv(size)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 133, in execute
+    self.errorhandler(exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 35, in errorhandler
+    self.connection.errorhandler(self, errorclass, errorvalue)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+cymysql.err.Error: (<class 'KeyboardInterrupt'>, KeyboardInterrupt())
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "bikefind/webscraper.py", line 150, in getDynamicData
+    session.commit()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 943, in commit
+    self.transaction.commit()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 467, in commit
+    self._prepare_impl()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 447, in _prepare_impl
+    self.session.flush()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2254, in flush
+    self._flush(objects)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2380, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/langhelpers.py", line 66, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 187, in reraise
+    raise value
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2344, in _flush
+    flush_context.execute()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 391, in execute
+    rec.execute(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 556, in execute
+    uow
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 181, in save_obj
+    mapper, table, insert)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 830, in _emit_insert_statements
+    execute(statement, multiparams)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 203, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 186, in reraise
+    raise value.with_traceback(tb)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 133, in execute
+    self.errorhandler(exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 35, in errorhandler
+    self.connection.errorhandler(self, errorclass, errorvalue)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+sqlalchemy.exc.DBAPIError: (cymysql.err.Error) (<class 'KeyboardInterrupt'>, KeyboardInterrupt()) [SQL: 'INSERT INTO `dynamicData` (time, address, `totalBikeStands`, `availableBikeStands`, `availableBikes`, status) VALUES (%s, %s, %s, %s, %s, %s)'] [parameters: (1523359739000, 'King Street North', 30, 30, 0, 'OPEN')] (Background on this error at: http://sqlalche.me/e/dbapi)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 302, in rollback
+    self.read_packet()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 420, in read_packet
+    return MysqlPacket(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 62, in __init__
+    self.__recv_packet()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 83, in __recv_packet
+    packet_header = self.__recv_from_socket(4)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 72, in __recv_from_socket
+    recv_data = self._socket.recv(size)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/pool.py", line 705, in _finalize_fairy
+    fairy._reset(pool)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/pool.py", line 876, in _reset
+    pool._dialect.do_rollback(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/dialects/mysql/base.py", line 1796, in do_rollback
+    dbapi_connection.rollback()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 305, in rollback
+    self.errorhandler(None, exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+cymysql.err.Error: (<class 'KeyboardInterrupt'>, KeyboardInterrupt())
+2018-04-10 12:34:40,588:ERROR:(cymysql.err.Error) (<class 'KeyboardInterrupt'>, KeyboardInterrupt()) [SQL: 'INSERT INTO `dynamicData` (time, address, `totalBikeStands`, `availableBikeStands`, `availableBikes`, status) VALUES (%s, %s, %s, %s, %s, %s)'] [parameters: (1523359739000, 'King Street North', 30, 30, 0, 'OPEN')] (Background on this error at: http://sqlalche.me/e/dbapi)
+2018-04-10 12:46:28,114:ERROR:Exception during reset or similar
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 128, in execute
+    self._query(query)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 238, in _query
+    conn.query(q)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 345, in query
+    self._result = MySQLResult(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 260, in __init__
+    self.first_packet = MysqlPacket(self.connection)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 62, in __init__
+    self.__recv_packet()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 83, in __recv_packet
+    packet_header = self.__recv_from_socket(4)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 72, in __recv_from_socket
+    recv_data = self._socket.recv(size)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 133, in execute
+    self.errorhandler(exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 35, in errorhandler
+    self.connection.errorhandler(self, errorclass, errorvalue)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+cymysql.err.Error: (<class 'KeyboardInterrupt'>, KeyboardInterrupt())
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "bikefind/webscraper.py", line 368, in getForecastData
+    session.commit()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 943, in commit
+    self.transaction.commit()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 467, in commit
+    self._prepare_impl()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 447, in _prepare_impl
+    self.session.flush()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2254, in flush
+    self._flush(objects)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2380, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/langhelpers.py", line 66, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 187, in reraise
+    raise value
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2344, in _flush
+    flush_context.execute()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 391, in execute
+    rec.execute(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 556, in execute
+    uow
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 177, in save_obj
+    mapper, table, update)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 768, in _emit_update_statements
+    execute(statement, multiparams)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 203, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 186, in reraise
+    raise value.with_traceback(tb)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 133, in execute
+    self.errorhandler(exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 35, in errorhandler
+    self.connection.errorhandler(self, errorclass, errorvalue)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+sqlalchemy.exc.DBAPIError: (cymysql.err.Error) (<class 'KeyboardInterrupt'>, KeyboardInterrupt()) [SQL: 'UPDATE `forecastData` SET pressure=%s, `windAngle`=%s WHERE `forecastData`.time = %s'] [parameters: (1019.87, 68.503, 1523448000)] (Background on this error at: http://sqlalche.me/e/dbapi)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 302, in rollback
+    self.read_packet()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 420, in read_packet
+    return MysqlPacket(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 62, in __init__
+    self.__recv_packet()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 83, in __recv_packet
+    packet_header = self.__recv_from_socket(4)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 72, in __recv_from_socket
+    recv_data = self._socket.recv(size)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/pool.py", line 705, in _finalize_fairy
+    fairy._reset(pool)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/pool.py", line 876, in _reset
+    pool._dialect.do_rollback(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/dialects/mysql/base.py", line 1796, in do_rollback
+    dbapi_connection.rollback()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 305, in rollback
+    self.errorhandler(None, exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+cymysql.err.Error: (<class 'KeyboardInterrupt'>, KeyboardInterrupt())
+2018-04-10 12:46:28,120:ERROR:(cymysql.err.Error) (<class 'KeyboardInterrupt'>, KeyboardInterrupt()) [SQL: 'UPDATE `forecastData` SET pressure=%s, `windAngle`=%s WHERE `forecastData`.time = %s'] [parameters: (1019.87, 68.503, 1523448000)] (Background on this error at: http://sqlalche.me/e/dbapi)

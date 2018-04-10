@@ -2,7 +2,6 @@ from sqlalchemy import create_engine, exc
 from sqlalchemy.orm.session import sessionmaker
 from bikefind.dbClasses import staticData, dynamicData, currentData, weatherData, forecastData
 import requests, time, logging
-import pandas as pd
 
 logging.basicConfig(filename='webscraper.log', level=logging.ERROR, format='%(asctime)s:%(levelname)s:%(message)s')
 
@@ -28,6 +27,7 @@ def main():
     getStaticData is called once, getDynamicData every 5 mins, and getWeatherData
     every 30 mins"""
     # add static data (once-off)
+    print("now working")
     Session = sessionmaker(bind=engine)
     session = Session()
     
@@ -320,52 +320,57 @@ def getForecastData():
         except KeyError:
             f_cloudDensity = 0
         
-        new_row = False
-        try:
-            match = session.query(forecastData).filter(forecastData.time == f_time).one()
+        for i in [-3600, 0, 3600]:
+            n_time = f_time + i
+            print("forecastData:", n_time)
             new_row = False
-        except KeyError:
-            new_row = True
-        
-        if new_row:
-    
-            #Create DB object with weatherData class, then try to add it to the DB
-            forecast_row = forecastData(time = f_time, mainDescription = f_mainDescription, 
-                                        detailedDescription = f_detailedDescription, 
-                                        icon = f_icon, currentTemp = f_temp, maxTemp = f_maxTemp, 
-                                        minTemp = f_minTemp, pressure = f_pressure, 
-                                        humidity = f_humidity, windSpeed = f_windSpeed, 
-                                        windAngle = f_windAngle, cloudDensity = f_cloudDensity, 
-                                        )
-                        
-            session.add(forecast_row)
             try:
-                session.commit()
-            except exc.IntegrityError:
-                session.rollback()
+                match = session.query(forecastData).filter(forecastData.time == n_time).one()
+                new_row = False
+            except KeyError:
+                new_row = True
             except Exception as e:
-                session.rollback()
-                logging.error(e)
-        else:
-            match.mainDescription = f_mainDescription
-            match.detailedDescription = f_detailedDescription
-            match.icon = f_icon
-            match.currentTemp = f_temp
-            match.maxTemp = f_maxTemp
-            match.minTemp = f_minTemp
-            match.pressure = f_pressure
-            match.humidity = f_humidity
-            match.windSpeed = f_windSpeed
-            match.windAngle = f_windAngle
-            match.cloudDensity = f_cloudDensity
+                new_row = True
             
-            try:
-                session.commit()
-            except exc.IntegrityError:
-                session.rollback()
-            except Exception as e:
-                session.rollback()
-                logging.error(e)
+            if new_row:
+        
+                #Create DB object with weatherData class, then try to add it to the DB
+                forecast_row = forecastData(time = n_time, mainDescription = f_mainDescription, 
+                                            detailedDescription = f_detailedDescription, 
+                                            icon = f_icon, currentTemp = f_temp, maxTemp = f_maxTemp, 
+                                            minTemp = f_minTemp, pressure = f_pressure, 
+                                            humidity = f_humidity, windSpeed = f_windSpeed, 
+                                            windAngle = f_windAngle, cloudDensity = f_cloudDensity, 
+                                            )
+                            
+                session.add(forecast_row)
+                try:
+                    session.commit()
+                except exc.IntegrityError:
+                    session.rollback()
+                except Exception as e:
+                    session.rollback()
+                    logging.error(e)
+            else:
+                match.mainDescription = f_mainDescription
+                match.detailedDescription = f_detailedDescription
+                match.icon = f_icon
+                match.currentTemp = f_temp
+                match.maxTemp = f_maxTemp
+                match.minTemp = f_minTemp
+                match.pressure = f_pressure
+                match.humidity = f_humidity
+                match.windSpeed = f_windSpeed
+                match.windAngle = f_windAngle
+                match.cloudDensity = f_cloudDensity
+                
+                try:
+                    session.commit()
+                except exc.IntegrityError:
+                    session.rollback()
+                except Exception as e:
+                    session.rollback()
+                    logging.error(e)
           
     now = time.time()
     for instance in session.query(forecastData).order_by(forecastData.time):
