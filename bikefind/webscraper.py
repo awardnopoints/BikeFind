@@ -6,7 +6,7 @@ import requests, time, logging
 logging.basicConfig(filename='webscraper.log', level=logging.ERROR, format='%(asctime)s:%(levelname)s:%(message)s')
 
 #connect to remote DBS
-db_connection_string = "mysql+cymysql://conor:team0db1@team0db.cojxdhcdsq2b.us-west-2.rds.amazonaws.com/test3"
+db_connection_string = "mysql+cymysql://conor:team0db1@team0db.cojxdhcdsq2b.us-west-2.rds.amazonaws.com/team0"
 #db_connection_string = "mysql+cymysql://root:password@localhost/test"
 engine = create_engine(db_connection_string)
 
@@ -27,7 +27,6 @@ def main():
     getStaticData is called once, getDynamicData every 5 mins, and getWeatherData
     every 30 mins"""
     # add static data (once-off)
-    print("now working")
     Session = sessionmaker(bind=engine)
     session = Session()
     
@@ -322,7 +321,6 @@ def getForecastData():
         
         for i in [-3600, 0, 3600]:
             n_time = f_time + i
-            print("forecastData:", n_time)
             new_row = False
             try:
                 match = session.query(forecastData).filter(forecastData.time == n_time).one()
