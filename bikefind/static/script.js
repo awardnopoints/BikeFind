@@ -1,6 +1,6 @@
 function initMap() {
 
-
+  
   var charlemontPlace = {lat: 53.330662, lng: -6.260177};
 
   var mapOptions = {
@@ -205,18 +205,58 @@ function addStationMarkersFromDB(){
             new google.maps.LatLng(53.317850, -6.352633),
             new google.maps.LatLng(53.375709, -6.209894));
 
-          var options = {
+          var addressBarOptions = {
             bounds: defaultBounds
           };
 
           //var input = $('#address-input');
           // jquery assignment not working for some reason
           var input = document.getElementById('address-input');
+          var input_btn = document.getElementById('address-input-btn')
+         	
+
+
+          //var input = $('#address-input');
           map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+          map.controls[google.maps.ControlPosition.TOP_LEFT].push(input_btn);
 
-          var autocomplete = new google.maps.places.Autocomplete(input, options);
+          var autocomplete = new google.maps.places.Autocomplete(input, addressBarOptions);
 
-          addStationMarkersFromDB();
-               }
+
+          // geocoding section
+          var geocoder = new google.maps.Geocoder();
+
+          function geoCode() {
+          	var testAddress = 'Grosvenor Square, Dublin 8, Ireland';
+          	var address = document.getElementById('address-input').value;
+
+          	geocoder.geocode({'address': address}, function(data, status) {
+          		if (status == 'OK') {
+          			map.setCenter(data[0].geometry.location);
+          			addCurrentPositionMarker(data[0].geometry.location);
+
+          		} else {
+          			console.log(status);
+          		}
+          	});
+
+          	};
+          	//autocomplete.addListener('place_changed', geoCode()); // same as below 
+     		//$('#input_btn.on('click', geoCode() ); //- weirdly this results in geoCode being called on init, but not on click
+     		//google.maps.event.addEventListener('place_changed', geoCode());
+     		document.getElementById('address-input-btn').addEventListener('click', geoCode);
+          	addStationMarkersFromDB();
+ 			
+
+ }
+
+         
+
+
+          
+
+       
+
+
 
 
