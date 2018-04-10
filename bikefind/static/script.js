@@ -40,8 +40,9 @@ function initMap() {
       title:"Selected Position",
       position:current_position,
       map:map,
+      icon: './static/sample_icon.png',
       Draggable:true,
-     
+
     });
 
 
