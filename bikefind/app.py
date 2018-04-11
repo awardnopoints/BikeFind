@@ -5,7 +5,7 @@ from geopy.distance import great_circle
 
 app = Flask(__name__)
 
-db_connection_string = "mysql+cymysql://conor:team0db1@team0db.cojxdhcdsq2b.us-west-2.rds.amazonaws.com/test2"
+db_connection_string = "mysql+cymysql://conor:team0db1@team0db.cojxdhcdsq2b.us-west-2.rds.amazonaws.com/team0"
 #db_connection_string ='mysql+cymysql://root:password@localhost:3306/test_db'
 engine = create_engine(db_connection_string)
 
@@ -37,27 +37,36 @@ def getRtpi():
 
 @app.route('/findstation/<coords>')
 def findstation(coords):
-    """Function to find the three nearest stations to the given coordinates. 
+    """Function to find the three nearest stations to the given coordinates.
         The address, proximity, bike availability and open/closed status of these stations is returned."""
-    
+
     # for now including both concat latlng, as well as separate lat and lng. until we know which is handier for what.
     query = 'select staticData.address, currentData.availableBikes, currentData.availableBikeStands, currentData.status, staticData.latitude, staticData.longitude, CONCAT("(", staticData.latitude, ", ", staticData.longitude, ")") AS LatLng from currentData inner join staticData where currentData.address=staticData.address group by staticData.address'
-    
+
     df = pd.read_sql_query(query, engine)
-    
+
     #add a new column for distance to current location
     df['proximity'] = df.LatLng.apply(lambda station: great_circle(station, coords).meters)
     nearestStations = df.sort_values('proximity').head(3)
-    
+
     #convert nearestStations df to json
     #ideally find a way to get rid of the index key value pair
     nearestJson = nearestStations[['address', 'proximity', 'availableBikes', 'availableBikeStands', 'status', 'LatLng', 'latitude', 'longitude']].reset_index().to_json()
-    
-    
+
+
     #return "Second nearest station is: " + nearestStations['address'].tolist()[1]
     return nearestJson
 
 
+@app.route('/getWeather')
+def getWeatherData():
+    weatherDataTable = pd.read_sql_table('weatherData', engine)
+    #weatherDataDictArray = weatherDataTable.T.to_dict().values()
+#    weatherData = weatherDataTable.tail(0)
+    weatherDataDict = weatherDataTable.to_dict(orient='index')
+    weatherData = weatherDataDict[len(weatherDataDict)-1]
+    print(weatherData)
+    return jsonify(weatherData)
 
 def appWrapper():
     """Wrapper to allow entry point to app.run with the correct arguments"""
