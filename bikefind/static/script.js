@@ -16,6 +16,10 @@ function initMap() {
   directionsDisplay.setMap(map);
   directionsDisplay.setPanel(document.getElementById('directions-test'));
 
+  // declare geocoder object here so can use in the on click current loc marker
+  //var geocoder = new google.maps.Geocoder();
+
+
   
 
   
