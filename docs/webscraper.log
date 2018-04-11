@@ -1,0 +1,126 @@
+2018-04-11 09:42:46,665:ERROR:Exception during reset or similar
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/cymysql/cursors.py", line 133, in execute
+    self.errorhandler(exc, value)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/cymysql/cursors.py", line 35, in errorhandler
+    self.connection.errorhandler(self, errorclass, errorvalue)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/cymysql/connections.py", line 118, in errorhandler
+    raise errorvalue
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/cymysql/cursors.py", line 128, in execute
+    self._query(query)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/cymysql/cursors.py", line 238, in _query
+    conn.query(q)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/cymysql/connections.py", line 345, in query
+    self._result = MySQLResult(self)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/cymysql/packet.py", line 260, in __init__
+    self.first_packet = MysqlPacket(self.connection)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/cymysql/packet.py", line 67, in __init__
+    raise_mysql_exception(self.__data)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/cymysql/err.py", line 142, in raise_mysql_exception
+    _check_mysql_exception(errinfo)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/cymysql/err.py", line 135, in _check_mysql_exception
+    raise errorclass(errno,errorvalue)
+cymysql.err.IntegrityError: (1062, "Duplicate entry 'Clonmel Street' for key 'PRIMARY'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/bikefind/webscraper.py", line 59, in getStaticData
+    session.commit()
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 943, in commit
+    self.transaction.commit()
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 467, in commit
+    self._prepare_impl()
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 447, in _prepare_impl
+    self.session.flush()
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2243, in flush
+    self._flush(objects)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2369, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/sqlalchemy/util/langhelpers.py", line 66, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 187, in reraise
+    raise value
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2333, in _flush
+    flush_context.execute()
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 391, in execute
+    rec.execute(self)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 556, in execute
+    uow
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 181, in save_obj
+    mapper, table, insert)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 830, in _emit_insert_statements
+    execute(statement, multiparams)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 203, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 186, in reraise
+    raise value.with_traceback(tb)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/cymysql/cursors.py", line 133, in execute
+    self.errorhandler(exc, value)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/cymysql/cursors.py", line 35, in errorhandler
+    self.connection.errorhandler(self, errorclass, errorvalue)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/cymysql/connections.py", line 118, in errorhandler
+    raise errorvalue
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/cymysql/cursors.py", line 128, in execute
+    self._query(query)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/cymysql/cursors.py", line 238, in _query
+    conn.query(q)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/cymysql/connections.py", line 345, in query
+    self._result = MySQLResult(self)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/cymysql/packet.py", line 260, in __init__
+    self.first_packet = MysqlPacket(self.connection)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/cymysql/packet.py", line 67, in __init__
+    raise_mysql_exception(self.__data)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/cymysql/err.py", line 142, in raise_mysql_exception
+    _check_mysql_exception(errinfo)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/cymysql/err.py", line 135, in _check_mysql_exception
+    raise errorclass(errno,errorvalue)
+sqlalchemy.exc.IntegrityError: (cymysql.err.IntegrityError) (1062, "Duplicate entry 'Clonmel Street' for key 'PRIMARY'") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Clonmel Street', 53.336021, -6.26298, 0)] (Background on this error at: http://sqlalche.me/e/gkpj)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/cymysql/connections.py", line 302, in rollback
+    self.read_packet()
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/cymysql/connections.py", line 420, in read_packet
+    return MysqlPacket(self)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/cymysql/packet.py", line 62, in __init__
+    self.__recv_packet()
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/cymysql/packet.py", line 83, in __recv_packet
+    packet_header = self.__recv_from_socket(4)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/cymysql/packet.py", line 72, in __recv_from_socket
+    recv_data = self._socket.recv(size)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/sqlalchemy/pool.py", line 703, in _finalize_fairy
+    fairy._reset(pool)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/sqlalchemy/pool.py", line 873, in _reset
+    pool._dialect.do_rollback(self)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/sqlalchemy/dialects/mysql/base.py", line 1773, in do_rollback
+    dbapi_connection.rollback()
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/cymysql/connections.py", line 305, in rollback
+    self.errorhandler(None, exc, value)
+  File "/home/eoin/anaconda3/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+cymysql.err.Error: (<class 'KeyboardInterrupt'>, KeyboardInterrupt())
