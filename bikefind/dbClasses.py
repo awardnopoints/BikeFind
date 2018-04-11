@@ -55,5 +55,26 @@ class weatherData(Base):
     windAngle = Column(Integer, unique=False, nullable=True)
     cloudDensity = Column(Integer, unique=False, nullable=True)
     visibility = Column(Integer, unique=False, nullable=True)
+    
+    
+    
+class forecastData(Base):
+    """DB class for forecastData table"""
+    __tablename__="forecastData"
+    time = Column(BigInteger(), unique=False, nullable=False, primary_key=True)
+    mainDescription = Column(String(70), unique=False, nullable=True)
+    detailedDescription = Column(String(70), unique=False, nullable=True)
+    icon = Column(String(20), unique=False, nullable=True)
+    
+    currentTemp = Column(Float, unique=False, nullable=True)
+    maxTemp = Column(Float, unique=False, nullable=True)
+    minTemp = Column(Float, unique=False, nullable=True)
+    pressure = Column(Integer, unique=False, nullable=True)
+    humidity = Column(Integer, unique=False, nullable=True)
 
+    windSpeed = Column(Float, unique=False, nullable=True)
+    windAngle = Column(Integer, unique=False, nullable=True)
+    cloudDensity = Column(Integer, unique=False, nullable=True)
+
+    
 Base.metadata.create_all(bind=engine)

@@ -1,1 +1,1282 @@
 
+2018-04-09 22:12:38,810:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523318400, 'Rain', 'light rain', '10n', 279.6, 280.424, 279.6, 1007.84, 97, 4.82, 76.0059, 92)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:39,444:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523329200, 'Rain', 'light rain', '10n', 279.91, 280.457, 279.91, 1007.51, 99, 7.56, 60.0039, 92)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:40,061:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523340000, 'Rain', 'light rain', '10d', 280.91, 281.184, 280.91, 1008.28, 94, 9.06, 75.0004, 92)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:40,671:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523350800, 'Rain', 'light rain', '10d', 280.727, 280.727, 280.727, 1011.63, 96, 10.41, 67.5023, 92)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:41,290:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523361600, 'Rain', 'light rain', '10d', 280.541, 280.541, 280.541, 1012.76, 97, 9.86, 40.0049, 92)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:41,902:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523372400, 'Rain', 'light rain', '10d', 280.741, 280.741, 280.741, 1012.48, 97, 11.31, 38.5037, 92)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:42,514:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523383200, 'Rain', 'light rain', '10d', 281.148, 281.148, 281.148, 1013.4, 93, 9.15, 48.502, 92)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:43,131:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523394000, 'Rain', 'light rain', '10n', 281.582, 281.582, 281.582, 1015.13, 92, 8.06, 57.0004, 92)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:43,745:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523404800, 'Rain', 'light rain', '10n', 281.652, 281.652, 281.652, 1016.18, 92, 7.41, 80.002, 92)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:44,357:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523415600, 'Rain', 'light rain', '10n', 281.514, 281.514, 281.514, 1017.5, 93, 4.76, 99.5016, 92)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:44,973:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523426400, 'Rain', 'light rain', '10d', 281.017, 281.017, 281.017, 1018.82, 95, 3.67, 77.5008, 80)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:45,588:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523437200, 'Rain', 'light rain', '10d', 281.247, 281.247, 281.247, 1019.52, 95, 3.71, 56.0019, 76)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:46,202:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523448000, 'Rain', 'light rain', '10d', 281.206, 281.206, 281.206, 1019.46, 95, 4.76, 64.5051, 92)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:46,796:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523458800, 'Rain', 'light rain', '10d', 281.148, 281.148, 281.148, 1018.51, 95, 5.02, 50.0011, 92)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:47,432:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523469600, 'Rain', 'light rain', '10d', 280.983, 280.983, 280.983, 1017.5, 96, 4.45, 29.5013, 92)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:48,044:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523480400, 'Rain', 'light rain', '10n', 280.988, 280.988, 280.988, 1016.79, 96, 4.37, 21.5021, 92)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:48,660:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523491200, 'Rain', 'light rain', '10n', 281.007, 281.007, 281.007, 1016.25, 96, 4.42, 68.0046, 92)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:49,278:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523502000, 'Rain', 'light rain', '10n', 280.892, 280.892, 280.892, 1015.75, 97, 2.67, 97.0042, 92)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:49,887:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523512800, 'Rain', 'light rain', '10d', 280.894, 280.894, 280.894, 1016.18, 97, 2.35, 109.004, 88)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:50,444:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523523600, 'Rain', 'light rain', '10d', 281.267, 281.267, 281.267, 1017.17, 94, 2.31, 87.5045, 80)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:51,003:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523534400, 'Rain', 'light rain', '10d', 281.713, 281.713, 281.713, 1017.94, 94, 4.37, 79.0018, 80)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:51,801:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523545200, 'Rain', 'light rain', '10d', 281.642, 281.642, 281.642, 1018.02, 95, 4.37, 58.5033, 76)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:52,447:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523556000, 'Clouds', 'overcast clouds', '04d', 281.369, 281.369, 281.369, 1017.81, 97, 4.48, 47.5001, 88)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:53,039:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523566800, 'Rain', 'light rain', '10n', 281.675, 281.675, 281.675, 1018.02, 93, 5.53, 54.0037, 100)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:53,592:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523577600, 'Rain', 'light rain', '10n', 281.102, 281.102, 281.102, 1018.1, 95, 7.26, 75.5005, 76)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:54,150:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523588400, 'Rain', 'light rain', '10n', 280.416, 280.416, 280.416, 1017.85, 100, 6.61, 67.5021, 92)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:54,702:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523599200, 'Rain', 'light rain', '10d', 280.299, 280.299, 280.299, 1017.79, 100, 6.11, 54.5007, 92)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:55,319:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523610000, 'Rain', 'light rain', '10d', 280.424, 280.424, 280.424, 1017.88, 100, 5.66, 50.0084, 88)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:55,931:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523620800, 'Rain', 'light rain', '10d', 280.613, 280.613, 280.613, 1018.06, 99, 5.01, 41.0009, 92)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:56,543:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523631600, 'Clouds', 'few clouds', '02d', 280.88, 280.88, 280.88, 1017.26, 98, 4.81, 25.5107, 12)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:57,139:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523642400, 'Clouds', 'scattered clouds', '03d', 281.179, 281.179, 281.179, 1016.94, 96, 3.71, 6.00146, 32)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:57,733:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523653200, 'Rain', 'light rain', '10n', 280.799, 280.799, 280.799, 1016.9, 97, 3.12, 0.505096, 68)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:58,278:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523664000, 'Rain', 'light rain', '10n', 280.735, 280.735, 280.735, 1016.45, 98, 1.96, 329.001, 92)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:58,876:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523674800, 'Rain', 'light rain', '10n', 280.346, 280.346, 280.346, 1015.31, 100, 1.87, 283.507, 76)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:12:59,512:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523685600, 'Rain', 'light rain', '10d', 279.735, 279.735, 279.735, 1014.75, 100, 1.41, 228.5, 68)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:13:00,129:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523696400, 'Rain', 'light rain', '10d', 281.038, 281.038, 281.038, 1014.42, 99, 2.91, 175, 24)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:13:00,743:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523707200, 'Rain', 'light rain', '10d', 282.184, 282.184, 282.184, 1013.66, 92, 5.46, 167.502, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:13:01,356:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523718000, 'Rain', 'light rain', '10d', 282.529, 282.529, 282.529, 1012.18, 90, 8.21, 170, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:13:01,972:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523728800, 'Rain', 'light rain', '10d', 282.011, 282.011, 282.011, 1010.83, 92, 8.56, 161.002, 68)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:13:02,586:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.forecastData' doesn't exist") [SQL: 'INSERT INTO `forecastData` (time, `mainDescription`, `detailedDescription`, icon, `currentTemp`, `maxTemp`, `minTemp`, pressure, humidity, `windSpeed`, `windAngle`, `cloudDensity`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: (1523739600, 'Rain', 'light rain', '10n', 281.919, 281.919, 281.919, 1009.73, 92, 9.66, 153.5, 92)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:13:47,950:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Smithfield North', 53.349562, -6.278198, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:13:48,664:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Parnell Square North', 53.353462, -6.265305, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:13:49,383:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Clonmel Street', 53.336021, -6.26298, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:13:49,996:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Mount Street Lower', 53.33796, -6.24153, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:13:50,593:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Christchurch Place', 53.343368, -6.27012, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:13:51,328:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Grantham Street', 53.334123, -6.265436, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:13:52,046:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Pearse Street', 53.344304, -6.250427, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:13:52,658:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('York Street East', 53.338755, -6.262003, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:13:53,277:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Excise Walk', 53.347777, -6.244239, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:13:53,867:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Fitzwilliam Square West', 53.336074, -6.252825, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:13:54,504:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Portobello Road', 53.330091, -6.268044, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:13:55,223:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('St. James Hospital (Central)', 53.339983, -6.295594, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:13:55,833:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Parnell Street', 53.350929, -6.265125, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:13:56,449:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Frederick Street South', 53.341515, -6.256853, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:13:57,166:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Fownes Street Upper', 53.344603, -6.263371, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:13:57,883:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Clarendon Row', 53.340927, -6.262501, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:13:58,497:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Custom House', 53.348279, -6.254662, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:13:59,212:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Hanover Quay', 53.344115, -6.237153, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:13:59,828:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Oliver Bond Street', 53.343893, -6.280531, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:00,443:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Collins Barracks Museum', 53.347477, -6.28525, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:01,059:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Brookfield Road', 53.339005, -6.300217, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:01,672:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Benson Street', 53.344153, -6.233451, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:02,284:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Earlsfort Terrace', 53.334019, -6.258371, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:02,901:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Golden Lane', 53.340803, -6.267732, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:03,514:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Deverell Place', 53.351464, -6.255265, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:04,127:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('John Street West', 53.343105, -6.277167, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:04,845:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Fenian Street', 53.341428, -6.24672, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:05,460:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('South Dock Road', 53.341833, -6.231291, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:06,021:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('City Quay', 53.346637, -6.246154, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:06,587:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Exchequer Street', 53.343034, -6.263578, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:07,145:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('The Point', 53.346867, -6.230852, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:07,804:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Hatch Street', 53.33403, -6.260714, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:08,544:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Lime Street', 53.346026, -6.243576, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:09,252:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Charlemont Street', 53.330662, -6.260177, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:09,966:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Kilmainham Gaol', 53.342113, -6.310015, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:10,581:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Hardwicke Place', 53.357043, -6.263232, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:11,195:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Wolfe Tone Street', 53.348875, -6.267459, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:11,807:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Francis Street', 53.342081, -6.275233, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:12,423:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Greek Street', 53.346874, -6.272976, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:13,036:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Guild Street', 53.347932, -6.240928, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:13,650:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Herbert Place', 53.334432, -6.245575, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:14,369:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('High Street', 53.343565, -6.275071, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:14,981:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('North Circular Road', 53.359624, -6.260348, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:15,802:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Western Way', 53.354929, -6.269425, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:16,417:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Talbot Street', 53.350974, -6.25294, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:17,031:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Newman House', 53.337132, -6.26059, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:17,748:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ("Sir Patrick's Dun", 53.339218, -6.240642, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:18,363:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('New Central Bank', 53.347122, -6.234749, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:18,977:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Grangegorman Lower (Central)', 53.355173, -6.278424, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:19,591:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('King Street North', 53.350291, -6.273507, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:20,187:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Herbert Street', 53.335742, -6.24551, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:20,820:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Custom House Quay', 53.347884, -6.248048, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:21,537:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Molesworth Street', 53.341288, -6.258117, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:22,254:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Georges Quay', 53.347508, -6.252192, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:22,866:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Kilmainham Lane', 53.341805, -6.305085, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:23,480:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Mount Brown', 53.341645, -6.29719, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:24,097:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Market Street South', 53.342296, -6.287661, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:24,813:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Kevin Street', 53.337757, -6.267699, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:25,426:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Eccles Street East', 53.358115, -6.265601, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:26,042:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Grand Canal Dock', 53.342638, -6.238695, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:26,657:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Merrion Square East', 53.339434, -6.246548, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:27,274:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('York Street West', 53.339334, -6.264699, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:27,986:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ("St. Stephen's Green South", 53.337494, -6.26199, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:28,602:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Denmark Street Great', 53.35561, -6.261397, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:29,220:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Royal Hospital', 53.343897, -6.29706, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:29,829:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Heuston Station (Car Park)', 53.346985, -6.297804, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:30,446:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Grangegorman Lower (North)', 53.355954, -6.278378, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:31,058:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ("St. Stephen's Green East", 53.337824, -6.256035, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:31,675:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Heuston Station (Central)', 53.346603, -6.296924, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:32,287:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Townsend Street', 53.345922, -6.254614, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:32,904:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ("George's Lane", 53.35023, -6.279696, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:33,518:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Eccles Street', 53.359246, -6.269779, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:34,132:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Portobello Harbour', 53.330362, -6.265163, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:34,744:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Mater Hospital', 53.359967, -6.264828, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:35,361:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Blessington Street', 53.356769, -6.26814, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:35,975:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('James Street', 53.343456, -6.287409, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:36,589:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Merrion Square West', 53.339764, -6.251988, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:37,208:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Convention Centre', 53.34744, -6.238523, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:37,921:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Hardwicke Street', 53.355473, -6.264423, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:38,535:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Parkgate Street', 53.347972, -6.291804, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:39,148:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Smithfield', 53.347692, -6.278214, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:39,764:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Dame Street', 53.344007, -6.266802, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:40,378:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Heuston Bridge (South)', 53.347106, -6.292041, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:14:40,789:ERROR:(cymysql.err.Error) (<class 'KeyboardInterrupt'>, KeyboardInterrupt()) (Background on this error at: http://sqlalche.me/e/dbapi)
+2018-04-09 22:14:41,479:ERROR:Exception during reset or similar
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 724, in _commit_impl
+    self.engine.dialect.do_commit(self.connection)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/dialects/mysql/base.py", line 1784, in do_commit
+    dbapi_connection.commit()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 296, in commit
+    self.errorhandler(None, exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 118, in errorhandler
+    raise errorvalue
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 293, in commit
+    self.read_packet()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 420, in read_packet
+    return MysqlPacket(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 67, in __init__
+    raise_mysql_exception(self.__data)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/err.py", line 142, in raise_mysql_exception
+    _check_mysql_exception(errinfo)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/err.py", line 135, in _check_mysql_exception
+    raise errorclass(errno,errorvalue)
+cymysql.err.ProgrammingError: (1146, "Table 'test3.staticData' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "bikefind/webscraper.py", line 77, in getStaticData
+    session.commit()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 943, in commit
+    self.transaction.commit()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 471, in commit
+    t[1].commit()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1643, in commit
+    self._do_commit()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1674, in _do_commit
+    self.connection._commit_impl()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 726, in _commit_impl
+    self._handle_dbapi_exception(e, None, None, None, None)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 203, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 186, in reraise
+    raise value.with_traceback(tb)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 724, in _commit_impl
+    self.engine.dialect.do_commit(self.connection)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/dialects/mysql/base.py", line 1784, in do_commit
+    dbapi_connection.commit()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 296, in commit
+    self.errorhandler(None, exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 118, in errorhandler
+    raise errorvalue
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 293, in commit
+    self.read_packet()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 420, in read_packet
+    return MysqlPacket(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 67, in __init__
+    raise_mysql_exception(self.__data)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/err.py", line 142, in raise_mysql_exception
+    _check_mysql_exception(errinfo)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/err.py", line 135, in _check_mysql_exception
+    raise errorclass(errno,errorvalue)
+sqlalchemy.exc.ProgrammingError: (cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") (Background on this error at: http://sqlalche.me/e/f405)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 302, in rollback
+    self.read_packet()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 420, in read_packet
+    return MysqlPacket(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 62, in __init__
+    self.__recv_packet()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 83, in __recv_packet
+    packet_header = self.__recv_from_socket(4)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 72, in __recv_from_socket
+    recv_data = self._socket.recv(size)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/pool.py", line 705, in _finalize_fairy
+    fairy._reset(pool)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/pool.py", line 876, in _reset
+    pool._dialect.do_rollback(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/dialects/mysql/base.py", line 1796, in do_rollback
+    dbapi_connection.rollback()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 305, in rollback
+    self.errorhandler(None, exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+cymysql.err.Error: (<class 'KeyboardInterrupt'>, KeyboardInterrupt())
+2018-04-09 22:14:41,504:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:08,948:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Smithfield North', 53.349562, -6.278198, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:09,561:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Parnell Square North', 53.353462, -6.265305, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:10,152:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Clonmel Street', 53.336021, -6.26298, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:10,792:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Mount Street Lower', 53.33796, -6.24153, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:11,407:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Christchurch Place', 53.343368, -6.27012, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:12,019:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Grantham Street', 53.334123, -6.265436, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:13,045:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Pearse Street', 53.344304, -6.250427, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:13,657:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('York Street East', 53.338755, -6.262003, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:14,273:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Excise Walk', 53.347777, -6.244239, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:14,887:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Fitzwilliam Square West', 53.336074, -6.252825, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:15,500:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Portobello Road', 53.330091, -6.268044, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:16,096:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('St. James Hospital (Central)', 53.339983, -6.295594, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:16,729:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Parnell Street', 53.350929, -6.265125, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:17,344:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Frederick Street South', 53.341515, -6.256853, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:17,960:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Fownes Street Upper', 53.344603, -6.263371, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:18,553:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Clarendon Row', 53.340927, -6.262501, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:19,103:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Custom House', 53.348279, -6.254662, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:19,655:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Hanover Quay', 53.344115, -6.237153, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:20,212:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Oliver Bond Street', 53.343893, -6.280531, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:20,827:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Collins Barracks Museum', 53.347477, -6.28525, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:21,402:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Brookfield Road', 53.339005, -6.300217, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:21,952:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Benson Street', 53.344153, -6.233451, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:22,505:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Earlsfort Terrace', 53.334019, -6.258371, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:23,288:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Golden Lane', 53.340803, -6.267732, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:23,897:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Deverell Place', 53.351464, -6.255265, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:24,513:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('John Street West', 53.343105, -6.277167, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:25,126:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Fenian Street', 53.341428, -6.24672, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:25,742:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('South Dock Road', 53.341833, -6.231291, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:26,361:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('City Quay', 53.346637, -6.246154, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:26,959:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Exchequer Street', 53.343034, -6.263578, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:27,585:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('The Point', 53.346867, -6.230852, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:28,176:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Hatch Street', 53.33403, -6.260714, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:28,814:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Lime Street', 53.346026, -6.243576, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:29,426:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Charlemont Street', 53.330662, -6.260177, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:30,043:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Kilmainham Gaol', 53.342113, -6.310015, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:30,655:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Hardwicke Place', 53.357043, -6.263232, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:31,275:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Wolfe Tone Street', 53.348875, -6.267459, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:31,884:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Francis Street', 53.342081, -6.275233, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:32,501:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Greek Street', 53.346874, -6.272976, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:33,115:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Guild Street', 53.347932, -6.240928, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:33,729:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Herbert Place', 53.334432, -6.245575, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:34,344:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('High Street', 53.343565, -6.275071, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:35,062:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('North Circular Road', 53.359624, -6.260348, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:35,675:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Western Way', 53.354929, -6.269425, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:36,289:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Talbot Street', 53.350974, -6.25294, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:36,904:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Newman House', 53.337132, -6.26059, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:37,518:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ("Sir Patrick's Dun", 53.339218, -6.240642, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:38,132:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('New Central Bank', 53.347122, -6.234749, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:38,849:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Grangegorman Lower (Central)', 53.355173, -6.278424, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:39,461:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('King Street North', 53.350291, -6.273507, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:40,078:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Herbert Street', 53.335742, -6.24551, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:40,690:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Custom House Quay', 53.347884, -6.248048, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:41,306:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Molesworth Street', 53.341288, -6.258117, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:41,921:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Georges Quay', 53.347508, -6.252192, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:42,494:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Kilmainham Lane', 53.341805, -6.305085, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:43,149:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Mount Brown', 53.341645, -6.29719, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:43,764:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Market Street South', 53.342296, -6.287661, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:44,378:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Kevin Street', 53.337757, -6.267699, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:44,993:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Eccles Street East', 53.358115, -6.265601, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:45,607:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Grand Canal Dock', 53.342638, -6.238695, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:46,221:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Merrion Square East', 53.339434, -6.246548, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:46,834:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('York Street West', 53.339334, -6.264699, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:47,451:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ("St. Stephen's Green South", 53.337494, -6.26199, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:47,997:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Denmark Street Great', 53.35561, -6.261397, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:48,549:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Royal Hospital', 53.343897, -6.29706, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:49,194:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Heuston Station (Car Park)', 53.346985, -6.297804, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:50,023:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Grangegorman Lower (North)', 53.355954, -6.278378, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:50,830:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ("St. Stephen's Green East", 53.337824, -6.256035, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:51,444:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Heuston Station (Central)', 53.346603, -6.296924, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:52,059:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Townsend Street', 53.345922, -6.254614, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:52,673:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ("George's Lane", 53.35023, -6.279696, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:53,286:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Eccles Street', 53.359246, -6.269779, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:53,902:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Portobello Harbour', 53.330362, -6.265163, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:54,515:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Mater Hospital', 53.359967, -6.264828, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:55,131:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Blessington Street', 53.356769, -6.26814, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:55,745:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('James Street', 53.343456, -6.287409, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:56,360:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Merrion Square West', 53.339764, -6.251988, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:57,077:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Convention Centre', 53.34744, -6.238523, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:57,688:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Hardwicke Street', 53.355473, -6.264423, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:58,283:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Parkgate Street', 53.347972, -6.291804, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:58,919:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Smithfield', 53.347692, -6.278214, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:15:59,531:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Dame Street', 53.344007, -6.266802, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:16:00,148:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Heuston Bridge (South)', 53.347106, -6.292041, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:16:00,760:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Cathal Brugha Street', 53.352149, -6.260533, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:16:01,375:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Sandwith Street', 53.345203, -6.247163, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:16:01,992:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Rothe Abbey', 53.338776, -6.30395, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:16:02,606:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ("Princes Street / O'Connell Street", 53.349013, -6.260311, 1)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:16:03,196:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Upper Sherrard Street', 53.358437, -6.260641, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:16:03,833:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('Fitzwilliam Square East', 53.335211, -6.2509, 0)] (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:16:04,223:ERROR:(cymysql.err.ProgrammingError) (1146, "Table 'test3.staticData' doesn't exist") (Background on this error at: http://sqlalche.me/e/f405)
+2018-04-09 22:16:04,632:ERROR:Exception during reset or similar
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 128, in execute
+    self._query(query)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 238, in _query
+    conn.query(q)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 345, in query
+    self._result = MySQLResult(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 260, in __init__
+    self.first_packet = MysqlPacket(self.connection)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 62, in __init__
+    self.__recv_packet()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 83, in __recv_packet
+    packet_header = self.__recv_from_socket(4)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 72, in __recv_from_socket
+    recv_data = self._socket.recv(size)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 133, in execute
+    self.errorhandler(exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 35, in errorhandler
+    self.connection.errorhandler(self, errorclass, errorvalue)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+cymysql.err.Error: (<class 'KeyboardInterrupt'>, KeyboardInterrupt())
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "bikefind/webscraper.py", line 77, in getStaticData
+    session.commit()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 943, in commit
+    self.transaction.commit()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 467, in commit
+    self._prepare_impl()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 447, in _prepare_impl
+    self.session.flush()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2254, in flush
+    self._flush(objects)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2380, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/langhelpers.py", line 66, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 187, in reraise
+    raise value
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2344, in _flush
+    flush_context.execute()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 391, in execute
+    rec.execute(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 556, in execute
+    uow
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 181, in save_obj
+    mapper, table, insert)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 830, in _emit_insert_statements
+    execute(statement, multiparams)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 203, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 186, in reraise
+    raise value.with_traceback(tb)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 133, in execute
+    self.errorhandler(exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 35, in errorhandler
+    self.connection.errorhandler(self, errorclass, errorvalue)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+sqlalchemy.exc.DBAPIError: (cymysql.err.Error) (<class 'KeyboardInterrupt'>, KeyboardInterrupt()) [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('St James Hospital (Luas)', 53.341359, -6.292951, 0)] (Background on this error at: http://sqlalche.me/e/dbapi)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 302, in rollback
+    self.read_packet()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 420, in read_packet
+    return MysqlPacket(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 62, in __init__
+    self.__recv_packet()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 83, in __recv_packet
+    packet_header = self.__recv_from_socket(4)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 72, in __recv_from_socket
+    recv_data = self._socket.recv(size)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/pool.py", line 705, in _finalize_fairy
+    fairy._reset(pool)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/pool.py", line 876, in _reset
+    pool._dialect.do_rollback(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/dialects/mysql/base.py", line 1796, in do_rollback
+    dbapi_connection.rollback()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 305, in rollback
+    self.errorhandler(None, exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+cymysql.err.Error: (<class 'KeyboardInterrupt'>, KeyboardInterrupt())
+2018-04-09 22:16:04,658:ERROR:(cymysql.err.Error) (<class 'KeyboardInterrupt'>, KeyboardInterrupt()) [SQL: 'INSERT INTO `staticData` (address, latitude, longitude, banking) VALUES (%s, %s, %s, %s)'] [parameters: ('St James Hospital (Luas)', 53.341359, -6.292951, 0)] (Background on this error at: http://sqlalche.me/e/dbapi)
+2018-04-09 23:06:08,155:ERROR:(cymysql.err.Error) (<class 'KeyboardInterrupt'>, KeyboardInterrupt()) [SQL: 'UPDATE `currentData` SET last_update=%s, `availableBikeStands`=%s, `availableBikes`=%s WHERE `currentData`.address = %s'] [parameters: (1523311073000, 10, 30, 'Charlemont Street')] (Background on this error at: http://sqlalche.me/e/dbapi)
+2018-04-09 23:06:08,522:ERROR:Exception during reset or similar
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 128, in execute
+    self._query(query)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 238, in _query
+    conn.query(q)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 345, in query
+    self._result = MySQLResult(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 260, in __init__
+    self.first_packet = MysqlPacket(self.connection)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 62, in __init__
+    self.__recv_packet()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 83, in __recv_packet
+    packet_header = self.__recv_from_socket(4)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 72, in __recv_from_socket
+    recv_data = self._socket.recv(size)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 133, in execute
+    self.errorhandler(exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 35, in errorhandler
+    self.connection.errorhandler(self, errorclass, errorvalue)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+cymysql.err.Error: (<class 'KeyboardInterrupt'>, KeyboardInterrupt())
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "bikefind/webscraper.py", line 151, in getDynamicData
+    session.commit()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 943, in commit
+    self.transaction.commit()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 467, in commit
+    self._prepare_impl()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 447, in _prepare_impl
+    self.session.flush()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2254, in flush
+    self._flush(objects)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2380, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/langhelpers.py", line 66, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 187, in reraise
+    raise value
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2344, in _flush
+    flush_context.execute()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 391, in execute
+    rec.execute(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 556, in execute
+    uow
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 181, in save_obj
+    mapper, table, insert)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 830, in _emit_insert_statements
+    execute(statement, multiparams)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 203, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 186, in reraise
+    raise value.with_traceback(tb)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 133, in execute
+    self.errorhandler(exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 35, in errorhandler
+    self.connection.errorhandler(self, errorclass, errorvalue)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+sqlalchemy.exc.DBAPIError: (cymysql.err.Error) (<class 'KeyboardInterrupt'>, KeyboardInterrupt()) [SQL: 'INSERT INTO `dynamicData` (time, address, `totalBikeStands`, `availableBikeStands`, `availableBikes`, status) VALUES (%s, %s, %s, %s, %s, %s)'] [parameters: (1523311022000, 'Kilmainham Gaol', 40, 4, 36, 'OPEN')] (Background on this error at: http://sqlalche.me/e/dbapi)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 302, in rollback
+    self.read_packet()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 420, in read_packet
+    return MysqlPacket(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 62, in __init__
+    self.__recv_packet()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 83, in __recv_packet
+    packet_header = self.__recv_from_socket(4)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 72, in __recv_from_socket
+    recv_data = self._socket.recv(size)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/pool.py", line 705, in _finalize_fairy
+    fairy._reset(pool)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/pool.py", line 876, in _reset
+    pool._dialect.do_rollback(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/dialects/mysql/base.py", line 1796, in do_rollback
+    dbapi_connection.rollback()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 305, in rollback
+    self.errorhandler(None, exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+cymysql.err.Error: (<class 'KeyboardInterrupt'>, KeyboardInterrupt())
+2018-04-09 23:06:08,536:ERROR:(cymysql.err.Error) (<class 'KeyboardInterrupt'>, KeyboardInterrupt()) [SQL: 'INSERT INTO `dynamicData` (time, address, `totalBikeStands`, `availableBikeStands`, `availableBikes`, status) VALUES (%s, %s, %s, %s, %s, %s)'] [parameters: (1523311022000, 'Kilmainham Gaol', 40, 4, 36, 'OPEN')] (Background on this error at: http://sqlalche.me/e/dbapi)
+2018-04-09 23:57:31,625:ERROR:New instance <dynamicData at 0x7f0720ee6438> with identity key (<class 'bikefind.dbClasses.dynamicData'>, (1523313880000, 'Blackhall Place'), None) conflicts with persistent instance <dynamicData at 0x7f0720f2bb70>
+2018-04-10 00:47:03,079:ERROR:(cymysql.err.Error) (<class 'KeyboardInterrupt'>, KeyboardInterrupt()) (Background on this error at: http://sqlalche.me/e/dbapi)
+2018-04-10 00:47:03,400:ERROR:Exception during reset or similar
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 128, in execute
+    self._query(query)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 238, in _query
+    conn.query(q)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 345, in query
+    self._result = MySQLResult(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 260, in __init__
+    self.first_packet = MysqlPacket(self.connection)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 62, in __init__
+    self.__recv_packet()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 83, in __recv_packet
+    packet_header = self.__recv_from_socket(4)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 72, in __recv_from_socket
+    recv_data = self._socket.recv(size)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 133, in execute
+    self.errorhandler(exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 35, in errorhandler
+    self.connection.errorhandler(self, errorclass, errorvalue)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+cymysql.err.Error: (<class 'KeyboardInterrupt'>, KeyboardInterrupt())
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "bikefind/webscraper.py", line 151, in getDynamicData
+    session.commit()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 943, in commit
+    self.transaction.commit()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 467, in commit
+    self._prepare_impl()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 447, in _prepare_impl
+    self.session.flush()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2254, in flush
+    self._flush(objects)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2380, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/langhelpers.py", line 66, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 187, in reraise
+    raise value
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2344, in _flush
+    flush_context.execute()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 391, in execute
+    rec.execute(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 556, in execute
+    uow
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 181, in save_obj
+    mapper, table, insert)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 830, in _emit_insert_statements
+    execute(statement, multiparams)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 203, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 186, in reraise
+    raise value.with_traceback(tb)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 133, in execute
+    self.errorhandler(exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 35, in errorhandler
+    self.connection.errorhandler(self, errorclass, errorvalue)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+sqlalchemy.exc.DBAPIError: (cymysql.err.Error) (<class 'KeyboardInterrupt'>, KeyboardInterrupt()) [SQL: 'INSERT INTO `dynamicData` (time, address, `totalBikeStands`, `availableBikeStands`, `availableBikes`, status) VALUES (%s, %s, %s, %s, %s, %s)'] [parameters: (1523317388000, 'Heuston Station (Central)', 40, 2, 38, 'OPEN')] (Background on this error at: http://sqlalche.me/e/dbapi)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 302, in rollback
+    self.read_packet()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 420, in read_packet
+    return MysqlPacket(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 62, in __init__
+    self.__recv_packet()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 83, in __recv_packet
+    packet_header = self.__recv_from_socket(4)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 72, in __recv_from_socket
+    recv_data = self._socket.recv(size)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/pool.py", line 705, in _finalize_fairy
+    fairy._reset(pool)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/pool.py", line 876, in _reset
+    pool._dialect.do_rollback(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/dialects/mysql/base.py", line 1796, in do_rollback
+    dbapi_connection.rollback()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 305, in rollback
+    self.errorhandler(None, exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+cymysql.err.Error: (<class 'KeyboardInterrupt'>, KeyboardInterrupt())
+2018-04-10 00:47:03,422:ERROR:(cymysql.err.Error) (<class 'KeyboardInterrupt'>, KeyboardInterrupt()) [SQL: 'INSERT INTO `dynamicData` (time, address, `totalBikeStands`, `availableBikeStands`, `availableBikes`, status) VALUES (%s, %s, %s, %s, %s, %s)'] [parameters: (1523317388000, 'Heuston Station (Central)', 40, 2, 38, 'OPEN')] (Background on this error at: http://sqlalche.me/e/dbapi)
+2018-04-10 11:02:52,163:ERROR:Exception during reset or similar
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 302, in rollback
+    self.read_packet()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 420, in read_packet
+    return MysqlPacket(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 62, in __init__
+    self.__recv_packet()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 83, in __recv_packet
+    packet_header = self.__recv_from_socket(4)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 72, in __recv_from_socket
+    recv_data = self._socket.recv(size)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/pool.py", line 705, in _finalize_fairy
+    fairy._reset(pool)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/pool.py", line 876, in _reset
+    pool._dialect.do_rollback(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/dialects/mysql/base.py", line 1796, in do_rollback
+    dbapi_connection.rollback()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 305, in rollback
+    self.errorhandler(None, exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+cymysql.err.Error: (<class 'KeyboardInterrupt'>, KeyboardInterrupt())
+2018-04-10 12:33:31,545:ERROR:Exception during reset or similar
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 128, in execute
+    self._query(query)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 238, in _query
+    conn.query(q)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 345, in query
+    self._result = MySQLResult(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 260, in __init__
+    self.first_packet = MysqlPacket(self.connection)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 62, in __init__
+    self.__recv_packet()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 83, in __recv_packet
+    packet_header = self.__recv_from_socket(4)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 72, in __recv_from_socket
+    recv_data = self._socket.recv(size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 133, in execute
+    self.errorhandler(exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 35, in errorhandler
+    self.connection.errorhandler(self, errorclass, errorvalue)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+cymysql.err.Error: (<class 'ConnectionResetError'>, ConnectionResetError(104, 'Connection reset by peer'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2344, in _flush
+    flush_context.execute()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 391, in execute
+    rec.execute(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 556, in execute
+    uow
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 181, in save_obj
+    mapper, table, insert)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 830, in _emit_insert_statements
+    execute(statement, multiparams)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 203, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 186, in reraise
+    raise value.with_traceback(tb)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 133, in execute
+    self.errorhandler(exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 35, in errorhandler
+    self.connection.errorhandler(self, errorclass, errorvalue)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+sqlalchemy.exc.DBAPIError: (cymysql.err.Error) (<class 'ConnectionResetError'>, ConnectionResetError(104, 'Connection reset by peer')) [SQL: 'INSERT INTO `dynamicData` (time, address, `totalBikeStands`, `availableBikeStands`, `availableBikes`, status) VALUES (%s, %s, %s, %s, %s, %s)'] [parameters: (1523359833000, 'Smithfield North', 30, 29, 1, 'OPEN')] (Background on this error at: http://sqlalche.me/e/dbapi)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 301, in rollback
+    self._execute_command(COM_QUERY, "ROLLBACK")
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 443, in _execute_command
+    self._send_command(command, sql)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 439, in _send_command
+    self.socket.sendall(prelude + sql)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 704, in _rollback_impl
+    self.engine.dialect.do_rollback(self.connection)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/dialects/mysql/base.py", line 1796, in do_rollback
+    dbapi_connection.rollback()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 305, in rollback
+    self.errorhandler(None, exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+cymysql.err.Error: (<class 'BrokenPipeError'>, BrokenPipeError(32, 'Broken pipe'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "bikefind/webscraper.py", line 150, in getDynamicData
+    session.commit()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 943, in commit
+    self.transaction.commit()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 467, in commit
+    self._prepare_impl()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 447, in _prepare_impl
+    self.session.flush()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2254, in flush
+    self._flush(objects)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2380, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/langhelpers.py", line 76, in __exit__
+    compat.reraise(type_, value, traceback)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 187, in reraise
+    raise value
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2380, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 532, in rollback
+    util.reraise(*rollback_err)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 187, in reraise
+    raise value
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 497, in rollback
+    t[1].rollback()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1632, in rollback
+    self._do_rollback()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1670, in _do_rollback
+    self.connection._rollback_impl()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 706, in _rollback_impl
+    self._handle_dbapi_exception(e, None, None, None, None)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 203, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 186, in reraise
+    raise value.with_traceback(tb)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 704, in _rollback_impl
+    self.engine.dialect.do_rollback(self.connection)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/dialects/mysql/base.py", line 1796, in do_rollback
+    dbapi_connection.rollback()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 305, in rollback
+    self.errorhandler(None, exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+sqlalchemy.exc.DBAPIError: (cymysql.err.Error) (<class 'BrokenPipeError'>, BrokenPipeError(32, 'Broken pipe')) (Background on this error at: http://sqlalche.me/e/dbapi)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 301, in rollback
+    self._execute_command(COM_QUERY, "ROLLBACK")
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 443, in _execute_command
+    self._send_command(command, sql)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 439, in _send_command
+    self.socket.sendall(prelude + sql)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/pool.py", line 705, in _finalize_fairy
+    fairy._reset(pool)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/pool.py", line 876, in _reset
+    pool._dialect.do_rollback(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/dialects/mysql/base.py", line 1796, in do_rollback
+    dbapi_connection.rollback()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 305, in rollback
+    self.errorhandler(None, exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+cymysql.err.Error: (<class 'BrokenPipeError'>, BrokenPipeError(32, 'Broken pipe'))
+2018-04-10 12:33:31,568:ERROR:Exception closing connection <cymysql.connections.Connection object at 0x7f563eb3a4a8>
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 128, in execute
+    self._query(query)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 238, in _query
+    conn.query(q)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 345, in query
+    self._result = MySQLResult(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 260, in __init__
+    self.first_packet = MysqlPacket(self.connection)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 62, in __init__
+    self.__recv_packet()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 83, in __recv_packet
+    packet_header = self.__recv_from_socket(4)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 72, in __recv_from_socket
+    recv_data = self._socket.recv(size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 133, in execute
+    self.errorhandler(exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 35, in errorhandler
+    self.connection.errorhandler(self, errorclass, errorvalue)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+cymysql.err.Error: (<class 'ConnectionResetError'>, ConnectionResetError(104, 'Connection reset by peer'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2344, in _flush
+    flush_context.execute()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 391, in execute
+    rec.execute(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 556, in execute
+    uow
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 181, in save_obj
+    mapper, table, insert)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 830, in _emit_insert_statements
+    execute(statement, multiparams)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 203, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 186, in reraise
+    raise value.with_traceback(tb)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 133, in execute
+    self.errorhandler(exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 35, in errorhandler
+    self.connection.errorhandler(self, errorclass, errorvalue)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+sqlalchemy.exc.DBAPIError: (cymysql.err.Error) (<class 'ConnectionResetError'>, ConnectionResetError(104, 'Connection reset by peer')) [SQL: 'INSERT INTO `dynamicData` (time, address, `totalBikeStands`, `availableBikeStands`, `availableBikes`, status) VALUES (%s, %s, %s, %s, %s, %s)'] [parameters: (1523359833000, 'Smithfield North', 30, 29, 1, 'OPEN')] (Background on this error at: http://sqlalche.me/e/dbapi)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 301, in rollback
+    self._execute_command(COM_QUERY, "ROLLBACK")
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 443, in _execute_command
+    self._send_command(command, sql)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 439, in _send_command
+    self.socket.sendall(prelude + sql)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 704, in _rollback_impl
+    self.engine.dialect.do_rollback(self.connection)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/dialects/mysql/base.py", line 1796, in do_rollback
+    dbapi_connection.rollback()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 305, in rollback
+    self.errorhandler(None, exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+cymysql.err.Error: (<class 'BrokenPipeError'>, BrokenPipeError(32, 'Broken pipe'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "bikefind/webscraper.py", line 150, in getDynamicData
+    session.commit()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 943, in commit
+    self.transaction.commit()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 467, in commit
+    self._prepare_impl()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 447, in _prepare_impl
+    self.session.flush()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2254, in flush
+    self._flush(objects)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2380, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/langhelpers.py", line 76, in __exit__
+    compat.reraise(type_, value, traceback)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 187, in reraise
+    raise value
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2380, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 532, in rollback
+    util.reraise(*rollback_err)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 187, in reraise
+    raise value
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 497, in rollback
+    t[1].rollback()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1632, in rollback
+    self._do_rollback()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1670, in _do_rollback
+    self.connection._rollback_impl()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 706, in _rollback_impl
+    self._handle_dbapi_exception(e, None, None, None, None)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 203, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 186, in reraise
+    raise value.with_traceback(tb)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 704, in _rollback_impl
+    self.engine.dialect.do_rollback(self.connection)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/dialects/mysql/base.py", line 1796, in do_rollback
+    dbapi_connection.rollback()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 305, in rollback
+    self.errorhandler(None, exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+sqlalchemy.exc.DBAPIError: (cymysql.err.Error) (<class 'BrokenPipeError'>, BrokenPipeError(32, 'Broken pipe')) (Background on this error at: http://sqlalche.me/e/dbapi)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 301, in rollback
+    self._execute_command(COM_QUERY, "ROLLBACK")
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 443, in _execute_command
+    self._send_command(command, sql)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 439, in _send_command
+    self.socket.sendall(prelude + sql)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/pool.py", line 705, in _finalize_fairy
+    fairy._reset(pool)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/pool.py", line 876, in _reset
+    pool._dialect.do_rollback(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/dialects/mysql/base.py", line 1796, in do_rollback
+    dbapi_connection.rollback()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 305, in rollback
+    self.errorhandler(None, exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+cymysql.err.Error: (<class 'BrokenPipeError'>, BrokenPipeError(32, 'Broken pipe'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/pool.py", line 317, in _close_connection
+    self._dialect.do_close(connection)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 463, in do_close
+    dbapi_connection.close()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 272, in close
+    self.socket.sendall(send_data)
+BrokenPipeError: [Errno 32] Broken pipe
+2018-04-10 12:33:31,572:ERROR:(cymysql.err.Error) (<class 'BrokenPipeError'>, BrokenPipeError(32, 'Broken pipe')) (Background on this error at: http://sqlalche.me/e/dbapi)
+2018-04-10 12:34:40,270:ERROR:(cymysql.err.Error) (<class 'KeyboardInterrupt'>, KeyboardInterrupt()) (Background on this error at: http://sqlalche.me/e/dbapi)
+2018-04-10 12:34:40,585:ERROR:Exception during reset or similar
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 128, in execute
+    self._query(query)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 238, in _query
+    conn.query(q)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 345, in query
+    self._result = MySQLResult(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 260, in __init__
+    self.first_packet = MysqlPacket(self.connection)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 62, in __init__
+    self.__recv_packet()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 83, in __recv_packet
+    packet_header = self.__recv_from_socket(4)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 72, in __recv_from_socket
+    recv_data = self._socket.recv(size)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 133, in execute
+    self.errorhandler(exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 35, in errorhandler
+    self.connection.errorhandler(self, errorclass, errorvalue)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+cymysql.err.Error: (<class 'KeyboardInterrupt'>, KeyboardInterrupt())
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "bikefind/webscraper.py", line 150, in getDynamicData
+    session.commit()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 943, in commit
+    self.transaction.commit()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 467, in commit
+    self._prepare_impl()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 447, in _prepare_impl
+    self.session.flush()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2254, in flush
+    self._flush(objects)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2380, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/langhelpers.py", line 66, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 187, in reraise
+    raise value
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2344, in _flush
+    flush_context.execute()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 391, in execute
+    rec.execute(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 556, in execute
+    uow
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 181, in save_obj
+    mapper, table, insert)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 830, in _emit_insert_statements
+    execute(statement, multiparams)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 203, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 186, in reraise
+    raise value.with_traceback(tb)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 133, in execute
+    self.errorhandler(exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 35, in errorhandler
+    self.connection.errorhandler(self, errorclass, errorvalue)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+sqlalchemy.exc.DBAPIError: (cymysql.err.Error) (<class 'KeyboardInterrupt'>, KeyboardInterrupt()) [SQL: 'INSERT INTO `dynamicData` (time, address, `totalBikeStands`, `availableBikeStands`, `availableBikes`, status) VALUES (%s, %s, %s, %s, %s, %s)'] [parameters: (1523359739000, 'King Street North', 30, 30, 0, 'OPEN')] (Background on this error at: http://sqlalche.me/e/dbapi)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 302, in rollback
+    self.read_packet()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 420, in read_packet
+    return MysqlPacket(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 62, in __init__
+    self.__recv_packet()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 83, in __recv_packet
+    packet_header = self.__recv_from_socket(4)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 72, in __recv_from_socket
+    recv_data = self._socket.recv(size)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/pool.py", line 705, in _finalize_fairy
+    fairy._reset(pool)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/pool.py", line 876, in _reset
+    pool._dialect.do_rollback(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/dialects/mysql/base.py", line 1796, in do_rollback
+    dbapi_connection.rollback()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 305, in rollback
+    self.errorhandler(None, exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+cymysql.err.Error: (<class 'KeyboardInterrupt'>, KeyboardInterrupt())
+2018-04-10 12:34:40,588:ERROR:(cymysql.err.Error) (<class 'KeyboardInterrupt'>, KeyboardInterrupt()) [SQL: 'INSERT INTO `dynamicData` (time, address, `totalBikeStands`, `availableBikeStands`, `availableBikes`, status) VALUES (%s, %s, %s, %s, %s, %s)'] [parameters: (1523359739000, 'King Street North', 30, 30, 0, 'OPEN')] (Background on this error at: http://sqlalche.me/e/dbapi)
+2018-04-10 12:46:28,114:ERROR:Exception during reset or similar
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 128, in execute
+    self._query(query)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 238, in _query
+    conn.query(q)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 345, in query
+    self._result = MySQLResult(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 260, in __init__
+    self.first_packet = MysqlPacket(self.connection)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 62, in __init__
+    self.__recv_packet()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 83, in __recv_packet
+    packet_header = self.__recv_from_socket(4)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 72, in __recv_from_socket
+    recv_data = self._socket.recv(size)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 133, in execute
+    self.errorhandler(exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 35, in errorhandler
+    self.connection.errorhandler(self, errorclass, errorvalue)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+cymysql.err.Error: (<class 'KeyboardInterrupt'>, KeyboardInterrupt())
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "bikefind/webscraper.py", line 368, in getForecastData
+    session.commit()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 943, in commit
+    self.transaction.commit()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 467, in commit
+    self._prepare_impl()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 447, in _prepare_impl
+    self.session.flush()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2254, in flush
+    self._flush(objects)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2380, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/langhelpers.py", line 66, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 187, in reraise
+    raise value
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2344, in _flush
+    flush_context.execute()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 391, in execute
+    rec.execute(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 556, in execute
+    uow
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 177, in save_obj
+    mapper, table, update)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 768, in _emit_update_statements
+    execute(statement, multiparams)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 203, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 186, in reraise
+    raise value.with_traceback(tb)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 133, in execute
+    self.errorhandler(exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/cursors.py", line 35, in errorhandler
+    self.connection.errorhandler(self, errorclass, errorvalue)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+sqlalchemy.exc.DBAPIError: (cymysql.err.Error) (<class 'KeyboardInterrupt'>, KeyboardInterrupt()) [SQL: 'UPDATE `forecastData` SET pressure=%s, `windAngle`=%s WHERE `forecastData`.time = %s'] [parameters: (1019.87, 68.503, 1523448000)] (Background on this error at: http://sqlalche.me/e/dbapi)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 302, in rollback
+    self.read_packet()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 420, in read_packet
+    return MysqlPacket(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 62, in __init__
+    self.__recv_packet()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 83, in __recv_packet
+    packet_header = self.__recv_from_socket(4)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/packet.py", line 72, in __recv_from_socket
+    recv_data = self._socket.recv(size)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/pool.py", line 705, in _finalize_fairy
+    fairy._reset(pool)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/pool.py", line 876, in _reset
+    pool._dialect.do_rollback(self)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/sqlalchemy/dialects/mysql/base.py", line 1796, in do_rollback
+    dbapi_connection.rollback()
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 305, in rollback
+    self.errorhandler(None, exc, value)
+  File "/home/eoin/anaconda3/envs/Software/lib/python3.6/site-packages/cymysql/connections.py", line 116, in errorhandler
+    raise Error(errorclass, errorvalue)
+cymysql.err.Error: (<class 'KeyboardInterrupt'>, KeyboardInterrupt())
+2018-04-10 12:46:28,120:ERROR:(cymysql.err.Error) (<class 'KeyboardInterrupt'>, KeyboardInterrupt()) [SQL: 'UPDATE `forecastData` SET pressure=%s, `windAngle`=%s WHERE `forecastData`.time = %s'] [parameters: (1019.87, 68.503, 1523448000)] (Background on this error at: http://sqlalche.me/e/dbapi)
