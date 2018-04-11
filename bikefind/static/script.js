@@ -116,20 +116,51 @@ function initMap() {
             $("#rtpi").text(retString);
             //return data.reqJson.availableBikes;
         });
-        console.log(reqAddress);
     //return availableBikes;
     }
 
     function getWeatherData() {
-        $("#weather").text("Success!");
         $.getJSON("./getWeather", function(data) {
             console.log(data);
+            var d = new Date(0);
+            d.setUTCSeconds(data.time);
+            // var dateString = d.getDate();
+            // dateString = "/" + d.getMonth();
+            var dateString = " " + d.getHours();
+            dateString += ":" + d.getMinutes();
+            
             var mainDes = data.mainDescription;
-            var retString = "General: " + mainDes;
-            $("#weather").text(retString);
+            var minTemp = data.minTemp - 273.15;
+            var maxTemp = data.maxTemp - 273.15;
+            var currentTemp = data.currentTemp - 273.15;
+            var iconurl = "http://openweathermap.org/img/w/" + data.icon + ".png";
+            // var retString = "<table class='table' id='weather'><th>Weather in Dublin: " + mainDes + "</th><th>" + d + "</td></table>" ;
+            // $("#weather").text(retString);
+            $("#weatherDescription").text(mainDes);
+            $("#weatherCurrentTemp").text("Current:" + currentTemp + String.fromCharCode(176));
+            $("#weatherMinTemp").text("Min:" + minTemp + String.fromCharCode(176));
+            $("#weatherMaxTemp").text("Max:" + maxTemp + String.fromCharCode(176));
+            $("#wicon").attr("src", iconurl);
+            $("#weatherTime").text("Last updated: " + dateString);
         });
     }
-
+    
+    //Clock functions from w3schools: https://www.w3schools.com/js/tryit.asp?filename=tryjs_timing_clock 
+    function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        $("#clock").text(h + ":" + m + ":" + s);
+        var t = setTimeout(startTime, 500);
+    }
+    function checkTime(i) {
+        if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+        return i;
+    }
     getWeatherData();
     addStationMarkersFromDB();
+    startTime();
 }
