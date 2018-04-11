@@ -12,7 +12,7 @@ from sklearn.linear_model import LinearRegression
 import pickle
 import time
 
-def getModel():
+def getMergeTable():
     db_connection_string = "mysql+cymysql://conor:team0db1@team0db.cojxdhcdsq2b.us-west-2.rds.amazonaws.com/team0"
     
     # Add new columns to dynamicData dataframe for date, day, hour
@@ -34,10 +34,26 @@ def getModel():
     df_merge = pd.merge(df_dynamic, df_weather, on=['date', 'day', 'hour'])
     
     # Build linear regression to predict availableBikes
-    myformula = "availableBikes ~ C(day) + C(status) + C(hour) + C(address)"
-    lm = sm.ols(formula=myformula, data=df_merge).fit()
-    return lm
+    return df_merge
 
+def getForecastTable(myday, myhour):
+    db_connection_string = "mysql+cymysql://conor:team0db1@team0db.cojxdhcdsq2b.us-west-2.rds.amazonaws.com/team0"
+
+    # Add new columns to forecastData dataframe for date, day, hour
+    df_forecast = pd.read_sql_table(table_name="forecastData", con=db_connection_string)
+        
+    df_forecast['datetime'] = pd.to_datetime(df_forecast['time'] * 1000000000, errors='ignore')
+    df_forecast['day'] = df_forecast['datetime'].dt.weekday_name
+    df_forecast['hour'] = df_forecast['datetime'].dt.hour
+    df_forecast = df_forecast[(df_forecast["day"] == myday) & (df_forecast["hour"] == myhour)]
+    
+    df_static = pd.read_sql_table(table_name="staticData", con=db_connection_string)
+    df_static['day'] = myday
+    df_static['hour'] = myhour
+    
+    df_merge = pd.merge(df_forecast, df_static, on=['day', 'hour'])
+    
+    return df_merge    
 
 def saveModelAlt(model_name):
     start = time.time()

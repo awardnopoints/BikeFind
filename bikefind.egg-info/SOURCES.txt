@@ -12,6 +12,7 @@ webscraper.log
 backups/dynamicData_03042018_134533.csv
 backups/weatherData_03042018_134620.csv
 bikefind/__init__.py
+bikefind/altLinearRegression.py
 bikefind/app.py
 bikefind/appendToDynamic.py
 bikefind/dbClasses.py
@@ -26,6 +27,8 @@ bikefind.egg-info/dependency_links.txt
 bikefind.egg-info/entry_points.txt
 bikefind.egg-info/requires.txt
 bikefind.egg-info/top_level.txt
+bikefind/__pycache__/__init__.cpython-36.pyc
+bikefind/__pycache__/dbClasses.cpython-36.pyc
 bikefind/static/script.js
 bikefind/templates/index.html
 tests/__init__.py
