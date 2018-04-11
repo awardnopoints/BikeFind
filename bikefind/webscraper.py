@@ -6,7 +6,6 @@ from bikefind.dbClasses import staticData, dynamicData, currentData, weatherData
 import requests
 import time
 import logging
->>>>>>> FEATURE_infoPanel
 
 logging.basicConfig(filename='webscraper.log', level=logging.ERROR,
                     format='%(asctime)s:%(levelname)s:%(message)s')
