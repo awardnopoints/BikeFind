@@ -174,7 +174,7 @@ function initMap() {
 
         ///////////////
         // add station markers 
-  function getCustomMarker(colour, opacity) {
+  function getCustomMarker(colour, opacity, mag) {
         //console.log(properties.availableBikeStands);
 
 
@@ -182,7 +182,7 @@ function initMap() {
           path: google.maps.SymbolPath.CIRCLE,
           fillColor: colour,
           fillOpacity: opacity,
-          scale: 6,
+          scale: mag,
           strokeColor: 'black',
           strokeWeight: .9
         };
@@ -194,11 +194,11 @@ function initMap() {
         // need to change the get from the static data to the main current table
   function addStationMarker(properties){
 
-      var mag = 5;
+      var mag = properties.availableBikes + 5;
       //console.log(mag);
       var colour = 'yellow';
       
-      var opacity = properties.availableBikes / 100;
+      var opacity = properties.availableBikes / 100 + .1;
     
       //console.log(properties);
 
@@ -206,7 +206,7 @@ function initMap() {
           title:properties.address,
           position:new google.maps.LatLng(properties.latitude, properties.longitude),
           map:map,
-          icon:getCustomMarker(colour, opacity)    
+          icon:getCustomMarker(colour, opacity, mag)    
       });
       
       var infoContent = "<div><p>" + properties.address + "</p><p> Bikes: " + properties.availableBikes + "</p><p> Bike stands: " + properties.availableBikeStands + "</p></div>";
