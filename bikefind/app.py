@@ -16,11 +16,31 @@ def index():
 @app.route('/staticTest')
 def getStaticTest():
     """Returns data from staticDataTable as JSON"""
-    staticDataTable = pd.read_sql_table('staticData', engine)
+#    staticDataTable = pd.read_sql_table('staticData', engine)
     #staticDataDictArray = staticDataTable.T.to_dict().values()
-    staticDataDict = staticDataTable.to_dict(orient='index')
+
+    # for now including both concat latlng, as well as separate lat and lng. until we know which is handier for what.
+    #query = "select * from staticData inner join currentData on \
+    #        staticData.address=currentData.address"
+    query = 'select staticData.address, currentData.availableBikes, currentData.availableBikeStands, currentData.status, staticData.latitude, staticData.longitude, CONCAT("(", staticData.latitude, ", ", staticData.longitude, ")") AS LatLng from currentData inner join staticData where currentData.address=staticData.address group by staticData.address'
+
+
+    df = pd.read_sql_query(query, engine)
+    staticDataDict = df.to_dict(orient='index')
     staticData = jsonify(staticDataDict)
     return staticData
+
+
+@app.route('/markerData')
+def getMarkerData():
+    """Returns data from relevant data for styling placing and styling station markers."""
+    query = 'select staticData.address, currentData.availableBikes, currentData.availableBikeStands, currentData.status, staticData.latitude, staticData.longitude, CONCAT("(", staticData.latitude, ", ", staticData.longitude, ")") AS LatLng from currentData inner join staticData where currentData.address=staticData.address group by staticData.address'
+    df = pd.read_sql_query(query, engine)
+    df = df.to_dict(orient='index')
+    df = jsonify(df)
+    return markerData
+    
+    
 
 @app.route('/rtpi', methods=['POST'])
 def getRtpi():

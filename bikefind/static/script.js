@@ -173,28 +173,63 @@ function initMap() {
 
 
         ///////////////
-        // add station markers from staticData
+        // add station markers 
+  function getCustomMarker(colour, opacity) {
+        //console.log(properties.availableBikeStands);
 
+
+        return {
+          path: google.maps.SymbolPath.CIRCLE,
+          fillColor: colour,
+          fillOpacity: opacity,
+          scale: 6,
+          strokeColor: 'black',
+          strokeWeight: .9
+        };
+      }
 
 
         //////////////
+
+        // need to change the get from the static data to the main current table
   function addStationMarker(properties){
+
+      var mag = 5;
+      //console.log(mag);
+      var colour = 'yellow';
+      
+      var opacity = properties.availableBikes / 100;
+    
+      //console.log(properties);
 
       var marker = new google.maps.Marker({
           title:properties.address,
           position:new google.maps.LatLng(properties.latitude, properties.longitude),
-          map:map    
+          map:map,
+          icon:getCustomMarker(colour, opacity)    
       });
+      
+      var infoContent = "<div><p>" + properties.address + "</p><p> Bikes: " + properties.availableBikes + "</p><p> Bike stands: " + properties.availableBikeStands + "</p></div>";
 
       var infowindow = new google.maps.InfoWindow({
-          content:properties.address
+          content:infoContent
+      });
+      console.log(properties.availableBikes);
+      marker.addListener("mouseover", function(){
+          infowindow.open(map, marker);
+          // getLatestData(properties.address);
+      });
+
+      marker.addListener("mouseout", function(){
+          infowindow.close(map, marker);
+          // getLatestData(properties.address);
       });
 
       marker.addListener("click", function(){
-          infowindow.open(map, marker);
           getLatestData(properties.address);
       });
   }
+
 
   function addStationMarkersFromDB(){
       var staticData;
@@ -412,6 +447,7 @@ function initMap() {
        }
 
     }
+
 
     
     getWeatherData();
