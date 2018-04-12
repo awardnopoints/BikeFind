@@ -95,6 +95,7 @@ function initMap() {
           // });
 
           var infowindow = new google.maps.InfoWindow({
+              //could add reverse geocoding to make address of clicked-on current pos display here. 
               content:"<div>Current position</div>"
           });
 
@@ -110,12 +111,6 @@ function initMap() {
 
 
                   origin = current_position;
-        
-
-
-                  // want to merge the directions markers and station markers, if poss. this may not look bad with the final icon/representation of the stations
-                  // also need to sort the zoom level
-
 
                   // obviously need to refactor this. just trying to get things working first
                   //btn for closest
@@ -203,9 +198,7 @@ function initMap() {
 
   function addStationMarkersFromDB(){
       var staticData;
-      //     var xhr = new XMLHttpRequest();
-      //     xhr.open('GET', './staticTest');
-      //     xhr.send();
+
       $.getJSON( "./staticTest", function( data ) {
           $.each( data, function(key, value) {
               if(data.hasOwnProperty(key)) {
@@ -255,12 +248,14 @@ function initMap() {
   // jquery assignment not working for some reason
   var input = document.getElementById("address-input");
   var input_btn = document.getElementById("address-input-btn");
+  var bikelanesToggle = document.getElementById("bikelanes-toggle");
     
 
 
   //var input = $('#address-input');
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input_btn);
+  map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(bikelanesToggle);
 
   var autocomplete = new google.maps.places.Autocomplete(input, addressBarOptions);
 
@@ -402,6 +397,23 @@ function initMap() {
         if (i < 10) {i = "0" + i;}  // add zero in front of numbers < 10
         return i;
     }
+
+    // toggle show bike paths on/off
+    // based on https://stackoverflow.com/questions/38543164/adding-layer-to-google-map-adding-toggle-for-traffic-layer
+    var bikeLayer = new google.maps.BicyclingLayer();
+    
+
+    bikelanesToggle.addEventListener('click', toggleBikeLayer);
+    function toggleBikeLayer() {
+      if(bikeLayer.getMap() == null) {
+         bikeLayer.setMap(map);
+       } else {
+         bikeLayer.setMap(null);
+       }
+
+    }
+
+    
     getWeatherData();
     addStationMarkersFromDB();
     startTime();
