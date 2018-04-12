@@ -184,7 +184,7 @@ function initMap() {
           fillOpacity: opacity,
           scale: mag,
           strokeColor: 'black',
-          strokeWeight: .9
+          strokeWeight: 1
         };
       }
 
@@ -194,11 +194,11 @@ function initMap() {
         // need to change the get from the static data to the main current table
   function addStationMarker(properties){
 
-      var mag = properties.availableBikes + 5;
-      //console.log(mag);
-      var colour = 'yellow';
-      
-      var opacity = properties.availableBikes / 100 + .1;
+      // size of marker relative to total bike stands
+      var mag = properties.totalBikeStands * .65;
+      var colour = '#2E498E';
+      // opacity represents occupancy. empty circle for the marker means empty station.
+      var opacity = (properties.availableBikes / properties.totalBikeStands) ;
     
       //console.log(properties);
 

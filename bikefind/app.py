@@ -22,7 +22,7 @@ def getStaticTest():
     # for now including both concat latlng, as well as separate lat and lng. until we know which is handier for what.
     #query = "select * from staticData inner join currentData on \
     #        staticData.address=currentData.address"
-    query = 'select staticData.address, currentData.availableBikes, currentData.availableBikeStands, currentData.status, staticData.latitude, staticData.longitude, CONCAT("(", staticData.latitude, ", ", staticData.longitude, ")") AS LatLng from currentData inner join staticData where currentData.address=staticData.address group by staticData.address'
+    query = 'select staticData.address, currentData.availableBikes, currentData.availableBikeStands, currentData.totalBikeStands, currentData.status, staticData.latitude, staticData.longitude, CONCAT("(", staticData.latitude, ", ", staticData.longitude, ")") AS LatLng from currentData inner join staticData where currentData.address=staticData.address group by staticData.address'
 
 
     df = pd.read_sql_query(query, engine)

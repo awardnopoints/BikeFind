@@ -1,0 +1,15 @@
+{
+  "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -6.260177,
+        53.330662
+      ]
+    },
+      "properties": {
+        "name": "Charlemont Place",
+      }
+    }
+  ]
+}
