@@ -9,15 +9,21 @@ Created on Wed Apr 11 15:15:58 2018
 import pandas as pd
 from sklearn.linear_model import LinearRegression
 import pickle
+import os
+current_file_path = __file__
+current_file_dir = os.path.dirname(__file__)
+model_path = os.path.join(current_file_dir, "objects/model.p")
+features_path = os.path.join(current_file_dir, "objects/features.p")
+
+lm = pickle.load(open( model_path, "rb" ))
+features = pickle.load(open( features_path, "rb" ))
     
 def getPrediction(day, hour):
-    lm = pickle.load(open( "model.p", "rb" ) )
     df_forecast = getForecastTable(day, hour)
     X = df_forecast
     X['Intercept'] = 1.0
     X['hour'] = X['hour'].astype('category')
     X = pd.get_dummies(X)
-    features = pickle.load(open( "features.p", "rb" ) )
     
     for feature in list(X):
         if feature not in features:
