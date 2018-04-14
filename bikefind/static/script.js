@@ -32,11 +32,13 @@ function initMap() {
     // jquery assignment not working for some reason
     var input = document.getElementById("address-input");
     var input_btn = document.getElementById("address-input-btn");
+    var refreshBikes = document.getElementById("refresh-btn");
     var bikelanesToggle = document.getElementById("bikelanes-toggle");
   
     //var input = $('#address-input');
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input_btn);
+    map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(refreshBikes);
     map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(bikelanesToggle);
     
     // sw and ne bounds for the map search. biases, but doesn't exclude outside bounds searches
