@@ -318,12 +318,18 @@ function getWeatherData() {
         // var dateString = d.getDate();
         // dateString = "/" + d.getMonth();
         var dateString = " " + d.getHours();
-        dateString += ":" + d.getMinutes();
+        //dateString += ":" + d.getMinutes();
+        if (d.getMinutes() < 10) {
+                var minutes = "0" + d.getMinutes();
+            } else {
+               var minutes = d.getMinutes();
+            }
+            dateString += ":" + minutes;
             
         var mainDes = data.mainDescription;
         var minTemp = data.minTemp - 273.15;
         var maxTemp = data.maxTemp - 273.15;
-        var currentTemp = data.currentTemp - 273.15;
+        var currentTemp = Math.round(data.currentTemp - 273.15);
         var iconurl = "http://openweathermap.org/img/w/" + data.icon + ".png";
         // var retString = "<table class='table' id='weather'><th>Weather in Dublin: " + mainDes + "</th><th>" + d + "</td></table>" ;
         // $("#weather").text(retString);

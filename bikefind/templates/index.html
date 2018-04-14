@@ -33,25 +33,32 @@
                 margin: auto;
                 width: 50%;
             } 
+            
+            .mid {
+                margin: auto;
+                width: 300px;
+                padding: 10px
+            }
         </style>
 
     </head>
 <body>
-  <div id="weather" class="table-responsive">
-    <table class="table">
-      <th id="clock"></td>
-      <th id="weatherIcon"><img id="wicon" src=""></td>
-      <th id="weatherDescription"></td>
-      <th id="weatherCurrentTemp"></td>
-      <th id="weatherMinTemp"></td>
-      <th id="weatherMaxTemp"></td>
-      <th id="weatherTime"></td>
-    </table>
-    </div>
+  
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col-xs-4">
                 <h3 >Dublinbikes</h3>
+            </div>
+            <div id="weather" class="table-responsive, col-xs-8">
+                <table class="table">
+                  <th id="clock"></td>
+                  <th id="weatherIcon"><img id="wicon" src=""></td>
+                  <th id="weatherDescription"></td>
+                  <th id="weatherCurrentTemp" class="info"></td>
+                  <th id="weatherMinTemp"></td>
+                  <th id="weatherMaxTemp"></td>
+                  <th id="weatherTime"></td>
+                </table>
             </div>
         </div>
         <div id="map"></div>
@@ -65,10 +72,10 @@
                 <label id="bikelanes-toggle"><span style="color: black; font-size: 12pt">Show bike lanes </span><input type="checkbox" name="Show bike lanes"></label>
         </div>
         </div>
-    <div class="container, centre">
-    <button type="button" class="btn btn btn-success btn-arrow-left" >Routes</button>
+    <div class="container, mid">
+    <button type="button" class="btn btn btn-success btn-arrow-left" >&nbsp;Routes</button>
     <button type="button"  class="btn btn btn-link" data-toggle="collapse" data-target="#collapsable">Info</button>
-    <button type="button" class="btn btn-info btn-arrow-right">Charts</button>
+    <button type="button" class="btn btn-info btn-arrow-right">Charts&nbsp;</button>
   </div>
     <div id="collapsable" class="collapse">
         <div id="rtpi">
