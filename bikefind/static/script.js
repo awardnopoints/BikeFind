@@ -1,5 +1,6 @@
 //Initialise global variables, these are all needed outside of function scope
 var map;
+var markers = [];
 var directionsService = new google.maps.DirectionsService();
 var directionsDisplay = new google.maps.DirectionsRenderer();
 var currentPositionMarker;
@@ -33,6 +34,7 @@ function initMap() {
     var input = document.getElementById("address-input");
     var input_btn = document.getElementById("address-input-btn");
     var refreshBikes = document.getElementById("refresh-btn");
+    var futureBikes = document.getElementById("future-btn");
     var bikelanesToggle = document.getElementById("bikelanes-toggle");
   
     //var input = $('#address-input');
@@ -247,10 +249,19 @@ function addStationMarker(properties){
     marker.addListener("click", function(){
         getLatestData(properties.address);
     });
+    
+    markers.push(marker);
 }
 
+function removeAllMarkers(){
+    for (var i = 0; i < markers.length; i++) {
+      markers[i].setMap(null);
+    }
+}
 
 function addStationMarkersFromDB(){
+    removeAllMarkers();
+    markers = [];
     var staticData;
 
     $.getJSON( "./staticTest", function( data ) {
@@ -261,8 +272,22 @@ function addStationMarkersFromDB(){
         
         });
     });  
+    console.log(markers)
 }
 
+//function addStationMarkersFromForecast(){
+//    removeAllMarkers();
+//    markers = [];
+//    console.log("test1")
+//    $.getJSON( "./forecast", function( data ) {
+//        console.log("test2")
+//        $.each( data, function(key, value){
+//            if (data.hasOwnProperty(key)) {
+//                addStationMarker(data[key]);
+//            }
+//        });
+//    });
+//}
 
 // geocoding section
 function geoCode() {
@@ -300,11 +325,19 @@ function getLatestData(address) {
         // var availableBikes;
     }).done(function(data) {
         var timeCell = data.reqJson.last_update;
+        var d = new Date(timeCell);
+        var dateString = " " + d.getHours();
+        if (d.getMinutes() < 10) {
+                var minutes = "0" + d.getMinutes();
+            } else {
+               var minutes = d.getMinutes();
+            }
+            dateString += ":" + minutes;
         var addressCell = data.reqJson.address;
         var availableBikes = data.reqJson.availableBikes;
         var availableBikeStands = data.reqJson.availableBikeStands;
         var status = data.reqJson.status;
-        var retString = "Time: " + timeCell + " Address: " + address + " availableBikes: " + availableBikes + " availableBikeStands" + availableBikeStands;
+        var retString = "Last Updated: " + dateString + "   Address: " + address + "   Available Bikes: " + availableBikes + "   Available Stands: " + availableBikeStands;
         $("#rtpi").text(retString);
         //return data.reqJson.availableBikes;
     });

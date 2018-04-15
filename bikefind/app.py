@@ -33,6 +33,13 @@ def getStaticTest():
     staticData = jsonify(staticDataDict)
     return staticData
 
+@app.route('/forecast')
+def getForecast():
+    df = getPrediction("Monday", 15)
+    forecastDataDict = df.to_dict(orient='index')
+    forecastData = jsonify(forecastDataDict)
+    return forecastData
+
 
 @app.route('/markerData')
 def getMarkerData():
