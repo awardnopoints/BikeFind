@@ -11,7 +11,10 @@ setup(name='bikefind',
           'requests',
           'sqlalchemy',
           'cymysql',
-          'pandas'
+          'pandas',
+          'geopy',
+          'sklearn',
+          'scipy'
         ],
       entry_points={
               'console_scripts':[
