@@ -4,3 +4,5 @@ sqlalchemy
 cymysql
 pandas
 geopy
+sklearn
+scipy
