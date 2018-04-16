@@ -1,2 +1,3 @@
 recursive-include bikefind/templates *
 recursive-include bikefind/static *
+recursive-include bikefind/objects *
