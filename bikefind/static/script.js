@@ -272,22 +272,9 @@ function addStationMarkersFromDB(){
         
         });
     });  
-    console.log(markers)
+    // console.log(markers)
 }
 
-//function addStationMarkersFromForecast(){
-//    removeAllMarkers();
-//    markers = [];
-//    console.log("test1")
-//    $.getJSON( "./forecast", function( data ) {
-//        console.log("test2")
-//        $.each( data, function(key, value){
-//            if (data.hasOwnProperty(key)) {
-//                addStationMarker(data[key]);
-//            }
-//        });
-//    });
-//}
 
 // geocoding section
 function geoCode() {
@@ -401,4 +388,20 @@ function toggleBikeLayer() {
     } else {
         bikeLayer.setMap(null);
     }
+}
+
+// get prediction for requested time and redraw the map markers
+function addStationMarkersFromForecast(){
+    var requestedTime = $('#future-input').val();
+    var url = "/getPrediction/" + requestedTime
+
+    $.getJSON(url, function( data ) {
+        // console.log(data) 
+        removeAllMarkers();
+        $.each( data, function(key, value) {
+            if(data.hasOwnProperty(key)) {
+                addStationMarker(data[key]);
+            }
+        });
+    });
 }

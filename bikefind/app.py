@@ -70,6 +70,7 @@ def findstation(coords):
     """Function to find the three nearest stations to the given coordinates.
         The address, proximity, bike availability and open/closed status of these stations is returned."""
 
+    print(coords)
     # for now including both concat latlng, as well as separate lat and lng. until we know which is handier for what.
     query = 'select staticData.address, currentData.availableBikes, currentData.availableBikeStands, currentData.status, staticData.latitude, staticData.longitude, CONCAT("(", staticData.latitude, ", ", staticData.longitude, ")") AS LatLng from currentData inner join staticData where currentData.address=staticData.address group by staticData.address'
 
@@ -95,8 +96,15 @@ def getWeatherData():
 #    weatherData = weatherDataTable.tail(0)
     weatherDataDict = weatherDataTable.to_dict(orient='index')
     weatherData = weatherDataDict[len(weatherDataDict)-1]
-    print(weatherData)
     return jsonify(weatherData)
+
+@app.route('/getPrediction/<requestedTime>')
+def getPredictionData(requestedTime):
+    parameters = requestedTime.split()
+    data = getPrediction(parameters[0], int(parameters[1]))
+    data = data.to_dict(orient='index')
+    return jsonify(data)
+
 
 def appWrapper():
     """Wrapper to allow entry point to app.run with the correct arguments"""
