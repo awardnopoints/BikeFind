@@ -243,7 +243,7 @@ function addStationMarker(properties, current_position){
         destination = new google.maps.LatLng(53.317850, -6.352633, 53.347850, -6.352633);
                 var request = {
                     origin: origin,
-                    destination: destination,
+                    destination: marker.position,
                     travelMode: "WALKING"
                 };
 
