@@ -230,20 +230,29 @@ function addStationMarker(properties){
         icon:getCustomMarker(colour, opacity, mag)    
     });
       
-    var infoContent = "<div><p>" + properties.address + "</p><p> Bikes: " + properties.availableBikes + "</p><p> Bike stands: " + properties.availableBikeStands + "</p></div>";
+    var infoContent = "<div class='infoWindowDiv'><p>" + properties.address + "</p><p> Bikes: " + properties.availableBikes + "</p><p> Bike stands: " + properties.availableBikeStands + "</p><p><input type='button' id='charts-btn' value='Charts'></p><p><input type='button' id='directions-btn' value='Directions'></p></div>";
 
     var infowindow = new google.maps.InfoWindow({
         content:infoContent
     });
 
+    function infoClose() {
+        infowindow.close(map, marker);
+    }
+
     marker.addListener("mouseover", function(){
         infowindow.open(map, marker);
+        var markerPosition = this.getPosition();
+        $("#charts-btn").click(testCharts(markerPosition));
+        $("#directions-btn").click(testCharts(markerPosition));
+        // document.getElementById("charts-btn").addEventListener("click", testCharts);
+
         // getLatestData(properties.address);
     });
 
     marker.addListener("mouseout", function(){
-        infowindow.close(map, marker);
-        // getLatestData(properties.address);
+        setTimeout(infoClose, 2000)
+        // infowindow.close(map, marker);
     });
 
     marker.addListener("click", function(){
@@ -418,4 +427,8 @@ function addStationMarkersFromForecast(){
         });
         getWeatherData(data[0]);
     });
+}
+
+function testCharts(position) {
+    // console.log(position);
 }
