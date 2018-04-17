@@ -37,6 +37,13 @@ class currentData(Base):
     availableBikes = Column(Integer, unique=False, nullable=True)
     status = Column(String(70), unique=False, nullable=True)
 
+class chartData(Base):
+    __tablename__ = 'chartData'
+    address = Column(String(70), unique=False, primary_key=True)
+    day = Column(String(10), unique=False, primary_key=True)
+    hour = Column(Integer, unique=False, primary_key=True)
+    availableBikes = Column(Integer, unique=False, nullable=True)
+
 class weatherData(Base):
     """DB class for weatherData table"""
     __tablename__='weatherData'

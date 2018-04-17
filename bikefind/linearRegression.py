@@ -85,5 +85,12 @@ def getForecastTable(myday, myhour):
     
     return df_final
 
+def getChartData(myaddress, myday):
+    db_connection_string = "mysql+cymysql://conor:team0db1@team0db.cojxdhcdsq2b.us-west-2.rds.amazonaws.com/team0"
+    
+    df_chart = pd.read_sql_table(table_name='chartData', con=db_connection_string)
+    
+    df_chart = df_chart[(df_chart["address"] == myaddress) & (df_chart["day"] == myday)]
+    return df_chart
 if __name__ == "__main__":
-    print(getPrediction("Thursday", 9))
+    print(getChartData("Blackhall Place", "Sunday"))
