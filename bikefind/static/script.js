@@ -234,9 +234,15 @@ function addStationMarker(properties){
       
     var infoContent = "<div><p>" + properties.address + "</p><p> Bikes: " + properties.availableBikes + "</p><p> Bike stands: " + properties.availableBikeStands + "</p></div>";
 
+   // var infoContentLarge = "<div>Chart goes here</div>";
+
     var infowindow = new google.maps.InfoWindow({
         content:infoContent
     });
+
+    // var infowindowLarge = new google.maps.InfoWindow({
+    //     content:infoContentLarge
+    // });
 
     marker.addListener("mouseover", function(){
         infowindow.open(map, marker);
@@ -250,7 +256,8 @@ function addStationMarker(properties){
 
     marker.addListener("click", function(){
         getLatestData(properties.address);
-        drawChart(properties.address);
+        drawChart(properties.address, marker);
+        infowindow.close(map, marker);
     });
     
     markers.push(marker);
@@ -410,30 +417,38 @@ function toggleBikeLayer() {
 
 
 
-function drawChart(address) {
+function drawChart(address, marker) {
 
   // options declared before address has the extra quotes added, so they don't affect the graph title
   // adjust chartArea to fit in wider legends
-  var options = {title: 'Occupancy for ' + address,
+    var options = {title: 'Occupancy for ' + address,
                      width: 800, 
                      height: 440,
                      legend: 'right',
                      bar: {groupWidth: '75%'},
                      chartArea: {width: '50%'}
                      };
-  // see flask function for explanation for double quotation marks. might find a less hacky way later
-  address = '\'' + address + '\''
-  //var address = '"City Quay"';
-  var jsonData = $.ajax({
+    var node = document.createElement('div');
+
+    var infowindowLarge = new google.maps.InfoWindow();
+
+    
+
+    var chart = new google.visualization.ColumnChart(node);
+    // see flask function for explanation for double quotation marks. might find a less hacky way later
+    address = '\'' + address + '\''
+    //var address = '"City Quay"';
+    var jsonData = $.ajax({
       url: "./availabilityChart/" + address,
       dataType: "json"
       }).done(function(data) {
     
     var chartData = new google.visualization.DataTable(data);
-    
-    var chart = new google.visualization.ColumnChart(document.getElementById('chart'));
 
     chart.draw(chartData, options);
+
+    infowindowLarge.setContent(node);
+    infowindowLarge.open(marker.getMap(), marker);
       });
  
     }
