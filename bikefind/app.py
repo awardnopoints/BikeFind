@@ -102,14 +102,16 @@ def getWeatherData():
 @app.route('/availabilityChart')
 def getChartData():
     query = 'select address, availableBikes from currentData group by address'
-
-    df = pd.read_sql_query(query, engine)
+    
+    # just selecting 15 stations for this test chart
+    df = pd.read_sql_query(query, engine)[:15]
     dfDict = df.to_dict(orient='index')
     dfJson = dfDict 
     
+    # constuct json file in the required format for google charts
     jsonData = {
-          "cols": [{"id": 'A', "label": 'address', "type": 'string'},
-                 {"id": 'B', "label": 'availableBikes', "type": 'number'}
+          "cols": [{"id": 'A', "label": 'Address', "type": 'string'},
+                 {"id": 'B', "label": 'Occupancy', "type": 'number'}
           ]}
     
     jsonData["rows"] = []

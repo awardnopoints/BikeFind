@@ -417,15 +417,17 @@ function drawChart() {
             //console.log(data['rows']);
 
 
+        // adjust chartArea to fit in wider legends
         var chartData = new google.visualization.DataTable(data);
         var options = {title: 'Test table',
-                         width: 600, 
+                         width: 800, 
                          height: 440,
-                         legend: 'none',
+                         legend: 'right',
                          bar: {groupWidth: '75%'},
+                         chartArea: {width: '50%'}
                          };
 
-        var chart = new google.visualization.BarChart(document.getElementById('chart'));
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart'));
           chart.draw(chartData, options);
           });
      
