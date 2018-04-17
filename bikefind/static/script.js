@@ -409,8 +409,10 @@ google.charts.load('current', {packages: ['corechart', 'bar']});
 google.charts.setOnLoadCallback(drawChart);
 
 function drawChart() {
+      // see flask function for explanation for double quotation marks
+      var address = '"City Quay"';
       var jsonData = $.ajax({
-          url: "./availabilityChart",
+          url: "./availabilityChart/" + address,
           dataType: "json"
           }).done(function(data) {
 

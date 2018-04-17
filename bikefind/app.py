@@ -99,9 +99,11 @@ def getWeatherData():
     print(weatherData)
     return jsonify(weatherData)
 
-@app.route('/availabilityChart')
-def getChartData():
-    query = 'select address, availableBikes from currentData group by address'
+@app.route('/availabilityChart/<address>')
+def getChartData(address):
+    # need two sets of quotation marks, because address need to be in quotation marks in the query.
+    #address = '"Barrow Street"'
+    query = 'select address, availableBikes, availableBikeStands from currentData where address={} group by address'.format(address)
     
     # just selecting 15 stations for this test chart
     df = pd.read_sql_query(query, engine)[:15]
@@ -111,14 +113,16 @@ def getChartData():
     # constuct json file in the required format for google charts
     jsonData = {
           "cols": [{"id": 'A', "label": 'Address', "type": 'string'},
-                 {"id": 'B', "label": 'Occupancy', "type": 'number'}
+                 {"id": 'B', "label": 'Occupancy', "type": 'number'},
+                 {"id": 'C', "label": 'Free Bike Stands', "type": 'number'}
           ]}
     
     jsonData["rows"] = []
     for r in dfJson.values():
         address_dict = {"v": r["address"]}
-        bikes = {"v": int(r["availableBikes"])}
-        jsonData["rows"].append({"c":[address_dict, bikes]})
+        bikes_dict = {"v": int(r["availableBikes"])}
+        stands_dict = {"v": int(r["availableBikeStands"])}
+        jsonData["rows"].append({"c":[address_dict, bikes_dict, stands_dict]})
 #      
     
     return jsonify(jsonData)
