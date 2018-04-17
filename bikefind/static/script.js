@@ -6,7 +6,8 @@ var directionsDisplay = new google.maps.DirectionsRenderer();
 var currentPositionMarker;
 var bikeLayer = new google.maps.BicyclingLayer();
 var geocoder = new google.maps.Geocoder();
-
+google.charts.load('current', {packages: ['corechart', 'bar']});
+//google.charts.setOnLoadCallback(drawChart);
 
 function initMap() {
     /**
@@ -248,6 +249,7 @@ function addStationMarker(properties){
 
     marker.addListener("click", function(){
         getLatestData(properties.address);
+        drawChart(properties.address);
     });
     
     markers.push(marker);
@@ -405,12 +407,12 @@ function toggleBikeLayer() {
 
 // google charts experiments
 
-google.charts.load('current', {packages: ['corechart', 'bar']});
-google.charts.setOnLoadCallback(drawChart);
 
-function drawChart() {
+
+function drawChart(address) {
       // see flask function for explanation for double quotation marks
-      var address = '"City Quay"';
+      address = '\'' + address + '\''
+      //var address = '"City Quay"';
       var jsonData = $.ajax({
           url: "./availabilityChart/" + address,
           dataType: "json"
