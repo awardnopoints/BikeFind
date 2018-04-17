@@ -6,6 +6,7 @@ var directionsDisplay = new google.maps.DirectionsRenderer();
 var currentPositionMarker;
 var bikeLayer = new google.maps.BicyclingLayer();
 var geocoder = new google.maps.Geocoder();
+var current_position = new google.maps.LatLng(53.330662, -6.260177);
 
 
 function initMap() {
@@ -67,7 +68,7 @@ function initMap() {
         });
         
     } else {
-        var current_position = new google.maps.LatLng(53.330662, -6.260177);
+        //var current_position = new google.maps.LatLng(53.330662, -6.260177);
         addCurrentPositionMarker(current_position);
 
     }
@@ -199,7 +200,7 @@ function getCustomMarker(colour, opacity, mag) {
 //////////////
 
 // need to change the get from the static data to the main current table
-function addStationMarker(properties){
+function addStationMarker(properties, current_position){
 
     // size of marker relative to total bike stands
     var mag = properties.totalBikeStands * .65;
@@ -238,6 +239,19 @@ function addStationMarker(properties){
 
     marker.addListener("dblclick", function() {
         console.log("dblclick working");
+        origin = current_position;
+        destination = new google.maps.LatLng(53.317850, -6.352633, 53.347850, -6.352633);
+                var request = {
+                    origin: origin,
+                    destination: destination,
+                    travelMode: "WALKING"
+                };
+
+                directionsService.route(request, function(response, status) {
+                    if (status == "OK") {
+                        directionsDisplay.setDirections(response);
+                    }
+                });
     });
     
     markers.push(marker);
@@ -257,7 +271,7 @@ function addStationMarkersFromDB(){
     $.getJSON( "./staticTest", function( data ) {
         $.each( data, function(key, value) {
             if(data.hasOwnProperty(key)) {
-                addStationMarker(data[key]);
+                addStationMarker(data[key], current_position);
             }
         
         });
