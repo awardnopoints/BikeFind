@@ -402,3 +402,111 @@ function toggleBikeLayer() {
         bikeLayer.setMap(null);
     }
 }
+
+// google charts experiments
+
+google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+      var jsonData = $.ajax({
+          url: "./availabilityChart",
+          dataType: "json"
+          }).done(function(data) {
+
+            console.log(data['rows']);
+
+            var chartData = new google.visualization.DataTable(data);
+
+        // Instantiate and draw our chart, passing in some options.
+          var chart = new google.visualization.BarChart(document.getElementById('chart'));
+          chart.draw(chartData, {width: 400, height: 240});
+          });
+
+    
+          
+      // Create our data table out of JSON data loaded from server.
+     
+    }
+
+
+
+// function drawChart() {
+
+//  var address = 'Charlemont Street';
+//  var time = 1524051319; // need to pass this to flask route as well
+//  var url = './availabilityChart'
+
+
+//  var jsonData = $.getJSON(url);
+//  console.log(jsonData);
+//  var chartData = new google.visualization.DataTable(jsonData);
+
+//  var chart = new google.visualization.BarChart(document.getElementById('chart'));
+//  chart.draw();
+
+// }
+
+//  $.getJSON(url).done(function(data) {
+//  console.log(data);
+// });
+
+// }
+
+ //var data = new google.visualization.DataTable(data);
+
+ 
+
+ //var jsonData = $.getJSON('/availabilityChart/' + address, function(data) {
+        //data = JSON.parse(data.data);
+        //console.log(data.text);
+           // maybe this node creation should go in the info panel
+        // var node = document.createElement('div'),
+        // infowindow = new google.maps.InfoWindow(),
+        // chart = new google.visualization.ColumnChart(node);
+
+        // var chart_data = new google.visualization.DataTable();
+        // chart_data.addColumn('string', 'Station');
+        // chart_data.addColumn('number', 'Avg Occupancy');
+        // _.forEach(data, function(row) {
+        //     chart_data.addRow([new Data(row[0], row[1])]);
+        // });
+
+        // var options = {'title': 'Average bike availability by day of week'};
+
+        // chart.draw(chart_data, options);
+        // infowindow.setContent(node);
+        // infowindow.open(marker.getMap(), marker);
+    // }).fail(function() {
+    //     console.log("error");
+ //})
+//}
+// var data = new google.visualization.DataTable(jsonData);
+
+
+// google.charts.load('current', {packages: ['corechart', 'bar']});
+// google.charts.setOnLoadCallback(drawChart);
+
+// function drawChart() {
+
+//     var data = new google.visualization.DataTable();
+
+//     data.addColumn('string', 'Day of Week');
+//     data.addColumn('number', 'availableBikes');
+//     data.addRows([
+//             ['Monday', 12],
+//             ['Tuesday', 13],
+//             ['Wednesday', 10],
+//             ['Thursday', 11],
+//             ['Friday', 15]
+
+//          ]);
+
+//     var options = {'title': 'Test chart'};
+
+//     var chart = new google.visualization.BarChart(document.getElementById('chart'));
+
+     
+//     chart.draw(data, options);
+// }
+

@@ -2,7 +2,8 @@ from flask import Flask, render_template, jsonify, request
 import pandas as pd
 from sqlalchemy import create_engine
 from geopy.distance import great_circle
-from bikefind.linearRegression import lm, features, getPrediction
+import json
+#from bikefind.linearRegression import lm, features, getPrediction
 
 
 app = Flask(__name__)
@@ -97,6 +98,33 @@ def getWeatherData():
     weatherData = weatherDataDict[len(weatherDataDict)-1]
     print(weatherData)
     return jsonify(weatherData)
+
+@app.route('/availabilityChart')
+def getChartData():
+    query = 'select address, availableBikes from currentData group by address'
+
+    df = pd.read_sql_query(query, engine)
+    dfDict = df.to_dict(orient='index')
+    dfJson = dfDict 
+#     dfJson = jsonify(dfDict)
+    
+#     dfJson = json.loads(dfJson)
+#     dfJson = dfDict.to_json()
+    
+    jsonData = {
+          "cols": [{"id": 'A', "label": 'address', "type": 'string'},
+                 {"id": 'B', "label": 'availableBikes', "type": 'number'}
+          ]}
+    
+    jsonData["rows"] = []
+    for r in dfJson.values():
+        address_dict = {"v": r["address"]}
+        bikes = {"v": int(r["availableBikes"])}
+        jsonData["rows"].append({"c":[address_dict, bikes]})
+#      
+    
+    return jsonify(jsonData)
+    
 
 def appWrapper():
     """Wrapper to allow entry point to app.run with the correct arguments"""
