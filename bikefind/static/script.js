@@ -75,6 +75,18 @@ function initMap() {
                 }
             });
         });
+    } else {
+         var current_position = new google.maps.LatLng(53.330662, -6.260177);
+         currentPositionMarker = new google.maps.Marker({
+                title:"Selected Position",
+                position:current_position,
+                map:map,
+                Draggable:true,
+                icon: {
+                    path: google.maps.SymbolPath.CIRCLE,
+                    scale: 10
+                }
+            });
     }
     // adding a current position marker on user click
 
