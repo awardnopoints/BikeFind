@@ -331,35 +331,49 @@ function getLatestData(address) {
     //return availableBikes;
 }
 
-function getWeatherData() {
+// A wrapper function to allow us to use getWeatherData for future predictions
+function weatherWrapper() {
     $.getJSON("./getWeather", function(data) {
-        var d = new Date(0);
-        d.setUTCSeconds(data.time);
-        // var dateString = d.getDate();
-        // dateString = "/" + d.getMonth();
-        var dateString = " " + d.getHours();
-        //dateString += ":" + d.getMinutes();
-        if (d.getMinutes() < 10) {
-                var minutes = "0" + d.getMinutes();
-            } else {
-               var minutes = d.getMinutes();
-            }
-            dateString += ":" + minutes;
-            
-        var mainDes = data.mainDescription;
-        var minTemp = data.minTemp - 273.15;
-        var maxTemp = data.maxTemp - 273.15;
-        var currentTemp = Math.round(data.currentTemp - 273.15);
-        var iconurl = "http://openweathermap.org/img/w/" + data.icon + ".png";
-        // var retString = "<table class='table' id='weather'><th>Weather in Dublin: " + mainDes + "</th><th>" + d + "</td></table>" ;
-        // $("#weather").text(retString);
-        $("#weatherDescription").text(mainDes);
-        $("#weatherCurrentTemp").text("Current:" + currentTemp + String.fromCharCode(176));
-        $("#weatherMinTemp").text("Min:" + minTemp + String.fromCharCode(176));
-        $("#weatherMaxTemp").text("Max:" + maxTemp + String.fromCharCode(176));
-        $("#wicon").attr("src", iconurl);
-        $("#weatherTime").text("Last updated: " + dateString);
+        getWeatherData(data);
     });
+}
+
+// Get either current or predicted weather
+function getWeatherData(data) {
+    var d = new Date(0);
+    d.setUTCSeconds(data.time);
+    // var dateString = d.getDate();
+    // dateString = "/" + d.getMonth();
+    var dateString = " " + d.getHours();
+    //dateString += ":" + d.getMinutes();
+    if (d.getMinutes() < 10) {
+            var minutes = "0" + d.getMinutes();
+        } else {
+            var minutes = d.getMinutes();
+        }
+        dateString += ":" + minutes;
+        
+    var mainDes = data.mainDescription;
+    var minTemp = Math.round(data.minTemp - 273.15);
+    var maxTemp = Math.round(data.maxTemp - 273.15);
+    var currentTemp = Math.round(data.currentTemp - 273.15);
+    var iconurl = "http://openweathermap.org/img/w/" + data.icon + ".png";
+
+    $("#weatherDescription").text(mainDes);
+    $("#weatherCurrentTemp").text("Temp:" + currentTemp + String.fromCharCode(176));
+    // $("#weatherMinTemp").text("Min:" + minTemp + String.fromCharCode(176));
+    // $("#weatherMaxTemp").text("Max:" + maxTemp + String.fromCharCode(176));
+    $("#windSpeed").text("Wind Speed: " + data.windSpeed + "km/h");
+    $("#humidity").text("Humidity: " + data.humidity + "%");
+    $("#wicon").attr("src", iconurl);
+    
+    // use different text if using future prediction, predicted data has >13 keys
+    var count = Object.keys(data).length;
+    if (count <= 13) {
+        $("#weatherTime").text("Last updated: " + dateString);
+    } else {
+        $("#weatherTime").text("Prediction for: " + data.day + " " + data.hour + ":00");
+    }
 }
     
 //Clock functions from w3schools: https://www.w3schools.com/js/tryit.asp?filename=tryjs_timing_clock 
@@ -396,12 +410,12 @@ function addStationMarkersFromForecast(){
     var url = "/getPrediction/" + requestedTime
 
     $.getJSON(url, function( data ) {
-        // console.log(data) 
         removeAllMarkers();
         $.each( data, function(key, value) {
             if(data.hasOwnProperty(key)) {
                 addStationMarker(data[key]);
             }
         });
+        getWeatherData(data[0]);
     });
 }
