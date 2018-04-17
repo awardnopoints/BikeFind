@@ -106,10 +106,6 @@ def getChartData():
     df = pd.read_sql_query(query, engine)
     dfDict = df.to_dict(orient='index')
     dfJson = dfDict 
-#     dfJson = jsonify(dfDict)
-    
-#     dfJson = json.loads(dfJson)
-#     dfJson = dfDict.to_json()
     
     jsonData = {
           "cols": [{"id": 'A', "label": 'address', "type": 'string'},
