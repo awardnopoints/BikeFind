@@ -112,9 +112,9 @@ def getChartData(address):
     
     # constuct json file in the required format for google charts
     jsonData = {
-          "cols": [{"id": 'A', "label": 'Address', "type": 'string'},
-                 {"id": 'B', "label": 'Occupancy', "type": 'number'},
-                 {"id": 'C', "label": 'Free Bike Stands', "type": 'number'}
+          "cols": [{"label": 'Address', "type": 'string'},
+                 {"label": 'Available Bikes', "type": 'number'},
+                 {"label": 'Free Bike Stands', "type": 'number'}
           ]}
     
     jsonData["rows"] = []

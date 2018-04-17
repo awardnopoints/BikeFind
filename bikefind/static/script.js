@@ -7,6 +7,7 @@ var currentPositionMarker;
 var bikeLayer = new google.maps.BicyclingLayer();
 var geocoder = new google.maps.Geocoder();
 google.charts.load('current', {packages: ['corechart', 'bar']});
+// have switched to triggering from on marker click
 //google.charts.setOnLoadCallback(drawChart);
 
 function initMap() {
@@ -410,31 +411,31 @@ function toggleBikeLayer() {
 
 
 function drawChart(address) {
-      // see flask function for explanation for double quotation marks
-      address = '\'' + address + '\''
-      //var address = '"City Quay"';
-      var jsonData = $.ajax({
-          url: "./availabilityChart/" + address,
-          dataType: "json"
-          }).done(function(data) {
 
-            //console.log(data['rows']);
+  // options declared before address has the extra quotes added, so they don't affect the graph title
+  // adjust chartArea to fit in wider legends
+  var options = {title: 'Occupancy for ' + address,
+                     width: 800, 
+                     height: 440,
+                     legend: 'right',
+                     bar: {groupWidth: '75%'},
+                     chartArea: {width: '50%'}
+                     };
+  // see flask function for explanation for double quotation marks. might find a less hacky way later
+  address = '\'' + address + '\''
+  //var address = '"City Quay"';
+  var jsonData = $.ajax({
+      url: "./availabilityChart/" + address,
+      dataType: "json"
+      }).done(function(data) {
+    
+    var chartData = new google.visualization.DataTable(data);
+    
+    var chart = new google.visualization.ColumnChart(document.getElementById('chart'));
 
-
-        // adjust chartArea to fit in wider legends
-        var chartData = new google.visualization.DataTable(data);
-        var options = {title: 'Test table',
-                         width: 800, 
-                         height: 440,
-                         legend: 'right',
-                         bar: {groupWidth: '75%'},
-                         chartArea: {width: '50%'}
-                         };
-
-        var chart = new google.visualization.ColumnChart(document.getElementById('chart'));
-          chart.draw(chartData, options);
-          });
-     
+    chart.draw(chartData, options);
+      });
+ 
     }
 
 
