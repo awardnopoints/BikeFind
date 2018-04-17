@@ -103,17 +103,8 @@ function addCurrentPositionMarker(current_position){
         }
     });
 
-
-    // $(this).on("click", function() {
-    // var url = 'nearestStation/' + current_position;
-    // $.get(url).done(function(data) {
-    //alert(data);
-    //   $('#nearestStation').text("Nearest station to current location: " + data);
-    // });
-
-    // });
-
     var infowindow = new google.maps.InfoWindow({
+
         //could add reverse geocoding to make address of clicked-on current pos display here. 
         content:"<div>Current position</div>"
     });
@@ -243,6 +234,10 @@ function addStationMarker(properties){
 
     marker.addListener("click", function(){
         getLatestData(properties.address);
+    });
+
+    marker.addListener("dblclick", function() {
+        console.log("dblclick working");
     });
     
     markers.push(marker);
