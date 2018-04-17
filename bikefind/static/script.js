@@ -422,8 +422,8 @@ function drawChart(address, marker) {
   // options declared before address has the extra quotes added, so they don't affect the graph title
   // adjust chartArea to fit in wider legends
     var options = {title: 'Occupancy for ' + address,
-                     width: 800, 
-                     height: 440,
+                     width: 550, 
+                     height: 300,
                      legend: 'right',
                      bar: {groupWidth: '75%'},
                      chartArea: {width: '50%'}
