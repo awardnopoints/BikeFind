@@ -217,7 +217,7 @@ function addStationMarker(properties, current_position){
         icon:getCustomMarker(colour, opacity, mag)    
     });
       
-    var infoContent = "<div><p>" + properties.address + "</p><p> Bikes: " + properties.availableBikes + "</p><p> Bike stands: " + properties.availableBikeStands + "</p></div>";
+    var infoContent = "<div><p><b>" + properties.address + "</b></p><p> Total stands: " + properties.totalBikeStands + "</p><p> Bikes: " + properties.availableBikes + "</p><p> Empty stands: " + properties.availableBikeStands + "</p><p> Proximity: " + Math.round(properties.proximity) + " metres </p></div>";
 
     var infowindow = new google.maps.InfoWindow({
         content:infoContent
@@ -240,7 +240,7 @@ function addStationMarker(properties, current_position){
     marker.addListener("dblclick", function() {
         console.log("dblclick working");
         origin = current_position;
-        destination = new google.maps.LatLng(53.317850, -6.352633, 53.347850, -6.352633);
+       // destination = new google.maps.LatLng(53.317850, -6.352633, 53.347850, -6.352633);
                 var request = {
                     origin: origin,
                     destination: marker.position,
@@ -266,9 +266,8 @@ function removeAllMarkers(){
 function addStationMarkersFromDB(){
     removeAllMarkers();
     markers = [];
-    var staticData;
-
-    $.getJSON( "./staticTest", function( data ) {
+    var url = "./markerData/" + current_position;
+    $.getJSON( url, function( data ) {
         $.each( data, function(key, value) {
             if(data.hasOwnProperty(key)) {
                 addStationMarker(data[key], current_position);
