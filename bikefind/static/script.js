@@ -48,12 +48,16 @@ function initMap() {
     var input = document.getElementById("address-input");
     var input_btn = document.getElementById("address-input-btn");
     var refreshBikes = document.getElementById("refresh-btn");
-    var futureBikes = document.getElementById("future-btn");
+    // var futureBikes = document.getElementById("future-btn");
     var bikelanesToggle = document.getElementById("bikelanes-toggle");
+    var dateTimePicker = document.getElementById("datetimepicker");
+    var predictionBtn = document.getElementById("prediction-btn");
   
     //var input = $('#address-input');
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input_btn);
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(dateTimePicker);
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(predictionBtn);
     map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(refreshBikes);
     map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(bikelanesToggle);
     
@@ -308,13 +312,13 @@ function geoCode() {
 }
 
 function displayAddressTimeFromCurrentPos() {
-    var latLng = current_position
-    geocoder.geocode({'location': latLng}, function(data, status) {
+    var latLng = current_position;
+    geocoder.geocode({"location": latLng}, function(data, status) {
         if(status == "OK") {
             // this is the format that matches that in the address bar, but seemed to be different for the different positions, so went for simpler 
-           //formatted_address = data[0].address_components[0]["long_name"] + ' (' + data[2].formatted_address + ')';
-           position_html = "<p><b>Selected Position: </b>" + data[0].formatted_address + "</p><p><b>Selected time: </b>" + selected_time + "</p>";
-           $('#selected_spacetimepos').html(position_html);
+            //formatted_address = data[0].address_components[0]["long_name"] + ' (' + data[2].formatted_address + ')';
+            position_html = "<p><b>Selected Position: </b>" + data[0].formatted_address + "</p><p><b>Selected time: </b>" + selected_time + "</p>";
+            $("#selected_spacetimepos").html(position_html);
 
         } else {
             console.log(status);
@@ -401,7 +405,7 @@ function toggleBikeLayer() {
 
 // get prediction for requested time and redraw the map markers
 function addStationMarkersFromForecast(){
-    var requestedTime = $("#future-input").val();
+    var requestedTime = $("#prediction-input").val();
     selected_time = requestedTime + ":00";
     displayAddressTimeFromCurrentPos();
     var url = "/getPrediction/" + requestedTime;
@@ -456,3 +460,25 @@ function drawChart(address, marker) {
     });
  
 }
+
+function dateTimePicker() {
+    var start = moment();
+    var end = start.clone().add(4, "day");
+    $("#datetimepicker").datetimepicker({
+        minDate: start,
+        maxDate: end,
+        format: "dddd HH",
+        // maxViewMode: 4'days'
+        // todayBtn: true
+    }).focus(function() {
+        var thisCalendar = $(this);
+        $(".ui-datepicker-calendar").detach();
+        $(".ui-datepicker-close").click(function() {
+            var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+            var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+            thisCalendar.datepicker("setDate", new Date(year, month, 1));
+        });
+    // $("#dateTimePickerBtn").val("Get Prediction");
+    });
+}
+

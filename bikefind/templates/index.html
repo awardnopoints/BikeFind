@@ -6,8 +6,11 @@
         <link href="https://cdn.rawgit.com/westonganger/bootstrap-directional-buttons/master/dist/bootstrap-directional-buttons.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
         <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDVpdcU4-foTsYN-UHU9Vu34dpykEIF388&libraries=geometry&libraries=places"></script> 
         <script src="https://www.gstatic.com/charts/loader.js"></script>
         <script src="./static/script.js" ></script>
@@ -17,13 +20,14 @@
             document.getElementById("bikelanes-toggle").addEventListener("click", toggleBikeLayer);
             document.getElementById("refresh-btn").addEventListener("click", addStationMarkersFromDB);
             document.getElementById("refresh-btn").addEventListener("click", weatherWrapper);
-            document.getElementById("future-input-btn").addEventListener("click", addStationMarkersFromForecast)
+            document.getElementById("prediction-btn").addEventListener("click", addStationMarkersFromForecast)
             <!-- $("#bikelanes-toggle").click(toggleBikeLayer()); -->
             });
             $(initMap);
             $(addStationMarkersFromDB);
             $(weatherWrapper);
             $(startTime);
+            $(dateTimePicker)
         </script>
 
         <style>
@@ -73,9 +77,15 @@
                 <input id="address-input" class="controls" type="text" placeholder="Enter new location" size="50">
                 <input type="button" id="address-input-btn" value="Select Location">
                 <input type="button" id="refresh-btn" value="Refresh">
+                <div class='input-group date' id='datetimepicker' style="width:200px;">
+                    <input id="prediction-input" type='text' placeholder="Select Four Day Prediction" class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar">
+                        </span>
+                </span>
                 <label id="bikelanes-toggle"><span style="color: black; font-size: 12pt">Show bike lanes </span><input type="checkbox" name="Show bike lanes"></label>
-                <input type="button" id="future-input-btn" value="Future">
-                <input id="future-input" class="controls" type="text" placeholder="Enter day, then hour" size="50">
+                <input type="button" id="prediction-btn" value="Get Prediction">
+                <!-- <input id="future-input" class="controls" type="text" placeholder="Enter day, then hour" size="50"> -->
              </div>
              <div class="col-md-6 col-sm-6 col-cs-12" id="selected_spacetimepos"></div>
         </div>
