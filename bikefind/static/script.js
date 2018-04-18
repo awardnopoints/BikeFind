@@ -8,7 +8,7 @@ var bikeLayer = new google.maps.BicyclingLayer();
 var geocoder = new google.maps.Geocoder();
 var current_position = new google.maps.LatLng(53.330662, -6.260177);
 
-google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.load("current", {packages: ["corechart", "bar"]});
 // have switched to triggering from on marker click
 //google.charts.setOnLoadCallback(drawChart);
 
@@ -65,8 +65,8 @@ function initMap() {
     if (location.protocol == "https:") {
         navigator.geolocation.getCurrentPosition(function(position) {
 
-        current_position = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        addCurrentPositionMarker(current_position);
+            current_position = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            addCurrentPositionMarker(current_position);
 
         });
         
@@ -97,7 +97,7 @@ function addCurrentPositionMarker(new_position){
     //update global variable current_position to the new current position
     current_position = new_position;
     // remove any directions routes from map 
-    directionsDisplay.set('directions', null);
+    directionsDisplay.set("directions", null);
     //refreshes data, but is slow and jerky looking
     addStationMarkersFromDB();
     // make a new function which refreshes the proximity data etc. without re-drawing the markers
@@ -135,74 +135,6 @@ function addCurrentPositionMarker(new_position){
 
     currentPositionMarker.addListener("click", function(){
         infowindow.open(map, currentPositionMarker);
-        var url = "findstation/" + current_position;
-        $.getJSON(url).done(function(data) {
-            //$('#findstation').text(JSON.stringify(data));
-            //////
-            /// will be deleting all of this button stuff
-            //////
-            $("#instructions-btns").html("<p>Below are the three closest stations to your selected location. Click on one to see directions.</p>");
-            $("#btn-0").html("<button type=\"button\" class=\"btn-info\"><p>" + data["address"]["0"] + "<br/>Available bikes: " + data["availableBikes"]["0"] + "<br/>Available stands: " + data["availableBikeStands"]["0"] + "<br/>Proximity: " + Math.round(data["proximity"]["0"]) + " metres" + "</p></button>");
-            $("#btn-1").html("<button type=\"button\" class=\"btn-info\"><p>" + data["address"]["1"] + "<br/>Available bikes: " + data["availableBikes"]["1"] + "<br/>Available stands: " + data["availableBikeStands"]["1"] + "<br/>Proximity: " + Math.round(data["proximity"]["1"]) + " metres" + "</p></button>");
-            $("#btn-2").html("<button type=\"button\" class=\"btn-info\"><p>" + data["address"]["2"] + "<br/>Available bikes: " + data["availableBikes"]["2"] + "<br/>Available stands: " + data["availableBikeStands"]["2"] + "<br/>Proximity: " + Math.round(data["proximity"]["2"]) + " metres" + "</p></button>");
-
-
-            origin = current_position;
-
-            // obviously need to refactor this. just trying to get things working first
-            //btn for closest
-            // add a highlight to this one by default, change highlight to the one that's displaying if the user clicks
-            $( "#btn-0" ).click(function() {
-
-                destination = new google.maps.LatLng(parseFloat(data["latitude"]["0"]), parseFloat(data["longitude"]["0"]));
-                var request = {
-                    origin: origin,
-                    destination: destination,
-                    travelMode: "WALKING"
-                };
-
-                directionsService.route(request, function(response, status) {
-                    if (status == "OK") {
-                        directionsDisplay.setDirections(response);
-                    }
-                });
-
-            });
-            // btn for second closest
-            $( "#btn-1" ).click(function() {
-                destination = new google.maps.LatLng(parseFloat(data["latitude"]["1"]), parseFloat(data["longitude"]["1"]));
-                var request = {
-                    origin: origin,
-                    destination: destination,
-                    travelMode: "WALKING"
-                };
-
-                directionsService.route(request, function(response, status) {
-                    if (status == "OK") {
-                        directionsDisplay.setDirections(response);
-                    }
-                });
-
-            });
-            // btn for second closest
-            $( "#btn-2" ).click(function() {
-                destination = new google.maps.LatLng(parseFloat(data["latitude"]["2"]), parseFloat(data["longitude"]["2"]));
-                var request = {
-                    origin: origin,
-                    destination: destination,
-                    travelMode: "WALKING"
-                };
-
-                directionsService.route(request, function(response, status) {
-                    if (status == "OK") {
-                        directionsDisplay.setDirections(response);
-                    }
-                });
-
-            });
-        
-        });
-    
     });
 }  
 
@@ -246,7 +178,7 @@ function addStationMarker(properties, current_position){
     var infoContent = "<div><p><b>" + properties.address + "</b></p><p> Total stands: " + properties.totalBikeStands + "</p><p> Bikes: " + properties.availableBikes + "</p><p> Empty stands: " + properties.availableBikeStands + "</p><p> Proximity: " + Math.round(properties.proximity) + " metres</p><p><input type='button' id='charts-btn' value='Charts'></p><p><input type='button' id='directions-btn' value='Directions'></div>";
 
 
-   // var infoContentLarge = "<div>Chart goes here</div>";
+    // var infoContentLarge = "<div>Chart goes here</div>";
 
     var infowindow = new google.maps.InfoWindow({
         content:infoContent
@@ -258,35 +190,32 @@ function addStationMarker(properties, current_position){
 
     marker.addListener("mouseover", function(){
         infowindow.open(map, marker);
-        // getLatestData(properties.address);
     });
 
     marker.addListener("mouseout", function(){
         infowindow.close(map, marker);
-        // getLatestData(properties.address);
     });
 
     marker.addListener("click", function(){
-        getLatestData(properties.address);
         drawChart(properties.address, marker);
         infowindow.close(map, marker);
     });
 
     marker.addListener("dblclick", function() {
-        console.log("dblclick working");
+        // console.log("dblclick working");
         origin = current_position;
-       // destination = new google.maps.LatLng(53.317850, -6.352633, 53.347850, -6.352633);
-                var request = {
-                    origin: origin,
-                    destination: marker.position,
-                    travelMode: "WALKING"
-                };
+        // destination = new google.maps.LatLng(53.317850, -6.352633, 53.347850, -6.352633);
+        var request = {
+            origin: origin,
+            destination: marker.position,
+            travelMode: "WALKING"
+        };
 
-                directionsService.route(request, function(response, status) {
-                    if (status == "OK") {
-                        directionsDisplay.setDirections(response);
-                    }
-                });
+        directionsService.route(request, function(response, status) {
+            if (status == "OK") {
+                directionsDisplay.setDirections(response);
+            }
+        });
     });
     
     markers.push(marker);
@@ -294,7 +223,7 @@ function addStationMarker(properties, current_position){
 
 function removeAllMarkers(){
     for (var i = 0; i < markers.length; i++) {
-      markers[i].setMap(null);
+        markers[i].setMap(null);
     }
 }
 
@@ -366,44 +295,6 @@ function geoCode() {
 }
   
 
-/**
-* Makes an AJAX request to flask, using root /rtpi. Passes the address
-* of the requested station. Flask makes a new API call and passes the result
-* for the requested station back as JSON. That data is then formatted and
-* displayed in div rtpi
-**/
-function getLatestData(address) {
-    $.ajax({
-        url: "/rtpi",
-        data: {
-            reqAddress: address,
-            reqJson: null
-        },
-        type: "POST",
-        dataType: "json",
-
-        // var availableBikes;
-    }).done(function(data) {
-        var timeCell = data.reqJson.last_update;
-        var d = new Date(timeCell);
-        var dateString = " " + d.getHours();
-        if (d.getMinutes() < 10) {
-                var minutes = "0" + d.getMinutes();
-            } else {
-               var minutes = d.getMinutes();
-            }
-            dateString += ":" + minutes;
-        var addressCell = data.reqJson.address;
-        var availableBikes = data.reqJson.availableBikes;
-        var availableBikeStands = data.reqJson.availableBikeStands;
-        var status = data.reqJson.status;
-        var retString = "Last Updated: " + dateString + "   Address: " + address + "   Available Bikes: " + availableBikes + "   Available Stands: " + availableBikeStands;
-        $("#rtpi").text(retString);
-        //return data.reqJson.availableBikes;
-    });
-    //return availableBikes;
-}
-
 // A wrapper function to allow us to use getWeatherData for future predictions
 function weatherWrapper() {
     $.getJSON("./getWeather", function(data) {
@@ -420,11 +311,11 @@ function getWeatherData(data) {
     var dateString = " " + d.getHours();
     //dateString += ":" + d.getMinutes();
     if (d.getMinutes() < 10) {
-            var minutes = "0" + d.getMinutes();
-        } else {
-            var minutes = d.getMinutes();
-        }
-        dateString += ":" + minutes;
+        var minutes = "0" + d.getMinutes();
+    } else {
+        var minutes = d.getMinutes();
+    }
+    dateString += ":" + minutes;
         
     var mainDes = data.mainDescription;
     var minTemp = Math.round(data.minTemp - 273.15);
@@ -479,8 +370,8 @@ function toggleBikeLayer() {
 
 // get prediction for requested time and redraw the map markers
 function addStationMarkersFromForecast(){
-    var requestedTime = $('#future-input').val();
-    var url = "/getPrediction/" + requestedTime
+    var requestedTime = $("#future-input").val();
+    var url = "/getPrediction/" + requestedTime;
 
     $.getJSON(url, function( data ) {
         removeAllMarkers();
@@ -499,16 +390,16 @@ function addStationMarkersFromForecast(){
 
 function drawChart(address, marker) {
 
-  // options declared before address has the extra quotes added, so they don't affect the graph title
-  // adjust chartArea to fit in wider legends
-    var options = {title: 'Occupancy for ' + address,
-                     width: 550, 
-                     height: 300,
-                     legend: 'right',
-                     bar: {groupWidth: '75%'},
-                     chartArea: {width: '50%'}
-                     };
-    var node = document.createElement('div');
+    // options declared before address has the extra quotes added, so they don't affect the graph title
+    // adjust chartArea to fit in wider legends
+    var options = {title: "Occupancy for " + address,
+        width: 550, 
+        height: 300,
+        legend: "right",
+        bar: {groupWidth: "75%"},
+        chartArea: {width: "50%"}
+    };
+    var node = document.createElement("div");
 
     var infowindowLarge = new google.maps.InfoWindow();
 
@@ -516,19 +407,19 @@ function drawChart(address, marker) {
 
     var chart = new google.visualization.ColumnChart(node);
     // see flask function for explanation for double quotation marks. might find a less hacky way later
-    address = '\'' + address + '\''
+    address = "'" + address + "'";
     //var address = '"City Quay"';
     var jsonData = $.ajax({
-      url: "./availabilityChart/" + address,
-      dataType: "json"
-      }).done(function(data) {
+        url: "./availabilityChart/" + address,
+        dataType: "json"
+    }).done(function(data) {
     
-    var chartData = new google.visualization.DataTable(data);
+        var chartData = new google.visualization.DataTable(data);
 
-    chart.draw(chartData, options);
+        chart.draw(chartData, options);
 
-    infowindowLarge.setContent(node);
-    infowindowLarge.open(marker.getMap(), marker);
-      });
+        infowindowLarge.setContent(node);
+        infowindowLarge.open(marker.getMap(), marker);
+    });
  
-    }
+}
