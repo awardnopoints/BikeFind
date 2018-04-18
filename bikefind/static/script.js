@@ -109,7 +109,7 @@ function addCurrentPositionMarker(new_position){
     // remove any directions routes from map 
     directionsDisplay.set("directions", null);
     //refreshes data, but is slow and jerky looking
-    
+
     // if current time:
     if(selected_time == default_time){
        addStationMarkersFromDB(); 
@@ -421,7 +421,7 @@ function addStationMarkersFromForecast(){
         removeAllMarkers();
         $.each( data, function(key, value) {
             if(data.hasOwnProperty(key)) {
-                addStationMarker(data[key]);
+                addStationMarker(data[key], current_position);
             }
         });
         getWeatherData(data[0]);
