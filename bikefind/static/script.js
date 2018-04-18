@@ -62,7 +62,7 @@ function initMap() {
     if (location.protocol == "https:") {
         navigator.geolocation.getCurrentPosition(function(position) {
 
-        var current_position = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        current_position = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
         addCurrentPositionMarker(current_position);
 
         });
@@ -86,9 +86,14 @@ function initMap() {
 * Creates a marker at the location clicked by the user
 * Adds an event, creates a pop-up window when the user's marker is clicked
 **/
-function addCurrentPositionMarker(current_position){
+function addCurrentPositionMarker(new_position){
 
     map.setCenter(current_position);
+    //update global variable current_position to the new current position
+    current_position = new_position;
+    //refreshes data, but is slow and jerky looking
+    addStationMarkersFromDB();
+    //updateMarkerInfo();
 
     if(currentPositionMarker != null){
         currentPositionMarker.setMap(null);
@@ -277,6 +282,19 @@ function addStationMarkersFromDB(){
     });  
     // console.log(markers)
 }
+
+
+// function updateMarkerInfo(){
+//     var url = "./markerData/" + current_position;
+//     $.getJSON(url, function(data) {
+//         for (var i = 0; i < markers.length; i++) {
+
+//       console.log(markers[i].properties);
+//     }
+
+//     });
+    
+// }
 
 
 // geocoding section
