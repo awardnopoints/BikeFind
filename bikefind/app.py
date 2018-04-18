@@ -107,31 +107,42 @@ def getPredictionData(requestedTime):
     data = data.to_dict(orient='index')
     return jsonify(data)
 
-@app.route('/availabilityChart/<address>')
-def getChartData(address):
+
+@app.route('/availabilityChart/<addressday>')
+def getChartData(addressday):
+    params = addressday.split('+')
+    address = params[0]
+    address = address.replace("_", "/")
+    day = params[1]
     # need two sets of quotation marks, because address need to be in quotation marks in the query.
     #address = '"Barrow Street"'
-    query = 'select address, availableBikes, availableBikeStands from currentData where address={} group by address'.format(address)
+    query = 'select ch.hour, ch.availableBikes, c.totalBikeStands from chartData as ch, currentData as c where ch.address="{}" and ch.day="{}" and ch.address = c.address'.format(address, day)
     
     # just selecting 15 stations for this test chart
-    df = pd.read_sql_query(query, engine)[:15]
-    dfDict = df.to_dict(orient='index')
-    dfJson = dfDict 
+    df = pd.read_sql_query(query, engine)
+    print(df.shape)
     
     # constuct json file in the required format for google charts
-    jsonData = {
-          "cols": [{"label": 'Address', "type": 'string'},
-                 {"label": 'Available Bikes', "type": 'number'},
-                 {"label": 'Free Bike Stands', "type": 'number'}
-          ]}
+#    jsonData = {
+#          "cols": [
+#                  #{"label": 'Address', "type": 'string'},
+#                 {"label": 'Available Bikes', "type": 'number'},
+#                 {"label": 'Free Bike Stands', "type": 'number'}
+#          ]}
     
-    jsonData["rows"] = []
-    for r in dfJson.values():
-        address_dict = {"v": r["address"]}
-        bikes_dict = {"v": int(r["availableBikes"])}
-        stands_dict = {"v": int(r["availableBikeStands"])}
-        jsonData["rows"].append({"c":[address_dict, bikes_dict, stands_dict]})
-#      
+#    jsonData["rows"] = []
+    
+    jsonData = [['Measure', "Bikes", "Stands"]]
+    for i,r in df.iterrows():
+#        print(r["hour"])
+        stands = r["totalBikeStands"] - r["availableBikes"]
+        if r["hour"] % 4 == 0:
+            hour = str(r["hour"]) + ":00"
+        else:
+            hour = " "
+        jsonData.append([hour, int(r["availableBikes"]), int(stands)])
+#    print(jsonData)
+      
     
     return jsonify(jsonData)
     
@@ -143,3 +154,4 @@ def appWrapper():
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001, debug=True)
 #    app.run(ssl_context='adhoc')
+#    getChartData("Barrow Street+Monday")
