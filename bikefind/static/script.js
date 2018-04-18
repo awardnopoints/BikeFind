@@ -11,7 +11,8 @@ var current_position = new google.maps.LatLng(53.330662, -6.260177);  // change 
 // from w3schools
 var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 var d = new Date();
-var selected_time = days[d.getDay()] + " " + d.getHours() + ":00";/// defaults to current time
+var default_time = days[d.getDay()] + " " + d.getHours() + ":00";/// defaults to current time
+var selected_time = default_time;
 
 
 /// issue being the that current time is a totally different thing. try to extract a string out of it, using Date.day
@@ -253,7 +254,10 @@ function addStationMarkersFromDB(){
         
         });
     });  
-    // console.log(markers)
+
+    selected_time = default_time;
+    displayAddressTimeFromCurrentPos();
+
 }
 
 
