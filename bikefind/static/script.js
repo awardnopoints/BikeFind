@@ -88,11 +88,16 @@ function initMap() {
 **/
 function addCurrentPositionMarker(new_position){
 
-    map.setCenter(current_position);
+    map.setCenter(new_position);
+    map.setZoom(14);
+
     //update global variable current_position to the new current position
     current_position = new_position;
+    // remove any directions routes from map 
+    directionsDisplay.set('directions', null);
     //refreshes data, but is slow and jerky looking
     addStationMarkersFromDB();
+    // make a new function which refreshes the proximity data etc. without re-drawing the markers
     //updateMarkerInfo();
 
     if(currentPositionMarker != null){
@@ -130,6 +135,9 @@ function addCurrentPositionMarker(new_position){
         var url = "findstation/" + current_position;
         $.getJSON(url).done(function(data) {
             //$('#findstation').text(JSON.stringify(data));
+            //////
+            /// will be deleting all of this button stuff
+            //////
             $("#instructions-btns").html("<p>Below are the three closest stations to your selected location. Click on one to see directions.</p>");
             $("#btn-0").html("<button type=\"button\" class=\"btn-info\"><p>" + data["address"]["0"] + "<br/>Available bikes: " + data["availableBikes"]["0"] + "<br/>Available stands: " + data["availableBikeStands"]["0"] + "<br/>Proximity: " + Math.round(data["proximity"]["0"]) + " metres" + "</p></button>");
             $("#btn-1").html("<button type=\"button\" class=\"btn-info\"><p>" + data["address"]["1"] + "<br/>Available bikes: " + data["availableBikes"]["1"] + "<br/>Available stands: " + data["availableBikeStands"]["1"] + "<br/>Proximity: " + Math.round(data["proximity"]["1"]) + " metres" + "</p></button>");
