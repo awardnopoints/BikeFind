@@ -11,7 +11,7 @@ var current_position = new google.maps.LatLng(53.330662, -6.260177);  // change 
 // from w3schools
 var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 var d = new Date();
-var selected_time = days[d.getDay()] + " " + d.getHours() + ":00";/// defaults to current
+var selected_time = days[d.getDay()] + " " + d.getHours() + ":00";/// defaults to current time
 
 
 /// issue being the that current time is a totally different thing. try to extract a string out of it, using Date.day
@@ -398,6 +398,9 @@ function toggleBikeLayer() {
 // get prediction for requested time and redraw the map markers
 function addStationMarkersFromForecast(){
     var requestedTime = $("#future-input").val();
+    selected_time = requestedTime + ":00";
+    displayAddressTimeFromCurrentPos();
+    console.log(selected_time);
     var url = "/getPrediction/" + requestedTime;
 
     $.getJSON(url, function( data ) {
