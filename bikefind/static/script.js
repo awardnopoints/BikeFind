@@ -105,7 +105,7 @@ function addCurrentPositionMarker(new_position){
     //refreshes data, but is slow and jerky looking
     addStationMarkersFromDB();
     // make a new function which refreshes the proximity data etc. without re-drawing the markers
-    
+    displayAddressFromCurrentPos();
 
     if(currentPositionMarker != null){
         currentPositionMarker.setMap(null);
@@ -298,19 +298,20 @@ function geoCode() {
     });
 }
 
-function reverseGeoCode() {
+function displayAddressFromCurrentPos() {
     var latLng = current_position
     geocoder.geocode({'location': latLng}, function(data, status) {
         if(status == "OK") {
-            // this is the format that matches that in the address bar 
-           // console.log(data[2].formatted_address);
-           console.log(data[0].address_components[0]["long_name"] + ' (' + data[2].formatted_address + ')');
+            // this is the format that matches that in the address bar, but seemed to be different for the different positions, so went for simpler 
+           //formatted_address = data[0].address_components[0]["long_name"] + ' (' + data[2].formatted_address + ')';
+           position_html = "<p><b>Selected Position: </b>" + data[0].formatted_address + "</p>";
+           $('#selected_spacetimepos').html(position_html);
+
         } else {
             console.log(status);
         }
     });
 }
-reverseGeoCode();
 
 
 //////////
