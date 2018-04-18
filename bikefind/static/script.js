@@ -90,7 +90,7 @@ function addCurrentPositionMarker(new_position){
 
     map.setCenter(new_position);
     map.setZoom(14);
-
+    //updateMarkerInfo(new_position);
     //update global variable current_position to the new current position
     current_position = new_position;
     // remove any directions routes from map 
@@ -98,7 +98,7 @@ function addCurrentPositionMarker(new_position){
     //refreshes data, but is slow and jerky looking
     addStationMarkersFromDB();
     // make a new function which refreshes the proximity data etc. without re-drawing the markers
-    //updateMarkerInfo();
+    
 
     if(currentPositionMarker != null){
         currentPositionMarker.setMap(null);
@@ -287,6 +287,11 @@ function removeAllMarkers(){
 }
 
 function addStationMarkersFromDB(){
+    // hacky attempt to remove jerky reloading effect when markers refresh
+    // setTimeout(function() {
+    //     removeAllMarkers();
+    // }, 500);
+    // console.log(markers);
     removeAllMarkers();
     markers = [];
     var url = "./markerData/" + current_position;
@@ -302,17 +307,34 @@ function addStationMarkersFromDB(){
 }
 
 
-// function updateMarkerInfo(){
+// function updateMarkerInfo(current_position){
+//     console.log(markers);
+//     //why is current_position not coming in? seems like markers pre-existing lat-lng accessible either. 
+//     console.log(current_position);
 //     var url = "./markerData/" + current_position;
 //     $.getJSON(url, function(data) {
+
 //         for (var i = 0; i < markers.length; i++) {
 
-//       console.log(markers[i].properties);
-//     }
+//             var infoContent = "<div><p><b>" + data.address + "</b></p><p> Total stands: " + data.totalBikeStands + "</p><p> Bikes: " + data.availableBikes + "</p><p> Empty stands: " + data.availableBikeStands + "</p><p> Proximity: " + Math.round(data.proximity) + " metres </p></div>";
 
-//     });
+//             var infowindow = new google.maps.InfoWindow({
+//                 content:infoContent
+//             });
+
+//             markers[i].addListener("mouseover", function(){
+//                 infowindow.open(map, markers[i]);
+//             });
+
+//             markers[i].addListener("mouseout", function(){
+//                 infowindow.close(map, markers[i]);
+//             });
+
+//             }
+
+//             });
     
-// }
+//     }
 
 
 // geocoding section
