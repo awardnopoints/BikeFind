@@ -404,7 +404,6 @@ function addStationMarkersFromForecast(){
     var requestedTime = $("#future-input").val();
     selected_time = requestedTime + ":00";
     displayAddressTimeFromCurrentPos();
-    console.log(selected_time);
     var url = "/getPrediction/" + requestedTime;
 
     $.getJSON(url, function( data ) {
