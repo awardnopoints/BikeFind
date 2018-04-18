@@ -41,13 +41,15 @@ def getForecast():
     return forecastData
 
 
-@app.route('/markerData')
-def getMarkerData():
-    """Returns data from relevant data for styling placing and styling station markers."""
-    query = 'select staticData.address, currentData.availableBikes, currentData.availableBikeStands, currentData.status, staticData.latitude, staticData.longitude, CONCAT("(", staticData.latitude, ", ", staticData.longitude, ")") AS LatLng from currentData inner join staticData where currentData.address=staticData.address group by staticData.address'
+@app.route('/markerData/<coords>')
+def getMarkerData(coords):
+    """Returns data from relevant data for placing and styling station markers. Takes in current location coords for proximity"""
+    query = 'select staticData.address, currentData.availableBikes, currentData.availableBikeStands, currentData.totalBikeStands, currentData.status, staticData.latitude, staticData.longitude, CONCAT("(", staticData.latitude, ", ", staticData.longitude, ")") AS LatLng from currentData inner join staticData where currentData.address=staticData.address group by staticData.address'
     df = pd.read_sql_query(query, engine)
+    df['proximity'] = df.LatLng.apply(lambda station: great_circle(station, coords).meters)
+    df = df.sort_values('proximity')
     df = df.to_dict(orient='index')
-    df = jsonify(df)
+    markerData = jsonify(df)
     return markerData
     
     

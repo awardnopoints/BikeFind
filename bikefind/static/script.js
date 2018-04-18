@@ -6,6 +6,7 @@ var directionsDisplay = new google.maps.DirectionsRenderer();
 var currentPositionMarker;
 var bikeLayer = new google.maps.BicyclingLayer();
 var geocoder = new google.maps.Geocoder();
+var current_position = new google.maps.LatLng(53.330662, -6.260177);
 
 
 function initMap() {
@@ -61,13 +62,13 @@ function initMap() {
     if (location.protocol == "https:") {
         navigator.geolocation.getCurrentPosition(function(position) {
 
-        var current_position = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        current_position = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
         addCurrentPositionMarker(current_position);
 
         });
         
     } else {
-        var current_position = new google.maps.LatLng(53.330662, -6.260177);
+        //var current_position = new google.maps.LatLng(53.330662, -6.260177);
         addCurrentPositionMarker(current_position);
 
     }
@@ -85,9 +86,19 @@ function initMap() {
 * Creates a marker at the location clicked by the user
 * Adds an event, creates a pop-up window when the user's marker is clicked
 **/
-function addCurrentPositionMarker(current_position){
+function addCurrentPositionMarker(new_position){
 
-    map.setCenter(current_position);
+    map.setCenter(new_position);
+    map.setZoom(14);
+    //updateMarkerInfo(new_position);
+    //update global variable current_position to the new current position
+    current_position = new_position;
+    // remove any directions routes from map 
+    directionsDisplay.set('directions', null);
+    //refreshes data, but is slow and jerky looking
+    addStationMarkersFromDB();
+    // make a new function which refreshes the proximity data etc. without re-drawing the markers
+    
 
     if(currentPositionMarker != null){
         currentPositionMarker.setMap(null);
@@ -103,19 +114,20 @@ function addCurrentPositionMarker(current_position){
         }
     });
 
-
-    // $(this).on("click", function() {
-    // var url = 'nearestStation/' + current_position;
-    // $.get(url).done(function(data) {
-    //alert(data);
-    //   $('#nearestStation').text("Nearest station to current location: " + data);
-    // });
-
-    // });
-
     var infowindow = new google.maps.InfoWindow({
+
         //could add reverse geocoding to make address of clicked-on current pos display here. 
-        content:"<div>Current position</div>"
+        content:"<div><b>Current position</b></div>"
+    });
+
+    currentPositionMarker.addListener("mouseover", function() {
+        infowindow.open(map, currentPositionMarker);
+
+    });
+
+    currentPositionMarker.addListener("mouseout", function() {
+        infowindow.close(map, currentPositionMarker);
+
     });
 
     currentPositionMarker.addListener("click", function(){
@@ -123,6 +135,9 @@ function addCurrentPositionMarker(current_position){
         var url = "findstation/" + current_position;
         $.getJSON(url).done(function(data) {
             //$('#findstation').text(JSON.stringify(data));
+            //////
+            /// will be deleting all of this button stuff
+            //////
             $("#instructions-btns").html("<p>Below are the three closest stations to your selected location. Click on one to see directions.</p>");
             $("#btn-0").html("<button type=\"button\" class=\"btn-info\"><p>" + data["address"]["0"] + "<br/>Available bikes: " + data["availableBikes"]["0"] + "<br/>Available stands: " + data["availableBikeStands"]["0"] + "<br/>Proximity: " + Math.round(data["proximity"]["0"]) + " metres" + "</p></button>");
             $("#btn-1").html("<button type=\"button\" class=\"btn-info\"><p>" + data["address"]["1"] + "<br/>Available bikes: " + data["availableBikes"]["1"] + "<br/>Available stands: " + data["availableBikeStands"]["1"] + "<br/>Proximity: " + Math.round(data["proximity"]["1"]) + " metres" + "</p></button>");
@@ -208,7 +223,7 @@ function getCustomMarker(colour, opacity, mag) {
 //////////////
 
 // need to change the get from the static data to the main current table
-function addStationMarker(properties){
+function addStationMarker(properties, current_position){
 
     // size of marker relative to total bike stands
     var mag = properties.totalBikeStands * .65;
@@ -225,7 +240,7 @@ function addStationMarker(properties){
         icon:getCustomMarker(colour, opacity, mag)    
     });
       
-    var infoContent = "<div><p>" + properties.address + "</p><p> Bikes: " + properties.availableBikes + "</p><p> Bike stands: " + properties.availableBikeStands + "</p></div>";
+    var infoContent = "<div><p><b>" + properties.address + "</b></p><p> Total stands: " + properties.totalBikeStands + "</p><p> Bikes: " + properties.availableBikes + "</p><p> Empty stands: " + properties.availableBikeStands + "</p><p> Proximity: " + Math.round(properties.proximity) + " metres </p></div>";
 
     var infowindow = new google.maps.InfoWindow({
         content:infoContent
@@ -244,6 +259,23 @@ function addStationMarker(properties){
     marker.addListener("click", function(){
         getLatestData(properties.address);
     });
+
+    marker.addListener("dblclick", function() {
+        console.log("dblclick working");
+        origin = current_position;
+       // destination = new google.maps.LatLng(53.317850, -6.352633, 53.347850, -6.352633);
+                var request = {
+                    origin: origin,
+                    destination: marker.position,
+                    travelMode: "WALKING"
+                };
+
+                directionsService.route(request, function(response, status) {
+                    if (status == "OK") {
+                        directionsDisplay.setDirections(response);
+                    }
+                });
+    });
     
     markers.push(marker);
 }
@@ -255,20 +287,54 @@ function removeAllMarkers(){
 }
 
 function addStationMarkersFromDB(){
+    // hacky attempt to remove jerky reloading effect when markers refresh
+    // setTimeout(function() {
+    //     removeAllMarkers();
+    // }, 500);
+    // console.log(markers);
     removeAllMarkers();
     markers = [];
-    var staticData;
-
-    $.getJSON( "./staticTest", function( data ) {
+    var url = "./markerData/" + current_position;
+    $.getJSON( url, function( data ) {
         $.each( data, function(key, value) {
             if(data.hasOwnProperty(key)) {
-                addStationMarker(data[key]);
+                addStationMarker(data[key], current_position);
             }
         
         });
     });  
     // console.log(markers)
 }
+
+
+// function updateMarkerInfo(current_position){
+//     console.log(markers);
+//     //why is current_position not coming in? seems like markers pre-existing lat-lng accessible either. 
+//     console.log(current_position);
+//     var url = "./markerData/" + current_position;
+//     $.getJSON(url, function(data) {
+
+//         for (var i = 0; i < markers.length; i++) {
+
+//             var infoContent = "<div><p><b>" + data.address + "</b></p><p> Total stands: " + data.totalBikeStands + "</p><p> Bikes: " + data.availableBikes + "</p><p> Empty stands: " + data.availableBikeStands + "</p><p> Proximity: " + Math.round(data.proximity) + " metres </p></div>";
+
+//             var infowindow = new google.maps.InfoWindow({
+//                 content:infoContent
+//             });
+
+//             markers[i].addListener("mouseover", function(){
+//                 infowindow.open(map, markers[i]);
+//             });
+
+//             markers[i].addListener("mouseout", function(){
+//                 infowindow.close(map, markers[i]);
+//             });
+
+//             }
+
+//             });
+    
+//     }
 
 
 // geocoding section
