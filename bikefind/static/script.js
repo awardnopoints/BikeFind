@@ -112,7 +112,17 @@ function addCurrentPositionMarker(new_position){
     var infowindow = new google.maps.InfoWindow({
 
         //could add reverse geocoding to make address of clicked-on current pos display here. 
-        content:"<div>Current position</div>"
+        content:"<div><b>Current position</b></div>"
+    });
+
+    currentPositionMarker.addListener("mouseover", function() {
+        infowindow.open(map, currentPositionMarker);
+
+    });
+
+    currentPositionMarker.addListener("mouseout", function() {
+        infowindow.close(map, currentPositionMarker);
+
     });
 
     currentPositionMarker.addListener("click", function(){
