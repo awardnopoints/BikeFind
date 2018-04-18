@@ -7,6 +7,10 @@ var currentPositionMarker;
 var bikeLayer = new google.maps.BicyclingLayer();
 var geocoder = new google.maps.Geocoder();
 var current_position = new google.maps.LatLng(53.330662, -6.260177);
+var selected_time = "Thursday 16"
+
+/// issue being the that current time is a totally different thing. try to extract a string out of it, using Date.day
+/// two separate issues, one what to display and the other what to pass around
 
 google.charts.load("current", {packages: ["corechart", "bar"]});
 // have switched to triggering from on marker click
@@ -293,6 +297,23 @@ function geoCode() {
         }
     });
 }
+
+function reverseGeoCode() {
+    var latLng = current_position
+    geocoder.geocode({'location': latLng}, function(data, status) {
+        if(status == "OK") {
+            // this is the format that matches that in the address bar 
+           // console.log(data[2].formatted_address);
+           console.log(data[0].address_components[0]["long_name"] + ' (' + data[2].formatted_address + ')');
+        } else {
+            console.log(status);
+        }
+    });
+}
+reverseGeoCode();
+
+
+//////////
   
 
 // A wrapper function to allow us to use getWeatherData for future predictions
