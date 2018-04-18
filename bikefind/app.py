@@ -1,3 +1,6 @@
+import sys
+sys.path.append('..')
+
 from flask import Flask, render_template, jsonify, request
 import pandas as pd
 from sqlalchemy import create_engine
@@ -45,6 +48,7 @@ def getForecast():
 @app.route('/markerData/<coords>')
 def getMarkerData(coords):
     """Returns data from relevant data for placing and styling station markers. Takes in current location coords for proximity"""
+    # prune the query to only get what we're using
     query = 'select staticData.address, currentData.availableBikes, currentData.availableBikeStands, currentData.totalBikeStands, currentData.status, staticData.latitude, staticData.longitude, CONCAT("(", staticData.latitude, ", ", staticData.longitude, ")") AS LatLng from currentData inner join staticData where currentData.address=staticData.address group by staticData.address'
     df = pd.read_sql_query(query, engine)
     df['proximity'] = df.LatLng.apply(lambda station: great_circle(station, coords).meters)
@@ -101,10 +105,12 @@ def getWeatherData():
     weatherData = weatherDataDict[len(weatherDataDict)-1]
     return jsonify(weatherData)
 
-@app.route('/getPrediction/<requestedTime>')
-def getPredictionData(requestedTime):
+@app.route('/getPrediction/<requestedTime>/<coords>')
+def getPredictionData(requestedTime, coords):
     parameters = requestedTime.split()
     data = getPrediction(parameters[0], int(parameters[1]))
+    data['proximity'] = data.LatLng.apply(lambda station: great_circle(station, coords).meters)
+    data = data.sort_values('proximity')
     data = data.to_dict(orient='index')
     return jsonify(data)
 

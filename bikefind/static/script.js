@@ -404,9 +404,10 @@ function addStationMarkersFromForecast(){
     var requestedTime = $("#future-input").val();
     selected_time = requestedTime + ":00";
     displayAddressTimeFromCurrentPos();
-    var url = "/getPrediction/" + requestedTime;
+    var url = "/getPrediction/" + requestedTime + "/" + current_position;
 
     $.getJSON(url, function( data ) {
+        console.log(data);
         removeAllMarkers();
         $.each( data, function(key, value) {
             if(data.hasOwnProperty(key)) {
