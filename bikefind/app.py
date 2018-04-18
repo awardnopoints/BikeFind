@@ -2,7 +2,7 @@ from flask import Flask, render_template, jsonify, request
 import pandas as pd
 from sqlalchemy import create_engine
 from geopy.distance import great_circle
-#from bikefind.linearRegression import lm, features, getPrediction
+from bikefind.linearRegression import lm, features, getPrediction
 
 
 app = Flask(__name__)
