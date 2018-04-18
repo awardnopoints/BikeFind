@@ -6,8 +6,13 @@ var directionsDisplay = new google.maps.DirectionsRenderer();
 var currentPositionMarker;
 var bikeLayer = new google.maps.BicyclingLayer();
 var geocoder = new google.maps.Geocoder();
-var current_position = new google.maps.LatLng(53.330662, -6.260177);
-var selected_time = "Thursday 16"
+var current_position = new google.maps.LatLng(53.330662, -6.260177);  // change name to selected position to match time?
+
+// from w3schools
+var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+var d = new Date();
+var selected_time = days[d.getDay()] + " " + d.getHours() + ":00";/// defaults to current
+
 
 /// issue being the that current time is a totally different thing. try to extract a string out of it, using Date.day
 /// two separate issues, one what to display and the other what to pass around
@@ -105,7 +110,7 @@ function addCurrentPositionMarker(new_position){
     //refreshes data, but is slow and jerky looking
     addStationMarkersFromDB();
     // make a new function which refreshes the proximity data etc. without re-drawing the markers
-    displayAddressFromCurrentPos();
+    displayAddressTimeFromCurrentPos();
 
     if(currentPositionMarker != null){
         currentPositionMarker.setMap(null);
@@ -298,13 +303,13 @@ function geoCode() {
     });
 }
 
-function displayAddressFromCurrentPos() {
+function displayAddressTimeFromCurrentPos() {
     var latLng = current_position
     geocoder.geocode({'location': latLng}, function(data, status) {
         if(status == "OK") {
             // this is the format that matches that in the address bar, but seemed to be different for the different positions, so went for simpler 
            //formatted_address = data[0].address_components[0]["long_name"] + ' (' + data[2].formatted_address + ')';
-           position_html = "<p><b>Selected Position: </b>" + data[0].formatted_address + "</p>";
+           position_html = "<p><b>Selected Position: </b>" + data[0].formatted_address + "</p><p><b>Selected time: </b>" + selected_time + "</p>";
            $('#selected_spacetimepos').html(position_html);
 
         } else {
