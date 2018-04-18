@@ -107,7 +107,34 @@ def getPredictionData(requestedTime):
     data = data.to_dict(orient='index')
     return jsonify(data)
 
-
+@app.route('/availabilityChart/<address>')
+def getChartData(address):
+    # need two sets of quotation marks, because address need to be in quotation marks in the query.
+    #address = '"Barrow Street"'
+    query = 'select address, availableBikes, availableBikeStands from currentData where address={} group by address'.format(address)
+    
+    # just selecting 15 stations for this test chart
+    df = pd.read_sql_query(query, engine)[:15]
+    dfDict = df.to_dict(orient='index')
+    dfJson = dfDict 
+    
+    # constuct json file in the required format for google charts
+    jsonData = {
+          "cols": [{"label": 'Address', "type": 'string'},
+                 {"label": 'Available Bikes', "type": 'number'},
+                 {"label": 'Free Bike Stands', "type": 'number'}
+          ]}
+    
+    jsonData["rows"] = []
+    for r in dfJson.values():
+        address_dict = {"v": r["address"]}
+        bikes_dict = {"v": int(r["availableBikes"])}
+        stands_dict = {"v": int(r["availableBikeStands"])}
+        jsonData["rows"].append({"c":[address_dict, bikes_dict, stands_dict]})
+#      
+    
+    return jsonify(jsonData)
+    
 def appWrapper():
     """Wrapper to allow entry point to app.run with the correct arguments"""
     app.run(host='0.0.0.0', port=5001)
