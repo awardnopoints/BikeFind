@@ -109,7 +109,17 @@ function addCurrentPositionMarker(new_position){
     // remove any directions routes from map 
     directionsDisplay.set("directions", null);
     //refreshes data, but is slow and jerky looking
-    addStationMarkersFromDB();
+    
+    // if current time:
+    if(selected_time == default_time){
+       addStationMarkersFromDB(); 
+       // else if any other time (ie. future)
+   } else{
+        addStationMarkersFromForecast();
+   }
+    
+
+    
     // make a new function which refreshes the proximity data etc. without re-drawing the markers
     displayAddressTimeFromCurrentPos();
 
