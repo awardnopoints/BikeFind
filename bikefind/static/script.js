@@ -8,6 +8,9 @@ var bikeLayer = new google.maps.BicyclingLayer();
 var geocoder = new google.maps.Geocoder();
 var current_position = new google.maps.LatLng(53.330662, -6.260177);
 
+google.charts.load('current', {packages: ['corechart', 'bar']});
+// have switched to triggering from on marker click
+//google.charts.setOnLoadCallback(drawChart);
 
 function initMap() {
     /**
@@ -242,9 +245,15 @@ function addStationMarker(properties, current_position){
       
     var infoContent = "<div><p><b>" + properties.address + "</b></p><p> Total stands: " + properties.totalBikeStands + "</p><p> Bikes: " + properties.availableBikes + "</p><p> Empty stands: " + properties.availableBikeStands + "</p><p> Proximity: " + Math.round(properties.proximity) + " metres </p></div>";
 
+   // var infoContentLarge = "<div>Chart goes here</div>";
+
     var infowindow = new google.maps.InfoWindow({
         content:infoContent
     });
+
+    // var infowindowLarge = new google.maps.InfoWindow({
+    //     content:infoContentLarge
+    // });
 
     marker.addListener("mouseover", function(){
         infowindow.open(map, marker);
@@ -258,6 +267,8 @@ function addStationMarker(properties, current_position){
 
     marker.addListener("click", function(){
         getLatestData(properties.address);
+        drawChart(properties.address, marker);
+        infowindow.close(map, marker);
     });
 
     marker.addListener("dblclick", function() {
@@ -480,3 +491,43 @@ function addStationMarkersFromForecast(){
         getWeatherData(data[0]);
     });
 }
+
+// google charts experiments
+
+
+
+function drawChart(address, marker) {
+
+  // options declared before address has the extra quotes added, so they don't affect the graph title
+  // adjust chartArea to fit in wider legends
+    var options = {title: 'Occupancy for ' + address,
+                     width: 550, 
+                     height: 300,
+                     legend: 'right',
+                     bar: {groupWidth: '75%'},
+                     chartArea: {width: '50%'}
+                     };
+    var node = document.createElement('div');
+
+    var infowindowLarge = new google.maps.InfoWindow();
+
+    
+
+    var chart = new google.visualization.ColumnChart(node);
+    // see flask function for explanation for double quotation marks. might find a less hacky way later
+    address = '\'' + address + '\''
+    //var address = '"City Quay"';
+    var jsonData = $.ajax({
+      url: "./availabilityChart/" + address,
+      dataType: "json"
+      }).done(function(data) {
+    
+    var chartData = new google.visualization.DataTable(data);
+
+    chart.draw(chartData, options);
+
+    infowindowLarge.setContent(node);
+    infowindowLarge.open(marker.getMap(), marker);
+      });
+ 
+    }
