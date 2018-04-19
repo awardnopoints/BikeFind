@@ -3,6 +3,7 @@
     <head>
         <title>dublinbikes</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="">
         <link href="https://cdn.rawgit.com/westonganger/bootstrap-directional-buttons/master/dist/bootstrap-directional-buttons.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -88,16 +89,14 @@
                 <input type="button" id="prediction-btn" value="Select Time">
                 <!-- <input id="future-input" class="controls" type="text" placeholder="Enter day, then hour" size="50"> -->
              </div>
-             <div class="col-md-6 col-sm-6 col-cs-12" id="selected_spacetimepos"></div>
         </div>
         </div>
+        <!-- Show current selected position and time + Display charts button -->
+        <div  id="selected_spacetimepos"></div>
        
        
     </div>
     
-     <!-- Button trigger modal -->
-  <a data-toggle="modal" href="#myModal1" class="btn btn-primary btn-lg">Launch demo modal</a>
-
   <!-- Modal -->
   <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
