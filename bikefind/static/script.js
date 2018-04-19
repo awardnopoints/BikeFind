@@ -179,7 +179,7 @@ function getCustomMarker(colour, opacity, mag) {
 
 // need to change the get from the static data to the main current table
 function addStationMarker(properties, current_position){
-
+    //console.log(properties);
     // size of marker relative to total bike stands
     var mag = properties.totalBikeStands * .65;
     var colour = "#2E498E";
@@ -411,6 +411,7 @@ function toggleBikeLayer() {
 
 // get prediction for requested time and redraw the map markers
 function addStationMarkersFromForecast(){
+    //$("#load_notice").html("<i>Loading Markers...</i>");
     var requestedTime = $("#future-input").val();
     selected_time = requestedTime + ":00";
     displayAddressTimeFromCurrentPos();
