@@ -116,11 +116,11 @@ function addCurrentPositionMarker(new_position){
 
     // if current time:
     if(selected_time == default_time){
-        addStationMarkersFromDB(); 
-        // else if any other time (ie. future)
-    } else{
+       addStationMarkersFromDB(); 
+       // else if any other time (ie. future)
+   } else{
         addStationMarkersFromForecast();
-    }
+   }
     
 
     
@@ -199,8 +199,12 @@ function addStationMarker(properties, current_position){
         icon:getCustomMarker(colour, opacity, mag)    
     });
       
-    var infoContent = "<div><p><b>" + properties.address + "</b></p><p> Total stands: " + properties.totalBikeStands + "</p><p> Bikes: " + properties.availableBikes + "</p><p> Empty stands: " + properties.availableBikeStands + "</p><p> Proximity: " + Math.round(properties.proximity) + " metres</p><p><input type='button' id='charts-btn' value='Charts'></p><p><input type='button' id='directions-btn' value='Directions'></div>";
-
+    var infoContent = "<div><p><b>" + properties.address + "</b></p><p> Total stands: " + properties.totalBikeStands + "</p><p> Bikes: " + properties.availableBikes + "</p><p> Empty stands: " + properties.availableBikeStands + "</p><p> Proximity: " + Math.round(properties.proximity) + " metres</p>";
+    if (properties.status == "CLOSED") {
+      infoContent += "<p><b>Station Closed</b></p><p><i>Click for charts, double-click for directions</i></p></div>";
+    } else {
+      infoContent += "<p><i>Click for charts, double-click for directions</i></p></div>";
+    }
 
     // var infoContentLarge = "<div>Chart goes here</div>";
 
@@ -221,18 +225,19 @@ function addStationMarker(properties, current_position){
     });
 
     marker.addListener("click", function(){
-        var mydate = selected_time.split(" ");
-        var myday = mydate[0];
-        console.log(myday);
+        console.log("click") 
+        var mydate = selected_time.split(" ")
+        var myday = mydate[0]
+        console.log(myday)
         //getLatestData(properties.address);
         drawChart(properties.address, myday, marker);
-        console.log("test");
+        console.log("test")
         infowindow.close(map, marker);
     });
 
     marker.addListener("dblclick", function() {
-        // console.log("dblclick working");
-        // origin = current_position;
+        console.log("dblclick working");
+       // origin = current_position;
         // destination = new google.maps.LatLng(53.317850, -6.352633, 53.347850, -6.352633);
         var request = {
             origin: current_position,
@@ -332,8 +337,9 @@ function displayAddressTimeFromCurrentPos() {
         if(status == "OK") {
             // this is the format that matches that in the address bar, but seemed to be different for the different positions, so went for simpler 
             //formatted_address = data[0].address_components[0]["long_name"] + ' (' + data[2].formatted_address + ')';
-            position_html = "<p><b>Selected Position: </b>" + data[0].formatted_address + "</p><p><b>Selected time: </b>" + selected_time + "</p>";
+            position_html = "<p><b>Selected Position: </b>" + data[0].formatted_address + "<b>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; Selected time: </b>" + selected_time + "</p>";
             $("#selected_spacetimepos").html(position_html);
+              
 
         } else {
             console.log(status);
@@ -443,9 +449,9 @@ function addStationMarkersFromForecast(){
 
 function drawChart(address, day, marker) {
 
-    // options declared before address has the extra quotes added, so they don't affect the graph title
-    // adjust chartArea to fit in wider legends
-    var options = {
+  // options declared before address has the extra quotes added, so they don't affect the graph title
+  // adjust chartArea to fit in wider legends
+      var options = {
         title: address + ", " + day + ", " + "Bikes and Stands",
         width: 600,
         height: 450,
@@ -453,32 +459,32 @@ function drawChart(address, day, marker) {
             width: 400,
             height: 300
         },
-        hAxis: {title:"Time"},
-        vAxis: {title:"Number of Bikes/Stands"},
+        hAxis: {title:'Time'},
+        vAxis: {title:'Number of Bikes/Stands'},
         //legend: { position: 'right'},
-        bar: { groupWidth: "100%" },
+        bar: { groupWidth: '100%' },
         isStacked: true
-    };
-    var node = document.getElementById("chartmodal");
-    node.style.display = "block";
+      };
+    var node = document.getElementById('chartmodal');
+    node.style.display = 'block'
 
-    //    var infowindowLarge = new google.maps.InfoWindow();
+//    var infowindowLarge = new google.maps.InfoWindow();
 
     
 
     var chart = new google.visualization.ColumnChart(node);
     // see flask function for explanation for double quotation marks. might find a less hacky way later
-    addressday = address.replace("/", "_") + "+" + day;
+    addressday = address.replace("/", "_") + '+' + day
     //var address = '"City Quay"';
     var jsonData = $.ajax({
-        url: "./availabilityChart/" + addressday,
-        dataType: "json"
-    }).done(function(data) {
+      url: './availabilityChart/' + addressday,
+      dataType: "json"
+      }).done(function(data) {
     
-        var chartData = new google.visualization.arrayToDataTable(data);
+    var chartData = new google.visualization.arrayToDataTable(data);
 
-        chart.draw(chartData, options);
-        $("#myModal1").modal();
+    chart.draw(chartData, options);
+    $("#myModal1").modal()
 
     //document.getElementById("chartmodal").innerHTML = node.innerHTML
     //document.getElementById("chartmodal").style.display = 'block'
@@ -486,7 +492,9 @@ function drawChart(address, day, marker) {
     //infowindowLarge.open(marker.getMap(), marker);
     
     
-    });
+      });
+
+ 
 }
 
 function dateTimePicker() {
