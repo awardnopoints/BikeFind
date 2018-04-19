@@ -116,11 +116,11 @@ function addCurrentPositionMarker(new_position){
 
     // if current time:
     if(selected_time == default_time){
-       addStationMarkersFromDB(); 
-       // else if any other time (ie. future)
-   } else{
+        addStationMarkersFromDB(); 
+        // else if any other time (ie. future)
+    } else{
         addStationMarkersFromForecast();
-   }
+    }
     
 
     
@@ -221,18 +221,18 @@ function addStationMarker(properties, current_position){
     });
 
     marker.addListener("click", function(){
-        var mydate = selected_time.split(" ")
-        var myday = mydate[0]
-        console.log(myday)
+        var mydate = selected_time.split(" ");
+        var myday = mydate[0];
+        console.log(myday);
         //getLatestData(properties.address);
         drawChart(properties.address, myday, marker);
-        console.log("test")
+        console.log("test");
         infowindow.close(map, marker);
     });
 
     marker.addListener("dblclick", function() {
         // console.log("dblclick working");
-       // origin = current_position;
+        // origin = current_position;
         // destination = new google.maps.LatLng(53.317850, -6.352633, 53.347850, -6.352633);
         var request = {
             origin: current_position,
@@ -443,9 +443,9 @@ function addStationMarkersFromForecast(){
 
 function drawChart(address, day, marker) {
 
-  // options declared before address has the extra quotes added, so they don't affect the graph title
-  // adjust chartArea to fit in wider legends
-      var options = {
+    // options declared before address has the extra quotes added, so they don't affect the graph title
+    // adjust chartArea to fit in wider legends
+    var options = {
         title: address + ", " + day + ", " + "Bikes and Stands",
         width: 600,
         height: 450,
@@ -453,32 +453,32 @@ function drawChart(address, day, marker) {
             width: 400,
             height: 300
         },
-        hAxis: {title:'Time'},
-        vAxis: {title:'Number of Bikes/Stands'},
+        hAxis: {title:"Time"},
+        vAxis: {title:"Number of Bikes/Stands"},
         //legend: { position: 'right'},
-        bar: { groupWidth: '100%' },
+        bar: { groupWidth: "100%" },
         isStacked: true
-      };
-    var node = document.getElementById('chartmodal');
-    node.style.display = 'block'
+    };
+    var node = document.getElementById("chartmodal");
+    node.style.display = "block";
 
-//    var infowindowLarge = new google.maps.InfoWindow();
+    //    var infowindowLarge = new google.maps.InfoWindow();
 
     
 
     var chart = new google.visualization.ColumnChart(node);
     // see flask function for explanation for double quotation marks. might find a less hacky way later
-    addressday = address.replace("/", "_") + '+' + day
+    addressday = address.replace("/", "_") + "+" + day;
     //var address = '"City Quay"';
     var jsonData = $.ajax({
-      url: './availabilityChart/' + addressday,
-      dataType: "json"
-      }).done(function(data) {
+        url: "./availabilityChart/" + addressday,
+        dataType: "json"
+    }).done(function(data) {
     
-    var chartData = new google.visualization.arrayToDataTable(data);
+        var chartData = new google.visualization.arrayToDataTable(data);
 
-    chart.draw(chartData, options);
-    $("#myModal1").modal()
+        chart.draw(chartData, options);
+        $("#myModal1").modal();
 
     //document.getElementById("chartmodal").innerHTML = node.innerHTML
     //document.getElementById("chartmodal").style.display = 'block'
@@ -486,9 +486,7 @@ function drawChart(address, day, marker) {
     //infowindowLarge.open(marker.getMap(), marker);
     
     
-      });
-
- 
+    });
 }
 
 function dateTimePicker() {
