@@ -82,12 +82,12 @@ def test_getWeatherData2():
     
 def test_getChartData1():
     test_client = app.test_client()
-    response = test_client.get('/availabilityChart/"Portobello%20Road"' , content_type = 'html/text')
+    response = test_client.get('/availabilityChart/"Smithfield"' , content_type = 'html/text')
     
     assert response.status_code == 200
     
 def test_getChartData2():
     test_client = app.test_client()
-    response = test_client.get('/availabilityChart/"Portobello%20Road"', content_type = 'html/text')
+    response = test_client.get('/availabilityChart/"Smithfield"', content_type = 'html/text')
     
     assert b'""cols":' in response.data
