@@ -221,7 +221,9 @@ function addStationMarker(properties, current_position){
     });
 
     marker.addListener("click", function(){
-        drawChart(properties.address, marker);
+        getLatestData(properties.address);
+        drawChart(properties.address, "Saturday", marker);
+        console.log("test")
         infowindow.close(map, marker);
     });
 
@@ -436,39 +438,53 @@ function addStationMarkersFromForecast(){
 
 
 
-function drawChart(address, marker) {
+function drawChart(address, day, marker) {
 
-    // options declared before address has the extra quotes added, so they don't affect the graph title
-    // adjust chartArea to fit in wider legends
-    var options = {title: "Occupancy for " + address,
-        width: 550, 
-        height: 300,
-        legend: "right",
-        bar: {groupWidth: "75%"},
-        chartArea: {width: "50%"}
-    };
-    var node = document.createElement("div");
+  // options declared before address has the extra quotes added, so they don't affect the graph title
+  // adjust chartArea to fit in wider legends
+      var options = {
+        title: address + ", " + day + ", " + "Bikes and Stands",
+        width: 600,
+        height: 450,
+        chartArea: {
+            width: 400,
+            height: 300
+        },
+        hAxis: {title:'Time'},
+        vAxis: {title:'Number of Bikes/Stands'},
+        //legend: { position: 'right'},
+        bar: { groupWidth: '100%' },
+        isStacked: true
+      };
+    var node = document.getElementById('chartmodal');
+    node.style.display = 'block'
 
-    var infowindowLarge = new google.maps.InfoWindow();
+//    var infowindowLarge = new google.maps.InfoWindow();
 
     
 
     var chart = new google.visualization.ColumnChart(node);
     // see flask function for explanation for double quotation marks. might find a less hacky way later
-    address = "'" + address + "'";
+    addressday = address.replace("/", "_") + '+' + day
     //var address = '"City Quay"';
     var jsonData = $.ajax({
-        url: "./availabilityChart/" + address,
-        dataType: "json"
-    }).done(function(data) {
+      url: './availabilityChart/' + addressday,
+      dataType: "json"
+      }).done(function(data) {
     
-        var chartData = new google.visualization.DataTable(data);
+    var chartData = new google.visualization.arrayToDataTable(data);
 
-        chart.draw(chartData, options);
+    chart.draw(chartData, options);
+    $("#myModal1").modal()
 
-        infowindowLarge.setContent(node);
-        infowindowLarge.open(marker.getMap(), marker);
-    });
+    //document.getElementById("chartmodal").innerHTML = node.innerHTML
+    //document.getElementById("chartmodal").style.display = 'block'
+    //infowindowLarge.setContent(node);
+    //infowindowLarge.open(marker.getMap(), marker);
+    
+    
+      });
+
  
 }
 
