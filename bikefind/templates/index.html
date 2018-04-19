@@ -51,6 +51,7 @@
         <div class="row">
             <div class="col-xs-4">
                 <h3 >Dublinbikes</h3>
+                <p id="load_notice"></p>
             </div>
             <div id="weather" class="table-responsive, col-xs-8">
                 <table class="table">
@@ -64,36 +65,25 @@
                 </table>
             </div>
         </div>
-        <div id="map"></div>
- 
-
         <div class="row">
-            <div class="col-md-3 col-sm-6 col-cs-12" id="findstation" id="address-test">
+            <div id="map"></div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-6 col-cs-12" id="findstation" id="address-test">
                 <input id="address-input" class="controls" type="text" placeholder="Enter new location" size="50">
                 <input type="button" id="address-input-btn" value="Select Location">
                 <input type="button" id="refresh-btn" value="Refresh">
                 <label id="bikelanes-toggle"><span style="color: black; font-size: 12pt">Show bike lanes </span><input type="checkbox" name="Show bike lanes"></label>
                 <input type="button" id="future-input-btn" value="Future">
                 <input id="future-input" class="controls" type="text" placeholder="Enter day, then hour" size="50">
+             </div>
+             <div class="col-md-6 col-sm-6 col-cs-12" id="selected_spacetimepos"></div>
         </div>
         </div>
-    <div class="container, mid">
-    <button type="button" class="btn btn btn-success btn-arrow-left" >&nbsp;Routes</button>
-    <button type="button"  class="btn btn btn-link" data-toggle="collapse" data-target="#collapsable">Info</button>
-    <button type="button" class="btn btn-info btn-arrow-right">Charts&nbsp;</button>
-  </div>
-    <div id="collapsable" class="collapse">
-        <div id="rtpi">
-        </div>
+       
+       
     </div>
-
-    <div id = "btn-0">
-    </div>
-    <div id = "btn-1">
-    </div>
-    <div id = "btn-2">
-    </div>
-    <div id="chart"></div>
     
      <!-- Button trigger modal -->
   <a data-toggle="modal" href="#myModal1" class="btn btn-primary btn-lg">Launch demo modal</a>

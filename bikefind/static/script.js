@@ -6,9 +6,19 @@ var directionsDisplay = new google.maps.DirectionsRenderer();
 var currentPositionMarker;
 var bikeLayer = new google.maps.BicyclingLayer();
 var geocoder = new google.maps.Geocoder();
-var current_position = new google.maps.LatLng(53.330662, -6.260177);
+var current_position = new google.maps.LatLng(53.330662, -6.260177);  // change name to selected position to match time?
 
-google.charts.load('current', {packages: ['corechart', 'bar']});
+// from w3schools
+var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+var d = new Date();
+var default_time = days[d.getDay()] + " " + d.getHours() + ":00";/// defaults to current time
+var selected_time = default_time;
+
+
+/// issue being the that current time is a totally different thing. try to extract a string out of it, using Date.day
+/// two separate issues, one what to display and the other what to pass around
+
+google.charts.load("current", {packages: ["corechart", "bar"]});
 // have switched to triggering from on marker click
 //google.charts.setOnLoadCallback(drawChart);
 
@@ -65,8 +75,8 @@ function initMap() {
     if (location.protocol == "https:") {
         navigator.geolocation.getCurrentPosition(function(position) {
 
-        current_position = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        addCurrentPositionMarker(current_position);
+            current_position = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            addCurrentPositionMarker(current_position);
 
         });
         
@@ -97,11 +107,21 @@ function addCurrentPositionMarker(new_position){
     //update global variable current_position to the new current position
     current_position = new_position;
     // remove any directions routes from map 
-    directionsDisplay.set('directions', null);
+    directionsDisplay.set("directions", null);
     //refreshes data, but is slow and jerky looking
-    addStationMarkersFromDB();
-    // make a new function which refreshes the proximity data etc. without re-drawing the markers
+
+    // if current time:
+    if(selected_time == default_time){
+       addStationMarkersFromDB(); 
+       // else if any other time (ie. future)
+   } else{
+        addStationMarkersFromForecast();
+   }
     
+
+    
+    // make a new function which refreshes the proximity data etc. without re-drawing the markers
+    displayAddressTimeFromCurrentPos();
 
     if(currentPositionMarker != null){
         currentPositionMarker.setMap(null);
@@ -135,74 +155,6 @@ function addCurrentPositionMarker(new_position){
 
     currentPositionMarker.addListener("click", function(){
         infowindow.open(map, currentPositionMarker);
-        var url = "findstation/" + current_position;
-        $.getJSON(url).done(function(data) {
-            //$('#findstation').text(JSON.stringify(data));
-            //////
-            /// will be deleting all of this button stuff
-            //////
-            $("#instructions-btns").html("<p>Below are the three closest stations to your selected location. Click on one to see directions.</p>");
-            $("#btn-0").html("<button type=\"button\" class=\"btn-info\"><p>" + data["address"]["0"] + "<br/>Available bikes: " + data["availableBikes"]["0"] + "<br/>Available stands: " + data["availableBikeStands"]["0"] + "<br/>Proximity: " + Math.round(data["proximity"]["0"]) + " metres" + "</p></button>");
-            $("#btn-1").html("<button type=\"button\" class=\"btn-info\"><p>" + data["address"]["1"] + "<br/>Available bikes: " + data["availableBikes"]["1"] + "<br/>Available stands: " + data["availableBikeStands"]["1"] + "<br/>Proximity: " + Math.round(data["proximity"]["1"]) + " metres" + "</p></button>");
-            $("#btn-2").html("<button type=\"button\" class=\"btn-info\"><p>" + data["address"]["2"] + "<br/>Available bikes: " + data["availableBikes"]["2"] + "<br/>Available stands: " + data["availableBikeStands"]["2"] + "<br/>Proximity: " + Math.round(data["proximity"]["2"]) + " metres" + "</p></button>");
-
-
-            origin = current_position;
-
-            // obviously need to refactor this. just trying to get things working first
-            //btn for closest
-            // add a highlight to this one by default, change highlight to the one that's displaying if the user clicks
-            $( "#btn-0" ).click(function() {
-
-                destination = new google.maps.LatLng(parseFloat(data["latitude"]["0"]), parseFloat(data["longitude"]["0"]));
-                var request = {
-                    origin: origin,
-                    destination: destination,
-                    travelMode: "WALKING"
-                };
-
-                directionsService.route(request, function(response, status) {
-                    if (status == "OK") {
-                        directionsDisplay.setDirections(response);
-                    }
-                });
-
-            });
-            // btn for second closest
-            $( "#btn-1" ).click(function() {
-                destination = new google.maps.LatLng(parseFloat(data["latitude"]["1"]), parseFloat(data["longitude"]["1"]));
-                var request = {
-                    origin: origin,
-                    destination: destination,
-                    travelMode: "WALKING"
-                };
-
-                directionsService.route(request, function(response, status) {
-                    if (status == "OK") {
-                        directionsDisplay.setDirections(response);
-                    }
-                });
-
-            });
-            // btn for second closest
-            $( "#btn-2" ).click(function() {
-                destination = new google.maps.LatLng(parseFloat(data["latitude"]["2"]), parseFloat(data["longitude"]["2"]));
-                var request = {
-                    origin: origin,
-                    destination: destination,
-                    travelMode: "WALKING"
-                };
-
-                directionsService.route(request, function(response, status) {
-                    if (status == "OK") {
-                        directionsDisplay.setDirections(response);
-                    }
-                });
-
-            });
-        
-        });
-    
     });
 }  
 
@@ -227,7 +179,7 @@ function getCustomMarker(colour, opacity, mag) {
 
 // need to change the get from the static data to the main current table
 function addStationMarker(properties, current_position){
-
+    //console.log(properties);
     // size of marker relative to total bike stands
     var mag = properties.totalBikeStands * .65;
     var colour = "#2E498E";
@@ -246,7 +198,7 @@ function addStationMarker(properties, current_position){
     var infoContent = "<div><p><b>" + properties.address + "</b></p><p> Total stands: " + properties.totalBikeStands + "</p><p> Bikes: " + properties.availableBikes + "</p><p> Empty stands: " + properties.availableBikeStands + "</p><p> Proximity: " + Math.round(properties.proximity) + " metres</p><p><input type='button' id='charts-btn' value='Charts'></p><p><input type='button' id='directions-btn' value='Directions'></div>";
 
 
-   // var infoContentLarge = "<div>Chart goes here</div>";
+    // var infoContentLarge = "<div>Chart goes here</div>";
 
     var infowindow = new google.maps.InfoWindow({
         content:infoContent
@@ -258,12 +210,10 @@ function addStationMarker(properties, current_position){
 
     marker.addListener("mouseover", function(){
         infowindow.open(map, marker);
-        // getLatestData(properties.address);
     });
 
     marker.addListener("mouseout", function(){
         infowindow.close(map, marker);
-        // getLatestData(properties.address);
     });
 
     marker.addListener("click", function(){
@@ -274,20 +224,20 @@ function addStationMarker(properties, current_position){
     });
 
     marker.addListener("dblclick", function() {
-        console.log("dblclick working");
-        origin = current_position;
-       // destination = new google.maps.LatLng(53.317850, -6.352633, 53.347850, -6.352633);
-                var request = {
-                    origin: origin,
-                    destination: marker.position,
-                    travelMode: "WALKING"
-                };
+        // console.log("dblclick working");
+       // origin = current_position;
+        // destination = new google.maps.LatLng(53.317850, -6.352633, 53.347850, -6.352633);
+        var request = {
+            origin: current_position,
+            destination: marker.position,
+            travelMode: "WALKING"
+        };
 
-                directionsService.route(request, function(response, status) {
-                    if (status == "OK") {
-                        directionsDisplay.setDirections(response);
-                    }
-                });
+        directionsService.route(request, function(response, status) {
+            if (status == "OK") {
+                directionsDisplay.setDirections(response);
+            }
+        });
     });
     
     markers.push(marker);
@@ -295,7 +245,7 @@ function addStationMarker(properties, current_position){
 
 function removeAllMarkers(){
     for (var i = 0; i < markers.length; i++) {
-      markers[i].setMap(null);
+        markers[i].setMap(null);
     }
 }
 
@@ -316,7 +266,10 @@ function addStationMarkersFromDB(){
         
         });
     });  
-    // console.log(markers)
+
+    selected_time = default_time;
+    displayAddressTimeFromCurrentPos();
+
 }
 
 
@@ -365,45 +318,25 @@ function geoCode() {
         }
     });
 }
-  
 
-/**
-* Makes an AJAX request to flask, using root /rtpi. Passes the address
-* of the requested station. Flask makes a new API call and passes the result
-* for the requested station back as JSON. That data is then formatted and
-* displayed in div rtpi
-**/
-function getLatestData(address) {
-    $.ajax({
-        url: "/rtpi",
-        data: {
-            reqAddress: address,
-            reqJson: null
-        },
-        type: "POST",
-        dataType: "json",
+function displayAddressTimeFromCurrentPos() {
+    var latLng = current_position
+    geocoder.geocode({'location': latLng}, function(data, status) {
+        if(status == "OK") {
+            // this is the format that matches that in the address bar, but seemed to be different for the different positions, so went for simpler 
+           //formatted_address = data[0].address_components[0]["long_name"] + ' (' + data[2].formatted_address + ')';
+           position_html = "<p><b>Selected Position: </b>" + data[0].formatted_address + "</p><p><b>Selected time: </b>" + selected_time + "</p>";
+           $('#selected_spacetimepos').html(position_html);
 
-        // var availableBikes;
-    }).done(function(data) {
-        var timeCell = data.reqJson.last_update;
-        var d = new Date(timeCell);
-        var dateString = " " + d.getHours();
-        if (d.getMinutes() < 10) {
-                var minutes = "0" + d.getMinutes();
-            } else {
-               var minutes = d.getMinutes();
-            }
-            dateString += ":" + minutes;
-        var addressCell = data.reqJson.address;
-        var availableBikes = data.reqJson.availableBikes;
-        var availableBikeStands = data.reqJson.availableBikeStands;
-        var status = data.reqJson.status;
-        var retString = "Last Updated: " + dateString + "   Address: " + address + "   Available Bikes: " + availableBikes + "   Available Stands: " + availableBikeStands;
-        $("#rtpi").text(retString);
-        //return data.reqJson.availableBikes;
+        } else {
+            console.log(status);
+        }
     });
-    //return availableBikes;
 }
+
+
+//////////
+  
 
 // A wrapper function to allow us to use getWeatherData for future predictions
 function weatherWrapper() {
@@ -421,11 +354,11 @@ function getWeatherData(data) {
     var dateString = " " + d.getHours();
     //dateString += ":" + d.getMinutes();
     if (d.getMinutes() < 10) {
-            var minutes = "0" + d.getMinutes();
-        } else {
-            var minutes = d.getMinutes();
-        }
-        dateString += ":" + minutes;
+        var minutes = "0" + d.getMinutes();
+    } else {
+        var minutes = d.getMinutes();
+    }
+    dateString += ":" + minutes;
         
     var mainDes = data.mainDescription;
     var minTemp = Math.round(data.minTemp - 273.15);
@@ -480,14 +413,18 @@ function toggleBikeLayer() {
 
 // get prediction for requested time and redraw the map markers
 function addStationMarkersFromForecast(){
-    var requestedTime = $('#future-input').val();
-    var url = "/getPrediction/" + requestedTime
+    //$("#load_notice").html("<i>Loading Markers...</i>");
+    var requestedTime = $("#future-input").val();
+    selected_time = requestedTime + ":00";
+    displayAddressTimeFromCurrentPos();
+    var url = "/getPrediction/" + requestedTime + "/" + current_position;
 
     $.getJSON(url, function( data ) {
+        //console.log(data);
         removeAllMarkers();
         $.each( data, function(key, value) {
             if(data.hasOwnProperty(key)) {
-                addStationMarker(data[key]);
+                addStationMarker(data[key], current_position);
             }
         });
         getWeatherData(data[0]);
@@ -544,5 +481,6 @@ function drawChart(address, day, marker) {
     
     
       });
+
  
-    }
+}

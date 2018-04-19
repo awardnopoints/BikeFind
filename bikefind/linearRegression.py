@@ -82,6 +82,12 @@ def getForecastTable(myday, myhour):
     df_current = pd.read_sql_table(table_name="currentData", con=db_connection_string)
     df_current = df_current[['totalBikeStands', 'address']]
     df_final = pd.merge(df_merge, df_current, on=['address'])
+    # all three are needed. concat latlng to generate proximity, separate lat/lng for station markers adding (although could change with more time)
+    df_coords = pd.read_sql_query('select latitude, longitude, CONCAT("(", latitude, ", ", longitude, ")") AS LatLng from staticData', con=db_connection_string)
+    df_final['LatLng'] = df_coords['LatLng']
+    # change this to a merge in a min
+    df_final['latitude'] = df_coords['latitude']
+    df_final['longitude'] = df_coords['longitude']
     
     return df_final
 
