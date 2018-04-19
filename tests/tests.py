@@ -70,24 +70,28 @@ def test_getMarkerData2():
  
 def test_getWeatherData1():
     test_client = app.test_client()
-    response = test_client.get('/weatherData' , content_type = 'html/text')
+    response = test_client.get('/getWeather' , content_type = 'html/text')
     
     assert response.status_code == 200
     
 def test_getWeatherData2():
+    #This will fail if the api delivers a faulty JSON
     test_client = app.test_client()
-    response = test_client.get('/weatherData', content_type = 'html/text')
+    response = test_client.get('/getWeather', content_type = 'html/text')
     
     assert b'"cloudDensity":' in response.data
     
 def test_getChartData1():
     test_client = app.test_client()
-    response = test_client.get('/availabilityChart/"Smithfield"' , content_type = 'html/text')
+    response = test_client.get('/availabilityChart/Smithfield+Tuesday' , content_type = 'html/text')
     
     assert response.status_code == 200
     
 def test_getChartData2():
     test_client = app.test_client()
-    response = test_client.get('/availabilityChart/"Smithfield"', content_type = 'html/text')
+    response = test_client.get('/availabilityChart/Smithfield+Tuesday', content_type = 'html/text')
     
-    assert b'""cols":' in response.data
+    assert b'"Measure"' in response.data
+    assert b'"Bikes"' in response.data
+    assert b'"Stands"' in response.data
+
