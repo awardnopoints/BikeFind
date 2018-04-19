@@ -66,17 +66,17 @@ def test_getMarkerData2():
     test_client = app.test_client()
     response = test_client.get('/markerData/' + testCoords, content_type = 'html/text')
     
-    assert b'address":{"0":"Charlemont Street","1":"Harcourt Terrace","2":"Portobello Harbour"}' in response.data
+    assert b'{\n  "0": {\n    "LatLng": "(53.341655, -6.236198)", \n    "address": "Barrow Street"' in response.data
  
 def test_getWeatherData1():
     test_client = app.test_client()
-    response = test_client.get('/weatherData/' , content_type = 'html/text')
+    response = test_client.get('/weatherData' , content_type = 'html/text')
     
     assert response.status_code == 200
     
 def test_getWeatherData2():
     test_client = app.test_client()
-    response = test_client.get('/weatherData/', content_type = 'html/text')
+    response = test_client.get('/weatherData', content_type = 'html/text')
     
     assert b'"cloudDensity":' in response.data
     
