@@ -352,7 +352,7 @@ function displayAddressTimeFromCurrentPos() {
         if(status == "OK") {
             // this is the format that matches that in the address bar, but seemed to be different for the different positions, so went for simpler 
             //formatted_address = data[0].address_components[0]["long_name"] + ' (' + data[2].formatted_address + ')';
-            position_html = "<p><b>Selected Position: </b>" + data[0].formatted_address + "<b>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; Selected time: </b>" + selected_time + "</p>";
+            position_html = "<center><b>Selected Position: </b>" + data[0].formatted_address + "<b>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; Selected time: </b>" + selected_time + "</center>";
             $("#selected_spacetimepos").html(position_html);
               
 
