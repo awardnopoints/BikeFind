@@ -8,24 +8,18 @@ var bikeLayer = new google.maps.BicyclingLayer();
 var geocoder = new google.maps.Geocoder();
 var current_position = new google.maps.LatLng(53.330662, -6.260177);  // change name to selected position to match time?
 
-// from w3schools
 var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 var d = new Date();
 var default_time = days[d.getDay()] + " " + d.getHours() + ":00";/// defaults to current time
 var selected_time = default_time;
 
-
-/// issue being the that current time is a totally different thing. try to extract a string out of it, using Date.day
-/// two separate issues, one what to display and the other what to pass around
-
 google.charts.load("current", {packages: ["corechart", "bar"]});
 // have switched to triggering from on marker click
-//google.charts.setOnLoadCallback(drawChart);
 
 function initMap() {
-    /**
- * Initialises map, adds onclick event to create a user marker
- **/
+/**
+* Initialises map, adds onclick event to create a user marker
+**/
 
     var charlemontPlace = {
         lat: 53.330662,
@@ -43,17 +37,14 @@ function initMap() {
     directionsDisplay.setMap(map);
     directionsDisplay.setPanel(document.getElementById("directions-test"));
 
-    //var input = $('#address-input');
     // jquery assignment not working for some reason
     var input = document.getElementById("address-input");
     var input_btn = document.getElementById("address-input-btn");
     var refreshBikes = document.getElementById("refresh-btn");
-    // var futureBikes = document.getElementById("future-btn");
     var bikelanesToggle = document.getElementById("bikelanes-toggle");
     var dateTimePicker = document.getElementById("datetimepicker");
     var predictionBtn = document.getElementById("prediction-btn");
   
-    //var input = $('#address-input');
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input_btn);
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(dateTimePicker);
@@ -70,11 +61,8 @@ function initMap() {
         bounds: defaultBounds
     };
 
-
     var autocomplete = new google.maps.places.Autocomplete(input, addressBarOptions);
 
-
-    //////////
     // adding a current position marker on user click
     if (location.protocol == "https:") {
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -107,7 +95,6 @@ function addCurrentPositionMarker(new_position){
 
     map.setCenter(new_position);
     map.setZoom(14);
-    //updateMarkerInfo(new_position);
     //update global variable current_position to the new current position
     current_position = new_position;
     // remove any directions routes from map 
@@ -116,13 +103,11 @@ function addCurrentPositionMarker(new_position){
 
     // if current time:
     if(selected_time == default_time){
-       addStationMarkersFromDB(); 
-       // else if any other time (ie. future)
-   } else{
+        addStationMarkersFromDB(); 
+        // else if any other time (ie. future)
+    } else{
         addStationMarkersFromForecast();
-   }
-    
-
+    }
     
     // make a new function which refreshes the proximity data etc. without re-drawing the markers
     displayAddressTimeFromCurrentPos();
@@ -162,11 +147,9 @@ function addCurrentPositionMarker(new_position){
     });
 }  
 
-///////////////
 // add station markers 
 function getCustomMarker(colour, opacity, mag) {
     //console.log(properties.availableBikeStands);
-
 
     return {
         path: google.maps.SymbolPath.CIRCLE,
@@ -178,8 +161,6 @@ function getCustomMarker(colour, opacity, mag) {
     };
 }
 
-
-//////////////
 
 // need to change the get from the static data to the main current table
 function addStationMarker(properties, current_position){
@@ -201,20 +182,14 @@ function addStationMarker(properties, current_position){
       
     var infoContent = "<div><p><b>" + properties.address + "</b></p><p> Total stands: " + properties.totalBikeStands + "</p><p> Bikes: " + properties.availableBikes + "</p><p> Empty stands: " + properties.availableBikeStands + "</p><p> Proximity: " + Math.round(properties.proximity) + " metres</p>";
     if (properties.status == "CLOSED") {
-      infoContent += "<p><b>Station Closed</b></p><p><i>Click for charts, double-click for directions</i></p></div>";
+        infoContent += "<p><b>Station Closed</b></p><p><i>Click for charts, double-click for directions</i></p></div>";
     } else {
-      infoContent += "<p><i>Click for charts, double-click for directions</i></p></div>";
+        infoContent += "<p><i>Click for charts, double-click for directions</i></p></div>";
     }
-
-    // var infoContentLarge = "<div>Chart goes here</div>";
 
     var infowindow = new google.maps.InfoWindow({
         content:infoContent
     });
-
-    // var infowindowLarge = new google.maps.InfoWindow({
-    //     content:infoContentLarge
-    // });
 
     marker.addListener("mouseover", function(){
         infowindow.open(map, marker);
@@ -224,30 +199,23 @@ function addStationMarker(properties, current_position){
         infowindow.close(map, marker);
     });
 
-    //var timer = 0;
-    //var delay = 200;
-    var prevent = false
-
-    
+    var prevent = false;
     marker.addListener("click", function(){
         setTimeout( function() {
-        if (prevent) {
-            prevent = false;
-            return;
+            if (prevent) {
+                prevent = false;
+                return;
             }
-        var mydate = selected_time.split(" ");
-        var myday = mydate[0];
-        // console.log(myday);
-        //getLatestData(properties.address);
-        drawChart(properties.address, myday, marker);
-        // console.log("test")
-        infowindow.close(map, marker);
-        prevent = false}
-        , 200)
+            var mydate = selected_time.split(" ");
+            var myday = mydate[0];
+            drawChart(properties.address, myday, marker);
+            infowindow.close(map, marker);
+            prevent = false;}
+            , 200);
     });
 
     marker.addListener("dblclick", function() {
-       // origin = current_position;
+        // origin = current_position;
         // destination = new google.maps.LatLng(53.317850, -6.352633, 53.347850, -6.352633);
         prevent = true;
         var request = {
@@ -261,12 +229,7 @@ function addStationMarker(properties, current_position){
                 directionsDisplay.setDirections(response);
             }
         });
-        //setTimeout(prevent = false, 200)
-        
     });
-    
-    
-    
     markers.push(marker);
 }
 
@@ -296,38 +259,7 @@ function addStationMarkersFromDB(){
 
     selected_time = default_time;
     displayAddressTimeFromCurrentPos();
-
 }
-
-
-// function updateMarkerInfo(current_position){
-//     console.log(markers);
-//     //why is current_position not coming in? seems like markers pre-existing lat-lng accessible either. 
-//     console.log(current_position);
-//     var url = "./markerData/" + current_position;
-//     $.getJSON(url, function(data) {
-
-//         for (var i = 0; i < markers.length; i++) {
-
-//             var infoContent = "<div><p><b>" + data.address + "</b></p><p> Total stands: " + data.totalBikeStands + "</p><p> Bikes: " + data.availableBikes + "</p><p> Empty stands: " + data.availableBikeStands + "</p><p> Proximity: " + Math.round(data.proximity) + " metres </p></div>";
-
-//             var infowindow = new google.maps.InfoWindow({
-//                 content:infoContent
-//             });
-
-//             markers[i].addListener("mouseover", function(){
-//                 infowindow.open(map, markers[i]);
-//             });
-
-//             markers[i].addListener("mouseout", function(){
-//                 infowindow.close(map, markers[i]);
-//             });
-
-//             }
-
-//             });
-    
-//     }
 
 
 // geocoding section
@@ -346,6 +278,7 @@ function geoCode() {
     });
 }
 
+
 function displayAddressTimeFromCurrentPos() {
     var latLng = current_position;
     geocoder.geocode({"location": latLng}, function(data, status) {
@@ -362,9 +295,6 @@ function displayAddressTimeFromCurrentPos() {
     });
 }
 
-
-//////////
-  
 
 // A wrapper function to allow us to use getWeatherData for future predictions
 function weatherWrapper() {
@@ -396,8 +326,6 @@ function getWeatherData(data) {
 
     $("#weatherDescription").text(mainDes);
     $("#weatherCurrentTemp").text("Temp:" + currentTemp + String.fromCharCode(176));
-    // $("#weatherMinTemp").text("Min:" + minTemp + String.fromCharCode(176));
-    // $("#weatherMaxTemp").text("Max:" + maxTemp + String.fromCharCode(176));
     $("#windSpeed").text("Wind Speed: " + data.windSpeed + "km/h");
     $("#humidity").text("Humidity: " + data.humidity + "%");
     $("#wicon").attr("src", iconurl);
@@ -458,15 +386,11 @@ function addStationMarkersFromForecast(){
     });
 }
 
-// google charts experiments
-
-
 
 function drawChart(address, day, marker) {
-
-  // options declared before address has the extra quotes added, so they don't affect the graph title
-  // adjust chartArea to fit in wider legends
-      var options = {
+    // options declared before address has the extra quotes added, so they don't affect the graph title
+    // adjust chartArea to fit in wider legends
+    var options = {
         title: address + ", " + day + ", " + "Bikes and Stands",
         width: 600,
         height: 450,
@@ -474,42 +398,29 @@ function drawChart(address, day, marker) {
             width: 400,
             height: 300
         },
-        hAxis: {title:'Time'},
-        vAxis: {title:'Number of Bikes/Stands'},
+        hAxis: {title:"Time"},
+        vAxis: {title:"Number of Bikes/Stands"},
         //legend: { position: 'right'},
-        bar: { groupWidth: '100%' },
+        bar: { groupWidth: "100%" },
         isStacked: true
-      };
-    var node = document.getElementById('chartmodal');
-    node.style.display = 'block'
-
-//    var infowindowLarge = new google.maps.InfoWindow();
-
-    
+    };
+    var node = document.getElementById("chartmodal");
+    node.style.display = "block";
 
     var chart = new google.visualization.ColumnChart(node);
     // see flask function for explanation for double quotation marks. might find a less hacky way later
-    addressday = address.replace("/", "_") + '+' + day
+    addressday = address.replace("/", "_") + "+" + day;
     //var address = '"City Quay"';
     var jsonData = $.ajax({
-      url: './availabilityChart/' + addressday,
-      dataType: "json"
-      }).done(function(data) {
+        url: "./availabilityChart/" + addressday,
+        dataType: "json"
+    }).done(function(data) {
     
-    var chartData = new google.visualization.arrayToDataTable(data);
+        var chartData = new google.visualization.arrayToDataTable(data);
 
-    chart.draw(chartData, options);
-    $("#myModal1").modal()
-
-    //document.getElementById("chartmodal").innerHTML = node.innerHTML
-    //document.getElementById("chartmodal").style.display = 'block'
-    //infowindowLarge.setContent(node);
-    //infowindowLarge.open(marker.getMap(), marker);
-    
-    
-      });
-
- 
+        chart.draw(chartData, options);
+        $("#myModal1").modal();
+    });
 }
 
 function dateTimePicker() {
@@ -524,4 +435,3 @@ function dateTimePicker() {
     // $("#dateTimePickerBtn").val("Get Prediction");
     });
 }
-
