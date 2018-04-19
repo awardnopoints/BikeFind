@@ -217,8 +217,11 @@ function addStationMarker(properties, current_position){
     });
 
     marker.addListener("click", function(){
-        getLatestData(properties.address);
-        drawChart(properties.address, "Saturday", marker);
+        var mydate = selected_time.split(" ")
+        var myday = mydate[0]
+        console.log(myday)
+        //getLatestData(properties.address);
+        drawChart(properties.address, myday, marker);
         console.log("test")
         infowindow.close(map, marker);
     });
