@@ -223,10 +223,10 @@ function addStationMarker(properties, current_position){
 
     marker.addListener("dblclick", function() {
         // console.log("dblclick working");
-        origin = current_position;
+       // origin = current_position;
         // destination = new google.maps.LatLng(53.317850, -6.352633, 53.347850, -6.352633);
         var request = {
-            origin: origin,
+            origin: current_position,
             destination: marker.position,
             travelMode: "WALKING"
         };
@@ -417,7 +417,7 @@ function addStationMarkersFromForecast(){
     var url = "/getPrediction/" + requestedTime + "/" + current_position;
 
     $.getJSON(url, function( data ) {
-        console.log(data);
+        //console.log(data);
         removeAllMarkers();
         $.each( data, function(key, value) {
             if(data.hasOwnProperty(key)) {
