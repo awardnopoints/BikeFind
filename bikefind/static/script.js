@@ -224,21 +224,32 @@ function addStationMarker(properties, current_position){
         infowindow.close(map, marker);
     });
 
+    //var timer = 0;
+    //var delay = 200;
+    var prevent = false
+
+    
     marker.addListener("click", function(){
-        console.log("click") 
-        var mydate = selected_time.split(" ")
-        var myday = mydate[0]
-        console.log(myday)
+        setTimeout( function() {
+        if (prevent) {
+            prevent = false;
+            return;
+            }
+        var mydate = selected_time.split(" ");
+        var myday = mydate[0];
+        // console.log(myday);
         //getLatestData(properties.address);
         drawChart(properties.address, myday, marker);
-        console.log("test")
+        // console.log("test")
         infowindow.close(map, marker);
+        prevent = false}
+        , 200)
     });
 
     marker.addListener("dblclick", function() {
-        console.log("dblclick working");
        // origin = current_position;
         // destination = new google.maps.LatLng(53.317850, -6.352633, 53.347850, -6.352633);
+        prevent = true;
         var request = {
             origin: current_position,
             destination: marker.position,
@@ -250,7 +261,11 @@ function addStationMarker(properties, current_position){
                 directionsDisplay.setDirections(response);
             }
         });
+        //setTimeout(prevent = false, 200)
+        
     });
+    
+    
     
     markers.push(marker);
 }
