@@ -1,0 +1,13 @@
+[
+  "tests/tests.py::test_template_load",
+  "tests/tests.py::test_page_data",
+  "tests/tests.py::test_backend_connection",
+  "tests/tests.py::test_bikes_api",
+  "tests/tests.py::test_weather_api",
+  "tests/tests.py::test_getMarkerData1",
+  "tests/tests.py::test_getMarkerData2",
+  "tests/tests.py::test_getWeatherData1",
+  "tests/tests.py::test_getWeatherData2",
+  "tests/tests.py::test_getChartData1",
+  "tests/tests.py::test_getChartData2"
+]
