@@ -12,6 +12,8 @@ import datetime
 import sys
 
 def main(target):
+    """Makes a .csv backup of target table. 
+       Includes time and date of backup in d/m/y h/m/s format"""
     db_connection_string = "mysql+cymysql://conor:team0db1@team0db.cojxdhcdsq2b.us-west-2.rds.amazonaws.com/team0"
     
     df = pd.read_sql_table(table_name=target, con=db_connection_string)

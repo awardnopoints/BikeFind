@@ -291,6 +291,7 @@ def getWeatherData():
         logging.error(e)
 
 def getForecastData():
+    """Makes api call for forecast data to openweathermap API"""
     r2 = requests.get(forecast_connection_string)
     f_list = r2.json()
     for f in f_list["list"]:
