@@ -1,8 +1,6 @@
 from sqlalchemy import create_engine, exc
 from sqlalchemy.orm.session import sessionmaker
 from bikefind.dbClasses import staticData, dynamicData, currentData, weatherData, forecastData
-import requests, time, logging
-from bikefind.dbClasses import staticData, dynamicData, currentData, weatherData
 import requests
 import time
 import logging
@@ -89,22 +87,16 @@ def getStaticData():
         except Exception as e:
             session.rollback()
             logging.error(e)
-def getCurrentData():
-    r = requests.get(bikes_connection_string)
-    station_info_list = r.json()
-
-        # little ticker counting down the stations, because waiting sucks
-        #x += 1
-        # if x % 5 == 0:
-        #    print("Static Bikes Counted:", x, '/', len(station_info_list))
-    session.close()
 
 
 def getCurrentData():
+    """Makes an API request, and checks the results against dynamicData,
+    replaces any rows not already in dynamicData to currentData.
+    Created the currentData table if it doesn't already exist using model from
+    dbClasses"""
     r = requests.get(bikes_connection_string)
     station_info_list = r.json()
 
-    x = 0
     for station in station_info_list:
         address = station['address']
         last_update = station['last_update']
@@ -135,7 +127,9 @@ def getCurrentData():
 
 
 def getDynamicData():
-
+    """Creates a table using dynamicData dbClass if it doesn't
+    already exist, makes an API call to bikes API and appends
+    all rows to dynamicData, if they aren't aready in the table"""
     r = requests.get(bikes_connection_string)
     station_info_list = r.json()
     for station in station_info_list:
@@ -290,6 +284,7 @@ def getWeatherData():
         session.rollback()
         logging.error(e)
 
+
 def getForecastData():
     """Makes api call for forecast data to openweathermap API and adds to forecastData table."""
     r2 = requests.get(forecast_connection_string)
@@ -346,11 +341,14 @@ def getForecastData():
         except KeyError:
             f_cloudDensity = 0
 
+        # Check if the row is new by querying the time
+        # column in forecastData
         for i in [-3600, 0, 3600]:
             n_time = f_time + i
             new_row = False
             try:
-                match = session.query(forecastData).filter(forecastData.time == n_time).one()
+                match = session.query(forecastData).filter(
+                    forecastData.time == n_time).one()
                 new_row = False
             except KeyError:
                 new_row = True
@@ -359,13 +357,13 @@ def getForecastData():
 
             if new_row:
 
-                #Create DB object with weatherData class, then try to add it to the DB
-                forecast_row = forecastData(time = n_time, mainDescription = f_mainDescription,
-                                            detailedDescription = f_detailedDescription,
-                                            icon = f_icon, currentTemp = f_temp, maxTemp = f_maxTemp,
-                                            minTemp = f_minTemp, pressure = f_pressure,
-                                            humidity = f_humidity, windSpeed = f_windSpeed,
-                                            windAngle = f_windAngle, cloudDensity = f_cloudDensity,
+                # Create DB object with weatherData class, then try to add it to the DB
+                forecast_row = forecastData(time=n_time, mainDescription=f_mainDescription,
+                                            detailedDescription=f_detailedDescription,
+                                            icon=f_icon, currentTemp=f_temp, maxTemp=f_maxTemp,
+                                            minTemp=f_minTemp, pressure=f_pressure,
+                                            humidity=f_humidity, windSpeed=f_windSpeed,
+                                            windAngle=f_windAngle, cloudDensity=f_cloudDensity,
                                             )
 
                 session.add(forecast_row)
@@ -408,6 +406,7 @@ def getForecastData():
             except Exception as e:
                 session.rollback()
                 logging.error(e)
+
 
 def justForecast():
     getForecastData()
