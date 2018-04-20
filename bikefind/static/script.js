@@ -7,14 +7,13 @@ var currentPositionMarker;
 var bikeLayer = new google.maps.BicyclingLayer();
 var geocoder = new google.maps.Geocoder();
 var current_position = new google.maps.LatLng(53.330662, -6.260177);  // change name to selected position to match time?
-
+// from w3schools
 var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 var d = new Date();
 var default_time = days[d.getDay()] + " " + d.getHours() + ":00";/// defaults to current time
 var selected_time = default_time;
 
 google.charts.load("current", {packages: ["corechart", "bar"]});
-// have switched to triggering from on marker click
 
 /**
 * Initialises map with desired configuration.
@@ -157,7 +156,12 @@ function addCurrentPositionMarker(new_position){
     });
 }  
 
-// add station markers 
+/**
+* Creates a custom icon, based on a circle from SymbolPath.
+* @param {string} colour The hex code for circle colour.
+* @param {number} opacity Float which controls opacity of the circle.
+* @param {number} mag Determines the scale of the circle.
+*/
 function getCustomMarker(colour, opacity, mag) {
     //console.log(properties.availableBikeStands);
 
@@ -171,8 +175,13 @@ function getCustomMarker(colour, opacity, mag) {
     };
 }
 
-
-// need to change the get from the static data to the main current table
+/**
+* Creates a station marker, representing a single DublinBikes station on the map.
+* This is the basic marker-creation function used by addStationMarkersFromDB and addStationMarkersFromForecast.
+* @param {json} properties Json data on the station whose marker will be created.
+* This is a selected portion of the AJAX response received by the marker-population functions.
+* @param {number} current_position Global variable which points to the latlong of the currently selected location.
+*/
 function addStationMarker(properties, current_position){
     //console.log(properties);
     // size of marker relative to total bike stands
@@ -243,6 +252,10 @@ function addStationMarker(properties, current_position){
     markers.push(marker);
 }
 
+/**
+* Removes all station markers from the map.
+* Used by marker-population functions there is no piling up of multiple markers for the one station.
+*/
 function removeAllMarkers(){
     for (var i = 0; i < markers.length; i++) {
         markers[i].setMap(null);
