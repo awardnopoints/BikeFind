@@ -1,17 +1,19 @@
-### BikeFind
+BikeFind
+========
 
-**Basic instructions for use:**
-
+Basic instructions for use:
+--------------------------
 After installing the application using pip install, the following commands can be used to control the application.
 
 *bf_display* will run the app.py module loading the web page.
 
 *bf_scrape* will run the webscraper.py module, updating the DB with information from the APIs.
 
+////
 
-**Basic structure for this project:**
-
-*/*
+Outline of file structures:
+--------------------------------
+**/**
 
 .gitignore --> List of files not to be pushed to GitHub.
 
@@ -29,11 +31,11 @@ sqlScripts.txt --> Basic sql command for viewing bike data by day/time,
 
 webscraper.log --> Log of errors encountered by webscraper.py
 
-*/backups/*
+**/backups/**
 
 all --> CSV backups of databases
 
-*/bikefind/*
+**/bikefind/**
 
 appendToDynamic.py --> Module for updating dynamicData from CSV
 
@@ -51,21 +53,21 @@ webscraper.log --> Same as webscraper.log from upper level
 
 webscraper.py --> Main module for updating DB. Runs continuously on AWS Instance, checking APIs at regular intervals and updating all dynamically updated tables (dynamicData, currentData, weatherData, forecastData)
 
-*/bikefind/objects/*
+**/bikefind/objects/**
 
 features.p --> Pickle object containing a list of features from the linear regression model.
 
 model.p --> Pickle object containing the linear regression model.
 
-*/bikefind/static/*
+**/bikefind/static/**
 
 script.js --> JavaScript for the web page.
 
-*/bikefind/templates/*
+**/bikefind/templates/**
 
 index.html --> HTML for the web page.
 
-*/docs/*
+**/docs/**
 
 Linear Regression Model.ipynb --> Jupyter Notebook for building linear regression model and saving it to a pickle file.
 
@@ -75,15 +77,16 @@ Predictive Table Charts.ipynb --> Jupyter Notebook that uses the Random Forest M
 
 Random_Forest_Model.ipynb --> Jupyter Notebook for building Random Forest Classification Model.
 
-*/tests/*
+**/tests/**
 
 __init__.py --> Makes the test folder a package for pytest
 
 test_basic.py --> Module containing a set of tests to be run by pytest, either manually with >>>pytest test_basic.py or automatically by Travis CI whenever a push is made to GitHub.
 
-
+////
 
 Version control policy:
+----------------------
 
 Please don't directly add new features to the master branch.
 When adding features, please create a new branch (with a relevant name)
