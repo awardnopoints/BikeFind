@@ -180,6 +180,7 @@ function getCustomMarker(colour, opacity, mag) {
 * This is the basic marker-creation function used by addStationMarkersFromDB and addStationMarkersFromForecast.
 * @param {json} properties Json data on the station whose marker will be created.
 * This is a selected portion of the AJAX response received by the marker-population functions.
+* The infomation received includes the station's address, occupancy data and proximity to current selected position
 * @param {number} current_position Global variable which points to the latlong of the currently selected location.
 */
 function addStationMarker(properties, current_position){
@@ -262,8 +263,12 @@ function removeAllMarkers(){
     }
 }
 
+/**
+* Makes AJAX request to getMarkerData and uses the response to populate the map with
+* a marker for each station. 
+*/
 function addStationMarkersFromDB(){
-    // hacky attempt to remove jerky reloading effect when markers refresh
+    // hacky attempt to remove jerky reloading effect when markers refresh. no time to fix.
     // setTimeout(function() {
     //     removeAllMarkers();
     // }, 500);
@@ -285,7 +290,10 @@ function addStationMarkersFromDB(){
 }
 
 
-// geocoding section
+/**
+* Converts address to LatLng object, compatable with current_position global variable.
+* Get address from the autocomplete address bar (see index.html).
+*/
 function geoCode() {
     var testAddress = "Grosvenor Square, Dublin 8, Ireland";
     var address = document.getElementById("address-input").value;
@@ -301,7 +309,10 @@ function geoCode() {
     });
 }
 
-
+/**
+* Displays current_position and selected_time, in a suitable format, to a div in index.html.
+* Uses reverse geocoding to generate an address to display from the LatLng object referenced by current_position.
+*/
 function displayAddressTimeFromCurrentPos() {
     var latLng = current_position;
     geocoder.geocode({"location": latLng}, function(data, status) {
@@ -311,22 +322,27 @@ function displayAddressTimeFromCurrentPos() {
             position_html = "<center><b>Selected Position: </b>" + data[0].formatted_address + "<b>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; Selected time: </b>" + selected_time + "</center>";
             $("#selected_spacetimepos").html(position_html);
               
-
+            //position_html poorly named as it includes the selected_time too.
         } else {
             console.log(status);
         }
     });
 }
 
-
-// A wrapper function to allow us to use getWeatherData for future predictions
+/**
+* A wrapper function to allow us to use getWeatherData for future predictions.
+* Calls getWeatherData.
+*/
 function weatherWrapper() {
     $.getJSON("./getWeather", function(data) {
         getWeatherData(data);
     });
 }
 
-// Get either current or predicted weather
+/**
+* Get either current or predicted weather information.
+* @param {json} data The json-formatted AJAX response from getWeatherData.
+*/
 function getWeatherData(data) {
     var d = new Date(0);
     d.setUTCSeconds(data.time);
@@ -363,6 +379,10 @@ function getWeatherData(data) {
 }
     
 //Clock functions from w3schools: https://www.w3schools.com/js/tryit.asp?filename=tryjs_timing_clock 
+/**
+* Recursive function which generates a current timer twice a second. 
+* Displays to a div in index.html with id of #clock.
+*/
 function startTime() {
     var today = new Date();
     var h = today.getHours();
@@ -374,6 +394,10 @@ function startTime() {
     var t = setTimeout(startTime, 500);
 }
 
+/**
+* Helper function for startTime. Adds zero in front of numbers to maintain
+* standard display formate
+*/
 function checkTime(i) {
     if (i < 10) {i = "0" + i;}  // add zero in front of numbers < 10
     return i;
