@@ -403,9 +403,12 @@ function checkTime(i) {
     return i;
 }
 
-// toggle show bike paths on/off
 // based on https://stackoverflow.com/questions/38543164/adding-layer-to-google-map-adding-toggle-for-traffic-layer
+/**
 
+* Toggle for display bikeLayer, which is a globally-declared Google Layer, 
+* which shows bike lanes and bike-friendly roads on the map.
+*/
 function toggleBikeLayer() {
     if(bikeLayer.getMap() == null) {
         bikeLayer.setMap(map);
@@ -414,7 +417,11 @@ function toggleBikeLayer() {
     }
 }
 
-// get prediction for requested time and redraw the map markers
+/**
+* Prepares a list of station markers and calls the addStationMarker to create each one.
+* This function differs from addStationMarkersFromDB in that it handles cases where a future time is selected
+* and the occupancy data attached to each marker is predicted, rather than current.
+*/
 function addStationMarkersFromForecast(){
     var requestedTime = $("#prediction-input").val();
     selected_time = requestedTime + ":00";
@@ -433,9 +440,13 @@ function addStationMarkersFromForecast(){
     });
 }
 
-
+/**
+* Generates Google Chart for a given station marker add a given day.
+* @param {string} address The address of the station.
+* @param {string} day The day to generate the chart for.
+* @param {Google.maps.marker} The marker to bind the chart to. Chart attached to on click event listener.
+*/
 function drawChart(address, day, marker) {
-    // options declared before address has the extra quotes added, so they don't affect the graph title
     // adjust chartArea to fit in wider legends
     var options = {
         title: address + ", " + day + ", " + "Bikes and Stands",
@@ -470,6 +481,9 @@ function drawChart(address, day, marker) {
     });
 }
 
+/**
+* Function to produce the date/time chooser interface.
+*/
 function dateTimePicker() {
     var start = moment();
     var end = start.clone().add(4, "day");
