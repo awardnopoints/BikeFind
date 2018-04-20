@@ -16,10 +16,16 @@ var selected_time = default_time;
 google.charts.load("current", {packages: ["corechart", "bar"]});
 // have switched to triggering from on marker click
 
-function initMap() {
 /**
-* Initialises map, adds onclick event to create a user marker
-**/
+* Initialises map with desired configuration.
+* Initialises UI variables.
+* Adds onclick event to create a user marker. 
+* Initialises autocomplete and address bar objects.
+* Checks for https. If true, sets current_position to user's location. Otherwise, uses default.
+*/
+
+function initMap() {
+
 
     var charlemontPlace = {
         lat: 53.330662,
@@ -90,6 +96,10 @@ function initMap() {
 /**
 * Creates a marker at the location clicked by the user
 * Adds an event, creates a pop-up window when the user's marker is clicked
+* Calls addStationMarkersFromDB or addStationMarkersFromForecast to update the proximity attribute on station
+* markers to reflect current position. Which of these marker-populating functions is called, depends on whether
+* selected_time is set to present time or a future time.
+* @param {google.maps.LatLng} new_position The coords at which to add the current position marker
 **/
 function addCurrentPositionMarker(new_position){
 
